@@ -1,0 +1,83 @@
+@charset "utf-8";
+@import "mixins";
+
+body {
+    width: 100%;
+    // remove default margin
+    margin: 0px;
+    @include box($backcolor:#120907);
+}
+
+main {
+    // content layout management
+    @include flex($direction: column, $align: center, $justify: flex-start);
+    // @include box($width: 100%);
+    // additional properties
+    flex-wrap: wrap;
+    margin: 50px calc((100% - 500px) / 2);
+    // stop viewport shrinking
+    width: 500px;
+}
+
+article {
+    // content layout management
+    @include flex($direction: column, $align: center, $justify: flex-start);
+    @include box($width: 100%);
+    margin: 15px 0 0 0;
+}
+
+span.large {
+    @include span($size: $font_large);
+    font-family: 'Protest Riot', sans-serif;
+}
+
+span.small {
+    @include box($width: 100%, $height: 25px, $padding: 0px $padding_default);
+    @include span();
+}
+
+span.highlight {
+    color: $color_highlight;
+    padding-bottom: 0;
+
+}
+
+button, input[type=submit] {
+    @include box($width: 100%, $height: unset, $padding: 5px 0px, $backcolor: #474163, $radius: 2.5px);
+    @include span($margin: unset);
+    border: none;
+    cursor: pointer;
+}
+
+form {
+    // content layout management
+    @include flex($direction: column, $align: left, $justify: flex-start);
+    @include box($width: 100%, $padding: 0 $padding_default);
+
+    > * {
+        @include span();
+    }
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    &:hover {
+        filter: drop-shadow(0 0 2em $color_highlight);
+    }
+}
+
+.pepe {
+    height: 300px;
+    width: 315px;
+    border: 0;
+    font-weight: bold;
+    resize: none;
+    color: $color_ft;
+    background-color: $color_bg;
+    &:hover {
+        cursor: pointer;
+        color: $color_highlight;
+    }
+}

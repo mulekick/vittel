@@ -1,0 +1,21 @@
+{
+    "__rationale": "transpile *.ts files and auto-restart server.ts on change in dev mode",
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        ".vscode",
+        "dist",
+        "node_modules/**/node_modules",
+        "src/client",
+        "src/uploads",
+        "*.sh",
+        ".eslint*",
+        "package*.json",
+        "vite.*"
+    ],
+    "execMap": {
+        "ts": "tsx --tsconfig ./tsconfig.json"
+    },
+    "verbose": true,
+    "ext": "ts,json"
+}

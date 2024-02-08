@@ -1,0 +1,7 @@
+{
+    "verbose": true,
+    "transform": {
+        "\\.[jt]sx?$": "babel-jest"
+    },
+    "preset": "jest-puppeteer"
+}
