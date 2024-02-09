@@ -13,7 +13,7 @@ const
             .send(createHash(`sha256`)
                 .update(String(new Date().getTime()))
                 .digest(`hex`)
-                .substring(0, 32));
+                .substring(0, 48));
     },
     // data fetching fallback middleware
     mFallback:RequestHandler = (req, res) => {

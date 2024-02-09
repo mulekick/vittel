@@ -59,9 +59,9 @@ describe(`app integration tests suite`, ():void => {
     describe(`when navigating to the home page`, ():void => {
 
         // test /fetch/inline route
-        it(`should display a random string of length 32`, async():Promise<void> => {
+        it(`should display a random string of length 48`, async():Promise<void> => {
             // @ts-expect-error expect-puppeteer matchers not detected ...
-            await expect(page).toMatchTextContent(/[0-9a-f]{32}/ui, {timeout: 5e3});
+            await expect(page).toMatchTextContent(/[0-9a-f]{48}/ui, {timeout: 5e3});
         });
 
         // test button

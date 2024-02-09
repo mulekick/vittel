@@ -25,7 +25,7 @@ export interface ConfigSignature {
     APP_PORT: number;
     APP_BUILD_DIR?: string;
     APP_UPLOAD_DIR?: string;
-    APP_MAX_UPLOAD_SIZE?: number;
+    APP_MAX_UPLOAD_SIZE: number;
     APP_KEYPAIR_ALG?: string;
     APP_COOKIE_NAME?: string;
     APP_TOKEN_VALIDITY: number;

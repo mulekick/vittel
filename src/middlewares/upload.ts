@@ -19,7 +19,7 @@ const
                 keepExtensions: true,
                 allowEmptyFiles: false,
                 // max upload size
-                maxFileSize: APP_MAX_UPLOAD_SIZE as number * 1024,
+                maxFileSize: APP_MAX_UPLOAD_SIZE * 1024,
                 // server upload directory (located in the same directory as the server file)
                 uploadDir: `${ dirName }/${ APP_UPLOAD_DIR }`,
                 // preserve original file name if possible (existing files will be overwritten ...)

@@ -137,7 +137,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 ├── jest.config.json           # transforms to apply before running tests
 ├── nodemon.json               # nodemon config
 ├── package.json               # dependencies for the react app and the express server
-├── tsconfig.json              # typescript optconfigions
+├── tsconfig.json              # typescript config
 └── vite.config.js             # vite config + entrypoints for the rollup build process
 ```
 
@@ -145,11 +145,11 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
   - ⚠️ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in the dotenv config files.
 
-  - ⚠️ The build process packs all the react app code **as well as its dependencies** into a self-sufficient optimized bundle.
+  - ⚠️ The build process packs all the react app code **_as well as its dependencies_** into a self-sufficient bundle.
    
-  - ⚠️ _As a result, it is important to **install react app dependencies as dev dependencies**.
+  - ⚠️ _As a result, it is important to **_install react app dependencies as dev dependencies_**.
   
-  - ⚠️The docker image will be optimized in that it will only embark dependencies **needed by the express server**._
+  - ⚠️The docker image will be optimized in that it will only embark dependencies **_needed by the express server_**.
 
 ## Available commands
 
@@ -161,7 +161,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | `npm run test:unit`      | Run unit tests and components tests                                                                                                             |
 | `npm run test:cover`     | Run unit tests and components tests, print coverage report                                                                                      |
 | `npm run build`          | Build the react app and the express server                                                                                                      |
-| `npm run test:e2e`       | Start a puppeteer automated browser and run the end to end test suite                                                                           |
+| `npm run test:e2e`       | Starts a puppeteer automated browser and run the end to end test suite                                                                          |
 | `npm run prod`           | Start the project in production mode (express serves the app bundle)<br>The express server listens at ```https://${ APP_HOST }:${ APP_PORT }``` |
 | `npm run docker:build`   | Create a docker image and packs the build files in it                                                                                           |
 | `npm run docker:up`      | Start an interactive container from the image<br>Container's port ```APP_PORT``` is mapped to the corresponding host port                       |

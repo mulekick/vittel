@@ -34,11 +34,11 @@ const
         APP_PORT: APP_PORT ? parseInt(APP_PORT, 10) : 0,
         APP_BUILD_DIR,
         APP_UPLOAD_DIR,
-        APP_MAX_UPLOAD_SIZE: APP_MAX_UPLOAD_SIZE ? parseInt(APP_MAX_UPLOAD_SIZE, 10) : 100,
+        APP_MAX_UPLOAD_SIZE: APP_MAX_UPLOAD_SIZE && APP_MAX_UPLOAD_SIZE.length && typeof Number(APP_MAX_UPLOAD_SIZE) === `number` ? Number(APP_MAX_UPLOAD_SIZE) : 100,
         // JWT parameters
         APP_KEYPAIR_ALG,
         APP_COOKIE_NAME,
-        APP_TOKEN_VALIDITY: APP_TOKEN_VALIDITY ? parseInt(APP_TOKEN_VALIDITY, 10) : 0,
+        APP_TOKEN_VALIDITY: APP_TOKEN_VALIDITY && APP_TOKEN_VALIDITY.length && typeof Number(APP_TOKEN_VALIDITY) === `number` ? Number(APP_TOKEN_VALIDITY) : 0,
         // app TLS options
         APP_TLS_OPTIONS: {
             ciphers: APP_CIPHER_SUITES,
