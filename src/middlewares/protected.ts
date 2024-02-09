@@ -10,7 +10,7 @@ const
     // destructure config values
     {APP_COOKIE_NAME} = config,
     // equivalent to the 'login' route - will serve a token everytime
-    mtoken:RequestHandler = async(req, res, next) => {
+    mToken:RequestHandler = async(req, res, next) => {
         try {
             const
                 // create token from payload
@@ -42,7 +42,7 @@ const
     },
     // protection middleware - verify JWT
     // async I/O operation requires try...catch in express 4
-    mprotection:RequestHandler = async(req, res, next) => {
+    mProtection:RequestHandler = async(req, res, next) => {
         try {
 
             // if token is valid
@@ -74,10 +74,10 @@ const
         }
     },
     // protected resources serving fallback middleware
-    mfallback:RequestHandler = (req, res) => {
+    mFallback:RequestHandler = (req, res) => {
         res
             .status(200)
             .send(`you now have access to protected resources 😎`);
     };
 
-export {mtoken, mprotection, mfallback};
+export {mToken, mProtection, mFallback};

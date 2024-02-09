@@ -1,6 +1,6 @@
 # <center>Veetle</center>
 
-[Full-stack unopinionated express powered javascript framework](https://stackoverflow.com/questions/802050/what-is-opinionated-software) that :
+Full-stack [unopinionated](https://stackoverflow.com/questions/802050/what-is-opinionated-software) express powered javascript framework that :
 
 | <center>**Uses**</center>                                                                                                    | <center>**For**</center>                                                                                                            |
 | -----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -14,8 +14,8 @@
 | <code>[esbuild](https://esbuild.github.io/)</code>                                                                           | Bundling server-side code into builds that run on any modern node.js version                                                        |
 | <code>[vite](https://vitejs.dev/)</code> <code>[postcss](https://postcss.org/)</code>                                        | Bundling client-side code into builds that run in any TLSv1.2+ compatible browser                                                   |
 | <code>[jest](https://jestjs.io/)</code>                                                                                      | Running unit tests for server-side business logic                                                                                   |
-| <code>[testing-library](https://testing-library.com/)</code>                                                                 | Running unit tests for individual React components                                                                                  |
-| <code>[puppeteer](https://pptr.dev/)</code> <code>[jest-puppeteer](https://github.com/argos-ci/jest-puppeteer)</code>        | Running end to end tests through browser automation                                                                                 |
+| <code>[testing-library](https://testing-library.com/)</code>                                                                 | Running unit tests for individual react components                                                                                  |
+| <code>[puppeteer](https://pptr.dev/)</code><br><code>[jest-puppeteer](https://github.com/argos-ci/jest-puppeteer)</code>     | Running end to end tests through browser automation                                                                                 |
 
 ## Why this
 
@@ -23,21 +23,23 @@ I designed this project to acquire a basic understanding of how different things
 
 ✅ The idea is to create a full-stack development framework following these principles :
 
-   - 🚀 Remain as generic as possible (no default integration of any framework or library except React).
+   - 🚀 Remain as generic as possible (no default integration of any framework or library except react).
 
    - 🚀 Remain as manageable as possible by relying on a single package.json file.
 
-   - 🚀 Silo the back-end and frontend during development - vite dev server and express server run in separate processes.
+   - 🚀 Silo the back-end and frontend during development - vite server and express run in separate processes.
 
-   - 🚀 Provide extensive capabilities for writing tests (unit tests, components and e2e).
+   - 🚀 Provide extensive capabilities for writing tests (unit, components and e2e tests).
 
-   - 🚀 Provide Typescript support across the entire codebase.
+   - 🚀 Provide typescript support across the entire codebase.
 
-   - 🚀 At the end of the process, create builds that can be seamlessly packed into a Docker image.
+   - 🚀 Create builds that can be seamlessly packed into a Docker image.
+
+✅ DX is guaranteed to be smooth and enjoyable.
 
 ✅ All the dependencies included by default are the go-to modules of the ecosystem for their respective usages.
 
-✅ DX is guaranteed to be smooth and enjoyable. Scaffold your project and integrate any additional dependency you need in an incremental, controlled way.
+✅ Scaffold your project and integrate any additional dependency you need in an incremental, controlled way.
 
 ## Prerequisites
 
@@ -79,9 +81,9 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
 #### 👀 Important notes :
 
-- ⚠️ If you want to do step 2 during scaffolding, I assume you are comfortable with TLS and key pairs management.
+- ⚠️ If you want to do step 2, I assume you are comfortable with TLS and key pairs management.
 
-- ⚠️ If you aren't comfortable doing that, a dummy key pair is provided in the .env files so HTTPS works out of the box.
+- ⚠️ If you're not, a dummy key pair is provided in the .env files so HTTPS works out of the box.
 
 - ⚠️ **_In those circumstances, seek assistance on the matter prior to pushing anything in production._**
 
@@ -90,12 +92,12 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 ```bash
 .
 ├── .env.files           
-│   ├── .env.development       # dotenv config file for development mode 
-│   └── .env.production        # dotenv config file for production mode
+│   ├── .env.development       # dotenv config file (development) 
+│   └── .env.production        # dotenv config file (production)
 ├── .vscode                  
-│   └── launch.json            # vscode debug configurations for development, build and tests
+│   └── launch.json            # vscode debug configurations (dev, build and tests)
 ├── dist                      
-│   └── *.*                    # build files for the react app and express server
+│   └── *.*                    # react app + express server build
 ├── dist.test                 
 │   └── *.test.ts              # end to end tests files
 ├── node_modules                     
@@ -103,68 +105,73 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 ├── src       
 │   ├── client                 
 │   │   ├── app
-│   │   │   ├── *.tsx          # react components files
-│   │   │   ├── *.ts           # non react components app files (helpers etc) 
-│   │   │   └── *.test.ts      # unit / react components tests files
+│   │   │   ├── *.tsx          # react components
+│   │   │   ├── *.ts           # non react code (helpers etc) 
+│   │   │   └── *.test.ts      # unit / react components tests
 │   │   ├── img
 │   │   │   └── *.*            # assets to include in the build (use named imports)
 │   │   ├── public             
 │   │   │   └── *.*            # statically served files (served from / in production mode)
 │   │   ├── scss               
-│   │   │   └── *.scss         # scss files for the react app styles
-│   │   └── index.html         # html page hosting the react app (rollup entrypoint) 
+│   │   │   └── *.scss         # scss files for the react app
+│   │   └── index.html         # main html page (rollup entrypoint) 
 │   ├── helpers                    
-│   │   └── *.ts               # business agnostic code to use in express middlewares
+│   │   └── *.ts               # business agnostic code
 │   ├── middlewares            
-│   │   ├── *.ts               # express middlewares that implement business logic
-│   │   └── *.test.ts          # unit tests files for the business logic
+│   │   ├── *.ts               # express middlewares (implement business logic)
+│   │   └── *.test.ts          # unit tests for the business logic
 │   ├── routes                 
 │   │   ├── routes.ts          # main express router (mounted on VITE_SRV_ENTRYPOINT)
-│   │   └── *.ts               # express routers that will be imported in routes.ts
+│   │   └── *.ts               # express routers to import in routes.ts
 │   ├── uploads                 
-│   │   └── *.*                # server folder for uploaded files
-│   ├── config.ts              # config file for the express server
-│   ├── interfaces.ts          # typescript interfaces / types for the react app and express server
+│   │   └── *.*                # uploads folder
+│   ├── config.ts              # express server config file
+│   ├── interfaces.ts          # typescript interfaces / types for the project
 │   └── server.ts              # main express server file    
-├── _commands.sh               # framework related commands script
-├── .browserslistrc            # browserslist queries for babel, autoprefixer and vite legacy plugin
-├── .eslintrc.json             # eslint options for typescript and react / jsx support
-├── .postcssrc.json            # postcss plugins used for vite serve and build
-├── babel.config.json          # react and typescript support for the babel-jest transform
-├── Dockerfile                 # Pack the react app and express server into a docker image
-├── jest-puppeteer.config.json # puppeteer configuration for end to end tests
-├── jest.config.json           # transforms to apply to the source code before tests
-├── nodemon.json               # nodemon options
+├── .browserslistrc            # browserslist queries for babel, autoprefixer and vite
+├── .eslintrc.json             # eslint config for typescript and react / jsx support
+├── .postcssrc.json            # postcss plugins used for development and build
+├── babel.config.json          # react / typescript support for babel-jest
+├── Dockerfile                 # bundle the app and server into a docker image
+├── jest-puppeteer.config.json # puppeteer config for e2e tests
+├── jest.config.json           # transforms to apply before running tests
+├── nodemon.json               # nodemon config
 ├── package.json               # dependencies for the react app and the express server
-├── tsconfig.json              # typescript options
-└── vite.config.js             # entrypoints for the rollup/vite build process
+├── tsconfig.json              # typescript optconfigions
+└── vite.config.js             # vite config + entrypoints for the rollup build process
 ```
 
 #### 👀 Important notes :
 
-  -⚠️ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in the dotenv config files.
+  - ⚠️ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in the dotenv config files.
 
-  -⚠️ The vite build process is going to pack all the code for the React app, **as well as all the dependencies for that code**, into a self-sufficient optimized bundle.
+  - ⚠️ The build process packs all the react app code **as well as its dependencies** into a self-sufficient optimized bundle.
    
-  -⚠️ _As a result, it is important to **dependencies for the React app as dev dependencies** to ensure that dependencies going into the docker image are **those needed by the express server only**._
+  - ⚠️ _As a result, it is important to **install react app dependencies as dev dependencies**.
+  
+  - ⚠️The docker image will be optimized in that it will only embark dependencies **needed by the express server**._
 
 ## Available commands
 
-| <center>Command</center> | <center>Usage</center>                                                                                                                             |
-| -------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev`            | Starts the project in development mode.<br>Vite dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```.<br>HMR and browser auto-reload are enabled<br>Vite proxies requests to express when needed.|
-| `npm run list`           | Lists all files for the current Typescript codebase.                                                                                               |
-| `npm run typecheck`      | Typechecks the entire project against the current Typescript configuration.                                                                        |
-| `npm run test:unit`      | Runs unit tests and components tests.                                                                                                              |
-| `npm run test:cover`     | Runs unit tests and components tests, outputs coverage report.                                                                                     |
-| `npm run build`          | Builds the react app using vite and the express server using esbuild.                                                                              |
-| `npm run test:e2e`       | Starts a puppeteer automated browser and runs the end to end test suite.                                                                           |
-| `npm run prod`           | Starts the project in production mode (express serves the app bundle).<br>The express server listens at ```https://${ APP_HOST }:${ APP_PORT }```. |
-| `npm run docker:build`   | Creates a docker image and packs the build files in it.                                                                                            |
-| `npm run docker:up`      | Starts an interactive container from the image.<br>Container's port ```APP_PORT``` is mapped to the corresponding host port.                       |
-| `npm run docker:down`    | Stops the container.                                                                                                                               |
+| <center>Command</center> | <center>Usage</center>                                                                                                                          |
+| -------------------------|------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`            | Start the project in development mode<br>Vite dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```<br>HMR and browser auto-reload are enabled<br>Vite proxies requests to express |
+| `npm run list`           | List all files for the current typescript codebase                                                                                              |
+| `npm run typecheck`      | Typecheck the entire project against the current configuration                                                                                  |
+| `npm run test:unit`      | Run unit tests and components tests                                                                                                             |
+| `npm run test:cover`     | Run unit tests and components tests, print coverage report                                                                                      |
+| `npm run build`          | Build the react app and the express server                                                                                                      |
+| `npm run test:e2e`       | Start a puppeteer automated browser and run the end to end test suite                                                                           |
+| `npm run prod`           | Start the project in production mode (express serves the app bundle)<br>The express server listens at ```https://${ APP_HOST }:${ APP_PORT }``` |
+| `npm run docker:build`   | Create a docker image and packs the build files in it                                                                                           |
+| `npm run docker:up`      | Start an interactive container from the image<br>Container's port ```APP_PORT``` is mapped to the corresponding host port                       |
+| `npm run docker:down`    | Stop the container                                                                                                                              |
 
-*Note : The vite project root here is ```/src/client``` instead of the default  ```/```. It means that vite is only used to build the react app (```esbuild``` will be used to transpile the typescript code for the express server).*
+#### Notes :
+
+  - The vite project root here is ```/src/client``` instead of the default  ```/``` (vite builds the react app only).
+
+  - **_esbuild_** is used to transpile and bundle the typescript code for the server.
 
 ## 📝 Dependencies
 
@@ -201,7 +208,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | <code>[@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)</code>       | Typescript specific linting rules for eslint                         |
 | <code>[@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)</code>                     | Typescript support for eslint                                        |
 | <code>[@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)</code>                             | Enable legacy browsers support in vite.js builds                     |
-| <code>[@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)</code>                               | The all-in-one Vite plugin for React projects                        |
+| <code>[@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)</code>                               | The all-in-one Vite plugin for react projects                        |
 | <code>[autoprefixer](https://www.npmjs.com/package/autoprefixer)</code>                                               | Postcss plugin that adds vendor-specific prefixes to CSS rules       |
 | <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code>   | Babel transforms import.meta into legacy code in node.js             |
 | <code>[eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)</code>                                 | React specific linting rules for eslint                              |
@@ -221,8 +228,9 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | <code>[vite](https://www.npmjs.com/package/vite)</code>                                                               | Next generation froontend tooling                                    |
 | <code>[vite-plugin-webfont-dl](https://www.npmjs.com/package/vite-plugin-webfont-dl)</code>                           | Extracts, downloads and injects fonts during the build               |
 
-## ⚛️ Footnote concerning React ⚛️
+## ⚛️ Footnotes ⚛️
 
-This project is at its third iteration  now, it is a case of having done [this](https://react.dev/learn/start-a-new-react-project#can-i-use-react-without-a-framework) before the new framework-oriented react docs came out :
+  - This project is at its third major iteration (it started with plain javascript, then react, now typescript).
+  - It is a case of having done [this](https://react.dev/learn/start-a-new-react-project#can-i-use-react-without-a-framework) before the new react docs came out :
 
 ![This is a alt text.](https://i.imgur.com/Vk6XfpZ.png "The react team approves 😁")

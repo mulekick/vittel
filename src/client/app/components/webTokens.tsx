@@ -29,10 +29,10 @@ const
             <span className="small highlight">
                 <FontAwesomeIcon icon={faSquareCheck} /> Stateless client-side sessions with JSON Web Tokens:
             </span>
+            <span className="small">server: {protectedContent}</span>
             <span className="small">
                 <button type="button" id="tokenplease" onClick={ tokenPlease } >request a token</button>
             </span>
-            <span className="small">server: {protectedContent}</span>
         </article>;
     };
 

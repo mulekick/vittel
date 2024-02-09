@@ -15,15 +15,15 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import config from "./config.ts";
-import xroutes from "./routes/routes.ts";
+import xRoutes from "./routes/routes.ts";
 
 const
     // destructure config values
     {dirName, VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_BUILD_DIR, APP_TLS_OPTIONS} = config,
     // create express app
-    xapp:Application = express();
+    xApp:Application = express();
 
-xapp
+xApp
     // enable cors for all routes, resources will be served to any origin
     .use(cors({origin: `*`}))
     // setup default security related response headers (list on module homepage)
@@ -34,12 +34,12 @@ xapp
     // parse cookies and populate request with keyed object
     .use(cookieParser())
     // mount server routes to entrypoint so static content can be served from /
-    .use(VITE_SRV_ENTRYPOINT as string, xroutes);
+    .use(VITE_SRV_ENTRYPOINT as string, xRoutes);
 
 // manage static content serving (development / production)
 if (process.env.NODE_ENV === `production`) {
     // route for serving static content
-    xapp.use(`/`, express.static(`${ dirName }/${ APP_BUILD_DIR }`));
+    xApp.use(`/`, express.static(`${ dirName }/${ APP_BUILD_DIR }`));
 } else if (process.env.NODE_ENV === `development`) {
     // fork a new vite.js static development server
     const
@@ -93,9 +93,9 @@ const
         next(err);
     };
 
-xapp
+xApp
     .use(`*`, defaultFallbackRoute)
     .use(errorHandlingRoute);
 
 // fire that shit up !
-createServer(APP_TLS_OPTIONS, xapp).listen(APP_PORT, APP_HOST, () => console.log(`service listening on interface ${ APP_HOST }:${ APP_PORT }`));
+createServer(APP_TLS_OPTIONS, xApp).listen(APP_PORT, APP_HOST, () => console.log(`service listening on interface ${ APP_HOST }:${ APP_PORT }`));

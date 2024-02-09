@@ -3,8 +3,8 @@ import {RequestHandler} from "express";
 
 const
     // error throwing middleware function
-    merror:RequestHandler = () => {
+    mError:RequestHandler = () => {
         throw new Error(`some asshole purposely threw an error 😡`);
     };
 
-export default merror;
+export default mError;

@@ -10,7 +10,7 @@ import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../interfaces.ts";
 
 // import middlewares
-import {mtoken, mprotection, mfallback} from "./protected.ts";
+import {mToken, mProtection, mFallback} from "./protected.ts";
 
 describe(`test protected resources fetching`, () => {
     let
@@ -35,19 +35,19 @@ describe(`test protected resources fetching`, () => {
     describe(`token request middleware`, ():void => {
         it(`should return a HTTP 201`, async():Promise<void> => {
             // call middleware with type assertions
-            await mtoken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(201);
         });
         it(`should add set-cookie header to response`, async():Promise<void> => {
             // call middleware with type assertions
-            await mtoken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockResponse.cookie).toHaveBeenCalled();
         });
         it(`should end response`, async():Promise<void> => {
             // call middleware with type assertions
-            await mtoken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockResponse.end).toHaveBeenCalled();
         });
@@ -56,7 +56,7 @@ describe(`test protected resources fetching`, () => {
     describe(`protection middleware (no token)`, ():void => {
         it(`should pass error to next()`, async():Promise<void> => {
             // call middleware with type assertions
-            await mprotection(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mProtection(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockNext).toHaveBeenCalled();
         });
@@ -65,13 +65,13 @@ describe(`test protected resources fetching`, () => {
     describe(`fallback middleware`, ():void => {
         it(`should return a HTTP 200`, ():void => {
             // call middleware with type assertions
-            mfallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
         it(`should return a default message`, ():void => {
             // call middleware with type assertions
-            mfallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockResponse.send).toHaveBeenCalledWith(`you now have access to protected resources 😎`);
         });

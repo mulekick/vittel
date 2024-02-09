@@ -8,7 +8,7 @@ const
     {dirName, APP_UPLOAD_DIR, APP_MAX_UPLOAD_SIZE} = config,
     // file upload middleware function
     // async I/O operation requires try...catch in express 4
-    mupload:RequestHandler = async(req, res, next) => {
+    mUpload:RequestHandler = async(req, res, next) => {
         // form parsing cannot be assessed to be business agnostic, there's also fields
         // in the form that have to be processed according to business logic, that's why
         // I opted to keep the form processing inside a middleware over using a helper ...
@@ -39,4 +39,4 @@ const
         }
     };
 
-export default mupload;
+export default mUpload;

@@ -10,7 +10,7 @@ import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../interfaces.ts";
 
 // import middlewares
-import mupload from "./upload.ts";
+import mUpload from "./upload.ts";
 
 describe(`test file upload `, () => {
     let
@@ -38,7 +38,7 @@ describe(`test file upload `, () => {
     describe(`upload middleware`, ():void => {
         it(`should pass error to next()`, async():Promise<void> => {
             // call middleware with type assertions
-            await mupload(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mUpload(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
             // actual test
             expect(mockNext).toHaveBeenCalled();
         });

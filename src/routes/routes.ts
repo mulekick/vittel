@@ -1,25 +1,25 @@
 // import modules
 import {Router} from "express";
-import xfetch from "./fetch.ts";
-import xupload from "./upload.ts";
-import xprotected from "./protected.ts";
+import xFetch from "./fetch.ts";
+import xUpload from "./upload.ts";
+import xProtected from "./protected.ts";
 
 // import middlewares
-import merror from "../middlewares/error.ts";
+import mError from "../middlewares/error.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xroutes:Router = Router();
+    xRoutes:Router = Router();
 
 // mount specific routers and middlewares to a single entrypoint for the server to use
-xroutes
+xRoutes
     // route for serving dynamic content
-    .use(`/fetch`, xfetch)
+    .use(`/fetch`, xFetch)
     // route for handling file uploads
-    .use(`/upload`, xupload)
+    .use(`/upload`, xUpload)
     // protected route
-    .use(`/protected`, xprotected)
+    .use(`/protected`, xProtected)
     // route for throwing an error
-    .use(`/error`, merror);
+    .use(`/error`, mError);
 
-export default xroutes;
+export default xRoutes;

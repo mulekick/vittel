@@ -6,7 +6,7 @@ import {RequestHandler} from "express";
 
 const
     // data fetching middleware function
-    mfetch:RequestHandler = (req, res) => {
+    mFetch:RequestHandler = (req, res) => {
         res
             .status(200)
             // generate random hash
@@ -16,10 +16,10 @@ const
                 .substring(0, 32));
     },
     // data fetching fallback middleware
-    mfallback:RequestHandler = (req, res) => {
+    mFallback:RequestHandler = (req, res) => {
         res
             .status(200)
             .send(`resources sitting here will be served to anybody 😁`);
     };
 
-export {mfetch, mfallback};
+export {mFetch, mFallback};

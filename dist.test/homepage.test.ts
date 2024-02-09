@@ -34,7 +34,7 @@ describe(`app integration tests suite`, ():void => {
         console.log(`starting app ... ${ homepageUrl }`);
         const
             // start app
-            testapp:ChildProcess = fork(`dist/server.js`, {
+            testApp:ChildProcess = fork(`dist/server.js`, {
                 // submit to abort controller signal for termination
                 signal: controller.signal,
                 // not-so-obvious default option
@@ -45,7 +45,7 @@ describe(`app integration tests suite`, ():void => {
                 stdio: `ignore`
             });
 
-        testapp
+        testApp
             // termination handler
             .on(`error`, e => console.error(`express server shut down: ${ e.message }\n${ controller.signal.reason }`));
 

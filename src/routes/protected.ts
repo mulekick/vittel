@@ -2,18 +2,18 @@
 import {Router} from "express";
 
 // import middlewares
-import {mtoken, mprotection, mfallback} from "../middlewares/protected.ts";
+import {mToken, mProtection, mFallback} from "../middlewares/protected.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xprotected:Router = Router();
+    xProtected:Router = Router();
 
-xprotected
+xProtected
     // token serving middleware
-    .get(`/token`, mtoken)
+    .get(`/token`, mToken)
     // protection middleware
-    .use(mprotection)
+    .use(mProtection)
     // protected resources sit there
-    .get(`*`, mfallback);
+    .get(`*`, mFallback);
 
-export default xprotected;
+export default xProtected;

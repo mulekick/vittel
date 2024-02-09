@@ -9,7 +9,7 @@ import {Request, Response, NextFunction} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../interfaces.ts";
 
-import merror from "./error.ts";
+import mError from "./error.ts";
 
 describe(`test error throwing middleware`, () => {
     let
@@ -31,6 +31,6 @@ describe(`test error throwing middleware`, () => {
         // in another function or the toThrow() matcher will fail
 
         // call middleware with type assertions
-        expect(() => merror(mockRequest as Request, mockResponse as Response, mockNext as NextFunction)).toThrow(`some asshole purposely threw an error 😡`);
+        expect(() => mError(mockRequest as Request, mockResponse as Response, mockNext as NextFunction)).toThrow(`some asshole purposely threw an error 😡`);
     });
 });

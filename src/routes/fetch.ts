@@ -2,16 +2,16 @@
 import {Router} from "express";
 
 // import middlewares
-import {mfetch, mfallback} from "../middlewares/fetch.ts";
+import {mFetch, mFallback} from "../middlewares/fetch.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xfetch:Router = Router();
+    xFetch:Router = Router();
 
-xfetch
+xFetch
     // setup routes to serve fetch requests
-    .get(`/inline`, mfetch)
+    .get(`/inline`, mFetch)
     // fallback route for GET
-    .get(`*`, mfallback);
+    .get(`*`, mFallback);
 
-export default xfetch;
+export default xFetch;

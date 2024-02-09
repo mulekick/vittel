@@ -16,7 +16,6 @@ const
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     DefaultApp = (props:Record<string, never>):React.JSX.Element => {
         const
-
             // lift all individual components states here
             // so they are updated in a single effect ..
             [ content, setContent ] = useState<string>(``),

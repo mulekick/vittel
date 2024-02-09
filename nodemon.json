@@ -1,5 +1,5 @@
 {
-    "__rationale": "transpile *.ts files and auto-restart server.ts on change in dev mode",
+    "__rationale": "transpile *.ts files and auto-restart server.ts on file change in dev mode",
     "restartable": "rs",
     "ignore": [
         ".git",
