@@ -4,7 +4,7 @@
 import React from "react";
 // eslint-disable-next-line node/file-extension-in-import
 import {createRoot} from "react-dom/client";
-import DefaultApp from "./components/defaultApp.tsx";
+import App from "./components/app.tsx";
 
 // use the built-in vite functionalities to flat import scss files ...
 import "../scss/main.scss";
@@ -19,7 +19,7 @@ import {BASE_URL, MODE, VITE_SHA_256_HASH, VITE_HOST, VITE_PORT} from "./helpers
 createRoot(document.getElementById(`root`) || document.createElement(`root`))
     .render(
         <React.StrictMode>
-            <DefaultApp />
+            <App />
         </React.StrictMode>
     );
 

@@ -73,7 +73,7 @@ const
             return next(err);
         }
     },
-    // protected resources serving fallback middleware
+    // fallback middleware
     mFallback:RequestHandler = (req, res) => {
         res
             .status(200)

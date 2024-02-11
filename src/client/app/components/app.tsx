@@ -14,7 +14,7 @@ import {VITE_SRV_ENTRYPOINT} from "../helpers/env.ts";
 
 const
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-    DefaultApp = (props:Record<string, never>):React.JSX.Element => {
+    App = (props:Record<string, never>):React.JSX.Element => {
         const
             // lift all individual components states here
             // so they are updated in a single effect ..
@@ -29,7 +29,7 @@ const
             // update frequency : 2.5 seconds
             interval.current = setInterval(() => {
                 // make synchronous calls and pass the state update functions
-                getContentAsync(`${ VITE_SRV_ENTRYPOINT }/fetch/inline`, setContent);
+                getContentAsync(`${ VITE_SRV_ENTRYPOINT }/public/fetch`, setContent);
                 getContentAsync(`${ VITE_SRV_ENTRYPOINT }/protected`, setProtectedContent);
                 setPepe(getPepe());
             }, 2.5e3);
@@ -51,4 +51,4 @@ const
         </main>;
     };
 
-export default DefaultApp;
+export default App;

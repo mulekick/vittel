@@ -6,9 +6,6 @@ import {ServerOptions} from "node:https";
 // import modules
 import {Request, Response, NextFunction} from "express";
 
-// generic null or undefined types ...
-export type MaybeNull<Type> = Type | null;
-
 // react app interfaces - use a single signature for all components
 export interface TextContentPropsSignature {
     content?:string;

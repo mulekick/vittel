@@ -5,7 +5,7 @@ import {createHash} from "node:crypto";
 import {RequestHandler} from "express";
 
 const
-    // data fetching middleware function
+    // data fetching middleware
     mFetch:RequestHandler = (req, res) => {
         res
             .status(200)
@@ -15,7 +15,7 @@ const
                 .digest(`hex`)
                 .substring(0, 48));
     },
-    // data fetching fallback middleware
+    // fallback middleware
     mFallback:RequestHandler = (req, res) => {
         res
             .status(200)

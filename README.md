@@ -143,35 +143,43 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
 #### 👀 Important notes :
 
-  - ⚠️ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in the dotenv config files.
-
   - ⚠️ The build process packs all the react app code **_as well as its dependencies_** into a self-sufficient bundle.
    
-  - ⚠️ _As a result, it is important to **_install react app dependencies as dev dependencies_**.
+  - ⚠️ As a result, it is important to **_install react app dependencies as dev dependencies_**.
   
-  - ⚠️The docker image will be optimized in that it will only embark dependencies **_needed by the express server_**.
+  - ⚠️ The docker image will be optimized in that it will only embark dependencies **_needed by the express server_**.
 
 ## Available commands
 
-| <center>Command</center> | <center>Usage</center>                                                                                                                          |
-| -------------------------|------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `npm run dev`            | Start the project in development mode<br>Vite dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```<br>HMR and browser auto-reload are enabled<br>Vite proxies requests to express |
-| `npm run list`           | List all files for the current typescript codebase                                                                                              |
-| `npm run typecheck`      | Typecheck the entire project against the current configuration                                                                                  |
-| `npm run test:unit`      | Run unit tests and components tests                                                                                                             |
-| `npm run test:cover`     | Run unit tests and components tests, print coverage report                                                                                      |
-| `npm run build`          | Build the react app and the express server                                                                                                      |
-| `npm run test:e2e`       | Starts a puppeteer automated browser and run the end to end test suite                                                                          |
-| `npm run prod`           | Start the project in production mode (express serves the app bundle)<br>The express server listens at ```https://${ APP_HOST }:${ APP_PORT }``` |
-| `npm run docker:build`   | Create a docker image and packs the build files in it                                                                                           |
-| `npm run docker:up`      | Start an interactive container from the image<br>Container's port ```APP_PORT``` is mapped to the corresponding host port                       |
-| `npm run docker:down`    | Stop the container                                                                                                                              |
+| <center>Command</center> | <center>Usage</center>                                                                                                    |
+| -------------------------|-------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`            | Start the project in development mode<br>HMR and browser auto-reload are enabled<br>Vite proxies requests to express      |
+| `npm run list`           | List all files for the current typescript codebase                                                                        |
+| `npm run typecheck`      | Typecheck the entire project against the current configuration                                                            |
+| `npm run test:unit`      | Run unit tests and components tests                                                                                       |
+| `npm run test:cover`     | Run unit tests and components tests and print coverage report                                                             |
+| `npm run build`          | Build the react app and the express server                                                                                |
+| `npm run test:e2e`       | Start a puppeteer automated browser and run the end to end test suite                                                     |
+| `npm run prod`           | Start the project in production mode<br>Express serves the app bundle                                                     |
+| `npm run docker:build`   | Create a docker image and packs the build files in it                                                                     |
+| `npm run docker:up`      | Start an interactive container from the image<br>Container's port ```APP_PORT``` is mapped to the corresponding host port |
+| `npm run docker:down`    | Stop the container                                                                                                        |
+
+#### 👀 Important notes :
+
+  - ⚠️ HTTPS is enabled by default whether the project is started in development or production mode.
+
+  - ⚠️ When starting in development mode, the vite dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```.
+
+  - ⚠️ When starting in production mode, the express server listens at ```https://${ APP_HOST }:${ APP_PORT }```.
+
+  - ⚠️ ```VITE_*``` and ```APP_*``` environment variables can be configured in the relevant dotenv config file.
 
 #### Notes :
 
-  - The vite project root here is ```/src/client``` instead of the default  ```/``` (vite builds the react app only).
+  - ⚠️ The vite project root here is ```/src/client``` instead of the default  ```/``` (vite builds the react app only).
 
-  - **_esbuild_** is used to transpile and bundle the typescript code for the server.
+  - ⚠️ **_esbuild_** is used to transpile and bundle the typescript code for the server.
 
 ## 📝 Dependencies
 
@@ -228,7 +236,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | <code>[vite](https://www.npmjs.com/package/vite)</code>                                                               | Next generation froontend tooling                                    |
 | <code>[vite-plugin-webfont-dl](https://www.npmjs.com/package/vite-plugin-webfont-dl)</code>                           | Extracts, downloads and injects fonts during the build               |
 
-## ⚛️ Footnotes ⚛️
+## Footnotes
 
   - This project is at its third major iteration (it started with plain javascript, then react, now typescript).
   - It is a case of having done [this](https://react.dev/learn/start-a-new-react-project#can-i-use-react-without-a-framework) before the new react docs came out :

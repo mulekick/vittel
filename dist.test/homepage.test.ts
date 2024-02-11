@@ -117,7 +117,7 @@ describe(`app integration tests suite`, ():void => {
         it(`should upload the file to the server "${ APP_UPLOAD_DIR }" folder`, async():Promise<void> => {
             const
                 // set upload endpoint location
-                uploadEndpoint = `${ homepageUrl }${ VITE_SRV_ENTRYPOINT }/upload`;
+                uploadEndpoint = `${ homepageUrl }${ VITE_SRV_ENTRYPOINT }/public/upload`;
 
             // @ts-expect-error expect-puppeteer matchers not detected ...
             await expect(page).toUploadFile(`input[name="afile"]`, resolve(dirName, `..`, `README.md`));

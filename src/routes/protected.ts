@@ -9,7 +9,7 @@ const
     xProtected:Router = Router();
 
 xProtected
-    // token serving middleware
+    // route for serving token
     .get(`/token`, mToken)
     // protection middleware
     .use(mProtection)

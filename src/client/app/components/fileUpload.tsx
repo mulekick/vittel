@@ -16,7 +16,7 @@ const
             <FontAwesomeIcon icon={faSquareCheck} /> File uploads (max size 100 kb, configurable):
         </span>
         {/* set form action for uploads */}
-        <form encType="multipart/form-data" method="post" action={`${ VITE_SRV_ENTRYPOINT }/upload`}>
+        <form encType="multipart/form-data" method="post" action={`${ VITE_SRV_ENTRYPOINT }/public/upload`}>
             <p><input type="file" name="afile" data-testid="afile" /></p>
             <input type="submit" value="upload file" />
         </form>

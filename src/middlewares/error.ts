@@ -2,7 +2,7 @@
 import {RequestHandler} from "express";
 
 const
-    // error throwing middleware function
+    // error throwing middleware
     mError:RequestHandler = () => {
         throw new Error(`some asshole purposely threw an error 😡`);
     };

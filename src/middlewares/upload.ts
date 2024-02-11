@@ -6,7 +6,7 @@ import config from "../config.ts";
 const
     // destructure config values
     {dirName, APP_UPLOAD_DIR, APP_MAX_UPLOAD_SIZE} = config,
-    // file upload middleware function
+    // file upload middleware
     // async I/O operation requires try...catch in express 4
     mUpload:RequestHandler = async(req, res, next) => {
         // form parsing cannot be assessed to be business agnostic, there's also fields
