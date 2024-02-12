@@ -81,9 +81,11 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
 #### 👀 Important notes :
 
+- ⚠️ The server uses the key pair to sign / verify the JWTs and for HTTPS (if enabled).
+
 - ⚠️ If you want to do step 2, I assume you are comfortable with TLS and key pairs management.
 
-- ⚠️ If you're not, a dummy key pair is provided in the .env files so HTTPS works out of the box.
+- ⚠️ If you're not, dummy key pairs are provided in the .env files so HTTPS and JWTs work out of the box.
 
 - ⚠️ **_In those circumstances, seek assistance on the matter prior to pushing anything in production._**
 
@@ -167,23 +169,40 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
 #### 👀 Important notes :
 
-  - ⚠️ HTTPS is enabled by default whether the project is started in development or production mode.
+  - ⚠️ HTTPS is disabled by default, it can be enabled by setting the ```APP_ENABLE_HTTPS``` variable to ```"true"```.
 
-  - ⚠️ When starting in development mode, the vite dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```.
+  - ⚠️ JWTs won't work in Firefox when starting the project with HTTPS disabled.
 
-  - ⚠️ When starting in production mode, the express server listens at ```https://${ APP_HOST }:${ APP_PORT }```.
+  - ⚠️ When starting in development mode, the vite dev server listens at ```${ VITE_HOST }:${ VITE_PORT }```.
 
-  - ⚠️ ```VITE_*``` and ```APP_*``` environment variables can be configured in the relevant dotenv config file.
+  - ⚠️ When starting in production mode, the express server listens at ```${ APP_HOST }:${ APP_PORT }```.
 
-#### Notes :
+## Environment variables
 
-  - ⚠️ The vite project root here is ```/src/client``` instead of the default  ```/``` (vite builds the react app only).
+  - All environment variables can be configured in the dotenv config files.
 
-  - ⚠️ **_esbuild_** is used to transpile and bundle the typescript code for the server.
+| <center>Variable</center> | <center>Usage</center>           |
+| ------------------------- | -------------------------------- |
+| `VITE_HOST`               | Vite dev server host             |
+| `VITE_PORT`               | Vite dev server port             |
+| `VITE_SRV_ENTRYPOINT`     | Server API root route            |
+| `APP_HOST`                | Express server host              |
+| `APP_PORT`                | Express server port              |
+| `APP_ENABLE_HTTPS`        | HTTPS enabled / disabled         |
+| `APP_UPLOAD_DIR`          | Server file upload directory     |
+| `APP_MAX_UPLOAD_SIZE`     | Max size allowed for uploads     |
+| `APP_PRIVATE_KEY`         | Server private key               |
+| `APP_X509_CERT`           | Server certificate               |
+| `APP_COOKIE_NAME`         | Cookie holding the JWT           |
+| `APP_TOKEN_VALIDITY`      | JWT validity duration in seconds |
+
+#### 👀 Important notes :
+
+  - ⚠️ Do not touch any variable that's not in this list **_unless you really know what youre doing_**.
 
 ## 📝 Dependencies
 
-| Module                                                                       | Usage                                             |
+| <center>Module</center>                                                      | <center>Usage</center>                            |
 | -----------------------------------------------------------------------------|---------------------------------------------------|
 | <code>[cookie-parser](https://www.npmjs.com/package/cookie-parser)</code>    | parse cookies from HTTP requests header           |
 | <code>[cors](https://www.npmjs.com/package/cors)</code>                      | serve or reject cross origin requests             |
@@ -196,7 +215,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
 ## 📝 Dev dependencies
 
-| Module                                                                                                                | Usage                                                                |
+| <center>Module</center>                                                                                               | <center>Usage</center>                                               |
 | ----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | <code>[@babel/preset-react](https://www.npmjs.com/package/@babel/preset-react)</code>                                 | React and jsx syntax support for babel                               |
 | <code>[@babel/preset-typescript](https://www.npmjs.com/package/@babel/preset-typescript)</code>                       | Typescript support for babel                                         |

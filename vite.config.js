@@ -29,9 +29,11 @@ export default defineConfig(({command, mode}) => {
 
     const
         // destructure from process.env
-        {APP_HOST, APP_PORT, APP_CIPHER_SUITES, APP_PRIVATE_KEY, APP_X509_CERT, APP_ECDH_CURVE, APP_TLS_MIN_VERSION, APP_TLS_MAX_VERSION} = process.env,
+        {APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_CIPHER_SUITES, APP_PRIVATE_KEY, APP_X509_CERT, APP_ECDH_CURVE, APP_TLS_MIN_VERSION, APP_TLS_MAX_VERSION} = process.env,
         // load current vite-specific
         {VITE_HOST, VITE_PORT, VITE_SRV_ENTRYPOINT} = loadEnv(mode, envDir, `VITE_`),
+        // enable https or not (no typescript ...)
+        enableHttps = typeof APP_ENABLE_HTTPS === `string` && APP_ENABLE_HTTPS === `true`,
         // init config
         cfg = {
             // environment files directory
@@ -51,22 +53,24 @@ export default defineConfig(({command, mode}) => {
                 // exit if port is busy
                 strictPort: true,
                 // enable https in dev mode
-                https: {
-                    ciphers: APP_CIPHER_SUITES,
-                    key: APP_PRIVATE_KEY,
-                    cert: APP_X509_CERT,
-                    ecdhCurve: APP_ECDH_CURVE,
-                    maxVersion: APP_TLS_MAX_VERSION,
-                    minVersion: APP_TLS_MIN_VERSION,
-                    // force TLS simple mode
-                    requestCert: false
-                },
+                https: enableHttps ?
+                    {
+                        ciphers: APP_CIPHER_SUITES,
+                        key: APP_PRIVATE_KEY,
+                        cert: APP_X509_CERT,
+                        ecdhCurve: APP_ECDH_CURVE,
+                        maxVersion: APP_TLS_MAX_VERSION,
+                        minVersion: APP_TLS_MIN_VERSION,
+                        // force TLS simple mode
+                        requestCert: false
+                    } :
+                    null,
                 // enable proxying to express
                 proxy: {
                     // with RegEx
                     [`^${ VITE_SRV_ENTRYPOINT }/.*`]: {
                         // it is assessed that vite and express run on the same host during development
-                        target: `https://${ APP_HOST }:${ APP_PORT }`,
+                        target: `${ enableHttps ? `https` : `http` }://${ APP_HOST }:${ APP_PORT }`,
                         // allow self-signed certificates
                         secure: false
                     }

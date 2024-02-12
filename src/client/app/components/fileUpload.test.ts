@@ -18,6 +18,10 @@ jest.mock(`../helpers/env.ts`, ():Record<string, unknown> => ({
     VITE_SRV_ENTRYPOINT: `/api`
 }));
 
+jest.mock(`../helpers/helpers.ts`, ():Record<string, unknown> => ({
+    requestAsync: () => Promise.resolve()
+}));
+
 // do not use jsx syntax in tests ...
 describe(`test file upload component`, ():void => {
     it(`should render and display correct values`, async():Promise<void> => {

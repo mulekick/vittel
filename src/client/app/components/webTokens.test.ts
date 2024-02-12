@@ -19,7 +19,7 @@ jest.mock(`../helpers/env.ts`, ():Record<string, unknown> => ({
 }));
 
 jest.mock(`../helpers/helpers.ts`, ():Record<string, unknown> => ({
-    getContentAsync: () => Promise.resolve()
+    requestAsync: () => Promise.resolve()
 }));
 
 // do not use jsx syntax in tests ...

@@ -10,7 +10,7 @@ import App from "./components/app.tsx";
 import "../scss/main.scss";
 
 // retrieve environment
-import {BASE_URL, MODE, VITE_SHA_256_HASH, VITE_HOST, VITE_PORT} from "./helpers/env.ts";
+import {BASE_URL, MODE, VITE_HOST, VITE_PORT} from "./helpers/env.ts";
 
 // in this case, since we use the fontawesome react primitives, the
 // fontawesome styles will compile into a dedicated <style> tag in the final build.
@@ -24,4 +24,4 @@ createRoot(document.getElementById(`root`) || document.createElement(`root`))
     );
 
 // eslint-disable-next-line node/prefer-global/console
-console.log(`application running in ${ MODE } mode at ${ VITE_HOST }:${ VITE_PORT }${ BASE_URL }\nenvironment public hash: ${ VITE_SHA_256_HASH }`);
+console.log(`application running in ${ MODE } mode at ${ VITE_HOST }:${ VITE_PORT }${ BASE_URL }.`);

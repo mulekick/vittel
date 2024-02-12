@@ -21,10 +21,12 @@ const
 config({path: resolve(dirName, `..`, `.env.files`, `.env.${ process.env.NODE_ENV }`)});
 
 const
-    // destructure config values
-    {VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_UPLOAD_DIR} = process.env,
-    // homepage url
-    homepageUrl = `https://${ APP_HOST }:${ APP_PORT }`,
+    // destructure config values - since the e2e tests run against
+    // the project build, I prefer not to use the server config for
+    // it would require importing a module from the source files ...
+    {VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_UPLOAD_DIR} = process.env,
+    // homepage url (no typescript ...)
+    homepageUrl = `${ typeof APP_ENABLE_HTTPS === `string` && APP_ENABLE_HTTPS === `true` ? `https` : `http` }://${ APP_HOST }:${ APP_PORT }`,
     // create abort controller
     controller:AbortController = new AbortController();
 
@@ -115,9 +117,6 @@ describe(`app integration tests suite`, ():void => {
     describe(`when uploading a file`, ():void => {
         // test /upload route
         it(`should upload the file to the server "${ APP_UPLOAD_DIR }" folder`, async():Promise<void> => {
-            const
-                // set upload endpoint location
-                uploadEndpoint = `${ homepageUrl }${ VITE_SRV_ENTRYPOINT }/public/upload`;
 
             // @ts-expect-error expect-puppeteer matchers not detected ...
             await expect(page).toUploadFile(`input[name="afile"]`, resolve(dirName, `..`, `README.md`));
@@ -125,11 +124,8 @@ describe(`app integration tests suite`, ():void => {
             // @ts-expect-error expect-puppeteer matchers not detected ...
             await expect(page).toClick(`input[type="submit"]`);
 
-            // wait for the file upload POST request (tricky operator precedence situation)
-            await page.waitForRequest(r => (r.url() === uploadEndpoint) && (r.method() === `POST`), {timeout: 1e3});
-
-            // wait for 302 HTTP response and redirection
-            await page.waitForResponse(r => (r.url() === uploadEndpoint) && (r.status() === 302), {timeout: 1e3});
+            // let's give the app one second to breathe ...
+            await new Promise(r => { setTimeout(():void => r(null), 1e3); });
 
             // stat uploaded file (will throw if file upload failed ...)
             await stat(resolve(dirName, `..`, `dist`, APP_UPLOAD_DIR as string, `README.md`));

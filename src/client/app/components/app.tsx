@@ -7,7 +7,7 @@ import AssetImport from "./assetImport.tsx";
 import ModuleBundling from "./moduleBundling.tsx";
 
 // import helpers
-import {getContentAsync, getPepe} from "../helpers/helpers.ts";
+import {requestAsync, getPepe} from "../helpers/helpers.ts";
 
 // retrieve environment
 import {VITE_SRV_ENTRYPOINT} from "../helpers/env.ts";
@@ -29,8 +29,8 @@ const
             // update frequency : 2.5 seconds
             interval.current = setInterval(() => {
                 // make synchronous calls and pass the state update functions
-                getContentAsync(`${ VITE_SRV_ENTRYPOINT }/public/fetch`, setContent);
-                getContentAsync(`${ VITE_SRV_ENTRYPOINT }/protected`, setProtectedContent);
+                requestAsync(`${ VITE_SRV_ENTRYPOINT }/public/fetch`, setContent);
+                requestAsync(`${ VITE_SRV_ENTRYPOINT }/protected`, setProtectedContent);
                 setPepe(getPepe());
             }, 2.5e3);
 

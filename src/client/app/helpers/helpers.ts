@@ -4,12 +4,11 @@ import React from "react";
 import pepe from "@mulekick/pepe-ascii";
 
 const
-    // use an async hook to make stateful logic code modular ...
-    getContentAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>):Promise<void> => {
+    requestAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>, body:FormData | null = null):Promise<void> => {
         try {
             const
-                // fetch a piece of content
-                readable = await fetch(route, {method: `GET`});
+                // post form data
+                readable = await fetch(route, body ? {method: `POST`, body} : {method: `GET`});
             // parse response stream into a string, update state, render
             hydrate(await readable.text());
         } catch (e) {
@@ -27,4 +26,4 @@ const
         return pepes.at(rnd(0, pepes.length - 1)) as unknown as string;
     };
 
-export {getContentAsync, getPepe};
+export {requestAsync, getPepe};

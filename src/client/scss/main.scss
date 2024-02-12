@@ -32,7 +32,7 @@ span.large {
 }
 
 span.small {
-    @include box($width: 100%, $height: 25px, $padding: 0px $padding_default);
+    @include box($width: 100%, $height: 25px, $padding: 0px 15px);
     @include span();
 }
 
@@ -52,7 +52,7 @@ button, input[type=submit] {
 form {
     // content layout management
     @include flex($direction: column, $align: left, $justify: flex-start);
-    @include box($width: 100%, $padding: 0 $padding_default);
+    @include box($width: 100%, $padding: 0px 15px);
 
     > * {
         @include span();

@@ -8,7 +8,7 @@ import {signToken, verifyToken} from "../helpers/jwt.ts";
 
 const
     // destructure config values
-    {APP_COOKIE_NAME} = config,
+    {APP_ENABLE_HTTPS, APP_COOKIE_NAME} = config,
     // equivalent to the 'login' route - will serve a token everytime
     mToken:RequestHandler = async(req, res, next) => {
         try {
@@ -26,8 +26,8 @@ const
                     // prevent client-side javascript from accessing
                     // the cookie even if not using fetch
                     httpOnly: true,
-                    // force https
-                    secure: true,
+                    // allow serving cookies in plain http if https disabled ...
+                    secure: APP_ENABLE_HTTPS,
                     // do not send cookie to third party requests
                     // (different domain and / or protocol)
                     sameSite: `strict`

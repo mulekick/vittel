@@ -16,10 +16,10 @@ export interface TextContentPropsSignature {
 // server interfaces
 export interface ConfigSignature {
     dirName: string;
-    VITE_SHA_256_HASH?: string;
     VITE_SRV_ENTRYPOINT?: string;
     APP_HOST?: string;
     APP_PORT: number;
+    APP_ENABLE_HTTPS: boolean;
     APP_BUILD_DIR?: string;
     APP_UPLOAD_DIR?: string;
     APP_MAX_UPLOAD_SIZE: number;

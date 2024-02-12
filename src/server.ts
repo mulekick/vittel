@@ -1,9 +1,10 @@
-/* eslint-disable node/no-process-env */
+/* eslint-disable node/no-process-env, no-void */
 
 // import primitives
 import process from "node:process";
 import console from "node:console";
-import {createServer} from "node:https";
+import {Server as httpServer, createServer as httpCreateServer} from "node:http";
+import {Server as httpsServer, createServer as httpsCreateServer} from "node:https";
 import {ChildProcess, fork} from "node:child_process";
 import {resolve} from "node:path";
 
@@ -19,7 +20,7 @@ import xRoutes from "./routes/routes.ts";
 
 const
     // destructure config values
-    {dirName, VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_BUILD_DIR, APP_TLS_OPTIONS} = config,
+    {dirName, VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_BUILD_DIR, APP_TLS_OPTIONS} = config,
     // create express app
     xApp:Application = express();
 
@@ -27,7 +28,8 @@ xApp
     // enable cors for all routes, resources will be served to any origin
     .use(cors({origin: `*`}))
     // setup default security related response headers (list on module homepage)
-    .use(helmet())
+    // disable requests upgrade if https is disabled ...
+    .use(helmet(APP_ENABLE_HTTPS ? void 0 : {contentSecurityPolicy: {directives: {"upgrade-insecure-requests": null}}}))
     // setup HTTP logging (use apache format + served content type)
     // request is logged at response time so it's ok to log response headers
     .use(morgan(`:remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":res[content-type]"`))
@@ -97,5 +99,9 @@ xApp
     .use(`*`, defaultFallbackRoute)
     .use(errorHandlingRoute);
 
+const
+    // create server handle
+    netServer:httpServer | httpsServer = APP_ENABLE_HTTPS ? httpsCreateServer(APP_TLS_OPTIONS, xApp) : httpCreateServer(xApp);
+
 // fire that shit up !
-createServer(APP_TLS_OPTIONS, xApp).listen(APP_PORT, APP_HOST, () => console.log(`service listening on interface ${ APP_HOST }:${ APP_PORT }`));
+netServer.listen(APP_PORT, APP_HOST, () => console.log(`service listening on ${ APP_ENABLE_HTTPS ? `https` : `http` }://${ APP_HOST }:${ APP_PORT }`));

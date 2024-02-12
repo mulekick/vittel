@@ -14,24 +14,33 @@ const
         // I opted to keep the form processing inside a middleware over using a helper ...
         try {
 
-            // rewrite handling of uploads following formidable 3xx breaking changes ...
-            await formidable({
-                keepExtensions: true,
-                allowEmptyFiles: false,
-                // max upload size
-                maxFileSize: APP_MAX_UPLOAD_SIZE * 1024,
-                // server upload directory (located in the same directory as the server file)
-                uploadDir: `${ dirName }/${ APP_UPLOAD_DIR }`,
-                // preserve original file name if possible (existing files will be overwritten ...)
-                filename: (n, e, p):string => p.originalFilename || `${ n }.${ e }`
-            })
-                // parse request
-                .parse(req);
+            const
+                // rewrite handling of uploads following formidable 3xx breaking changes ...
+                [ , files ] = await formidable({
+                    keepExtensions: true,
+                    allowEmptyFiles: false,
+                    // max upload size
+                    maxFileSize: APP_MAX_UPLOAD_SIZE * 1024,
+                    // server upload directory (located in the same directory as the server file)
+                    uploadDir: `${ dirName }/${ APP_UPLOAD_DIR }`,
+                    // preserve original file name if possible (existing files will be overwritten ...)
+                    filename: (n, e, p):string => p.originalFilename || `${ n }.${ e }`
+                })
+                    // parse request
+                    .parse(req),
+
+                // retrieve first uploaded file
+                uploadedFile = files[Object.keys(files)[0]] || [];
+
+            if (uploadedFile.length === 0)
+                // upload failed ...
+                throw new Error(`no file was uploaded.`);
 
             return res
                 // send response
                 .status(200)
-                .redirect(`/`);
+                // .redirect(`/`);
+                .send(`uploaded ${ uploadedFile[0].originalFilename }, ${ uploadedFile[0].size } bytes`);
 
         } catch (err:unknown) {
             // delegate to error handling middleware
