@@ -4,7 +4,6 @@ import {Router} from "express";
 // import middlewares
 import xPublic from "./public.ts";
 import xProtected from "./protected.ts";
-import mError from "../middlewares/error.ts";
 
 const
     // eslint-disable-next-line new-cap
@@ -15,8 +14,6 @@ xRoutes
     // route for serving public data
     .use(`/public`, xPublic)
     // route for serving protected data
-    .use(`/protected`, xProtected)
-    // route for throwing an error
-    .use(`/error`, mError);
+    .use(`/protected`, xProtected);
 
 export default xRoutes;

@@ -75,7 +75,7 @@ describe(`app integration tests suite`, ():void => {
         // test /protected route (no token)
         it(`should display an 'access to protected resources denied' message`, async() => {
             // @ts-expect-error expect-puppeteer matchers not detected ...
-            await expect(page).toMatchTextContent(`server: you are not allowed to access this resource 😬`, {timeout: 5e3});
+            await expect(page).toMatchTextContent(`you are not allowed to access this resource 😬`, {timeout: 5e3});
         });
 
         // test file input
@@ -110,7 +110,7 @@ describe(`app integration tests suite`, ():void => {
             // @ts-expect-error expect-puppeteer matchers not detected ...
             await expect(page).toClick(`button#tokenplease`, {text: `request a token`, timeout: 5e3});
             // @ts-expect-error expect-puppeteer matchers not detected ...
-            await expect(page).toMatchTextContent(`server: you now have access to protected resources 😎`, {timeout: 5e3});
+            await expect(page).toMatchTextContent(`you now have access to protected resources 😎`, {timeout: 5e3});
         });
     });
 

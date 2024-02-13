@@ -1,12 +1,10 @@
 // import modules
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFrog} from "@fortawesome/free-solid-svg-icons";
 
 // import interfaces
 import {TextContentPropsSignature} from "../../../interfaces.ts";
-
-// import fontawesome icons
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFrog} from "@fortawesome/free-solid-svg-icons";
 
 const
     // ...

@@ -35,6 +35,6 @@ describe(`test web tokens component`, ():void => {
         expect(screen.getByText(/Stateless client-side sessions with JSON Web Tokens:/u)).toBeVisible();
         expect(screen.getByRole(`button`)).toBeVisible();
         expect(screen.getByRole(`button`)).toHaveTextContent(`request a token`);
-        expect(screen.getByText(`server: some test value`)).toBeVisible();
+        expect(screen.getByText(`some test value`)).toBeVisible();
     });
 });

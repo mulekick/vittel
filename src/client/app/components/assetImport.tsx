@@ -1,7 +1,5 @@
 // import modules
 import React from "react";
-
-// import fontawesome icons
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 

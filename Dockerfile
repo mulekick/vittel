@@ -8,15 +8,15 @@ RUN npm cache clean --force && \
     mkdir -p /.env.files /dist/uploads
 
 # bundle app source
-COPY .env.files /.env.files/
-COPY package.json /dist/
+COPY .env.files/.env.production /.env.files/
+COPY package.json package-lock.json /dist/
 COPY dist/. /dist/
 
 # Set the working directory to /dist
 WORKDIR /dist
 
-# install modules
-RUN npm install --omit=dev
+# clean install modules
+RUN npm ci --omit=dev
 
 # set env as production
 ENV NODE_ENV=production

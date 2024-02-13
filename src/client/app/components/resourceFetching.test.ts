@@ -23,6 +23,6 @@ describe(`test resource fetching component`, ():void => {
 
         // assert
         expect(screen.getByText(/Server resources fetching:/u)).toBeVisible();
-        expect(screen.getByText(`server: some test value`)).toBeVisible();
+        expect(screen.getByText(`some test value`)).toBeVisible();
     });
 });

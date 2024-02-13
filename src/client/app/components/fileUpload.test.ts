@@ -32,7 +32,7 @@ describe(`test file upload component`, ():void => {
         await screen.findByTestId(`afile`);
 
         // assert
-        expect(screen.getByText(/File uploads \(max size 100 kb, configurable\):/u)).toBeVisible();
+        expect(screen.getByText(/File uploads \(100 kb max, requires token\):/u)).toBeVisible();
         expect(screen.getByTestId(`afile`)).toBeVisible();
     });
 });

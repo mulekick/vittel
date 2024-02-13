@@ -4,15 +4,32 @@ import React from "react";
 import pepe from "@mulekick/pepe-ascii";
 
 const
-    requestAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>, body:FormData | null = null):Promise<void> => {
+    getAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>):Promise<void> => {
         try {
             const
                 // post form data
-                readable = await fetch(route, body ? {method: `POST`, body} : {method: `GET`});
+                readable = await fetch(route, {method: `GET`});
             // parse response stream into a string, update state, render
             hydrate(await readable.text());
-        } catch (e) {
-            // let's throw
+        } catch (e:TypeError | unknown) {
+            // render the error
+            hydrate(e.message);
+        }
+    },
+    postAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>, body:FormData):Promise<void> => {
+        try {
+            const
+                // post form data
+                readable = await fetch(route, {method: `POST`, body});
+            // upload failed (HTTP 500)
+            if (!readable.ok)
+                throw new Error();
+            // parse response stream into a string, update state, render
+            hydrate(await readable.text());
+        } catch (e:TypeError | unknown) {
+            // fetch can fail with ERR_CONNECTION_ABORTED or the server can
+            // reply with HTTP 500, so let's render a consistent error
+            hydrate(`upload failed (no token ? file too large ?)`);
         }
     },
     // random number between 2 values
@@ -26,4 +43,4 @@ const
         return pepes.at(rnd(0, pepes.length - 1)) as unknown as string;
     };
 
-export {requestAsync, getPepe};
+export {getAsync, postAsync, getPepe};

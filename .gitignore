@@ -1,7 +1,5 @@
 # exclude node modules
 node_modules
-# exclude package-lock.json
-package-lock.json
 # exclude build
 dist/*
 # gitignore pattern constraint ...

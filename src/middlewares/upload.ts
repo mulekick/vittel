@@ -21,6 +21,7 @@ const
                     allowEmptyFiles: false,
                     // max upload size
                     maxFileSize: APP_MAX_UPLOAD_SIZE * 1024,
+                    maxTotalFileSize: APP_MAX_UPLOAD_SIZE * 1024,
                     // server upload directory (located in the same directory as the server file)
                     uploadDir: `${ dirName }/${ APP_UPLOAD_DIR }`,
                     // preserve original file name if possible (existing files will be overwritten ...)
@@ -39,7 +40,6 @@ const
             return res
                 // send response
                 .status(200)
-                // .redirect(`/`);
                 .send(`uploaded ${ uploadedFile[0].originalFilename }, ${ uploadedFile[0].size } bytes`);
 
         } catch (err:unknown) {

@@ -157,13 +157,14 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | -------------------------|-------------------------------------------------------------------------------------------------------------------------- |
 | `npm run dev`            | Start the project in development mode<br>HMR and browser auto-reload are enabled<br>Vite proxies requests to express      |
 | `npm run list`           | List all files for the current typescript codebase                                                                        |
-| `npm run typecheck`      | Typecheck the entire project against the current configuration                                                            |
+| `npm run typecheck`      | Typecheck the entire project against the current typescript configuration                                                 |
+| `npm run lint`           | Validate the entire project against the current eslint configuration                                                      |
 | `npm run test:unit`      | Run unit tests and components tests                                                                                       |
 | `npm run test:cover`     | Run unit tests and components tests and print coverage report                                                             |
 | `npm run build`          | Build the react app and the express server                                                                                |
 | `npm run test:e2e`       | Start a puppeteer automated browser and run the end to end test suite                                                     |
 | `npm run prod`           | Start the project in production mode<br>Express serves the app bundle                                                     |
-| `npm run docker:build`   | Create a docker image and packs the build files in it                                                                     |
+| `npm run docker:build`   | Create a docker image and packs the build files and the production environment in it                                      |
 | `npm run docker:up`      | Start an interactive container from the image<br>Container's port ```APP_PORT``` is mapped to the corresponding host port |
 | `npm run docker:down`    | Stop the container                                                                                                        |
 
@@ -171,7 +172,7 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 
   - ⚠️ HTTPS is disabled by default, it can be enabled by setting the ```APP_ENABLE_HTTPS``` variable to ```"true"```.
 
-  - ⚠️ JWTs won't work in Firefox when starting the project with HTTPS disabled.
+  - ⚠️ JWTs **_won't work in Firefox_** when starting the project with HTTPS disabled.
 
   - ⚠️ When starting in development mode, the vite dev server listens at ```${ VITE_HOST }:${ VITE_PORT }```.
 
