@@ -42,7 +42,7 @@ const
         // return component
         return <main>
             {/* title */}
-            <span className="large">Veetle Features</span>
+            <span className="large">Vittel Features</span>
             <ResourceFetching content={content}/>
             <WebTokens protectedContent={protectedContent} />
             <FileUpload />

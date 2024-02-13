@@ -24,7 +24,7 @@ const
     // destructure config values - since the e2e tests run against
     // the project build, I prefer not to use the server config for
     // it would require importing a module from the source files ...
-    {VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_UPLOAD_DIR} = process.env,
+    {APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_UPLOAD_DIR} = process.env,
     // homepage url (no typescript ...)
     homepageUrl = `${ typeof APP_ENABLE_HTTPS === `string` && APP_ENABLE_HTTPS === `true` ? `https` : `http` }://${ APP_HOST }:${ APP_PORT }`,
     // create abort controller

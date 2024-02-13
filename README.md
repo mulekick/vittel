@@ -1,4 +1,4 @@
-# <center>Veetle</center>
+# <center>Vittel</center>
 
 Full-stack [unopinionated](https://stackoverflow.com/questions/802050/what-is-opinionated-software) express powered javascript framework that :
 
@@ -45,12 +45,19 @@ I designed this project to acquire a basic understanding of how different things
 
 | <center>Required software</center> | <center>Recommended version</center> |
 | -----------------------------------|--------------------------------------|
-| Linux / WLS2                       | Debian 12 bookworm                   |
+| Linux                              | Debian 12 bookworm                   |
 | GNU Bash shell                     | ```5.2.15```                         |
 | Openssl                            | ```3.0.11```                         |
 | Node.js                            | ```20.0.9```                         |
 | NPM                                | ```10.2.3```                         |
 | Docker                             | ```25.0.2```                         |
+| Puppeteer compatible browser       | google chrome / puppeteer defaults   |
+
+#### 👀 Important notes :
+
+- ⚠️ Running puppeteer on linux requires [dependencies](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#chrome-doesnt-launch-on-linux) usually shipped with any desktop environment.
+
+- ⚠️ Installing a desktop environment is therefore recommended (I use [xfce](https://gcore.com/learning/how-to-install-xfce-on-debian/)). 
 
 ## Project scaffolding
 
@@ -58,11 +65,11 @@ I designed this project to acquire a basic understanding of how different things
 
 ```bash
 # clone the repository using degit
-npx degit https://github.com/mulekick/veetle.git myproject
+npx degit https://github.com/mulekick/vittel.git myproject
 # cd into your project's folder
 cd myproject
-# install dependencies
-npm install
+# clean install dependencies (important)
+npm ci
 ```
 
 2. Optional : create a new key pair for the server _**(do not change the command arguments)**_ : 

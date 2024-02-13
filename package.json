@@ -1,5 +1,5 @@
 {
-    "name": "veetle",
+    "name": "vittel",
     "version": "1.0.0",
     "private": true,
     "description": "Full stack javascript framework built with Vite.js and Express. Supports Typescript and React.",
@@ -85,5 +85,5 @@
     "license": "MIT",
     "repository": {},
     "bugs": {},
-    "homepage": "https://github.com/mulekick/veetle"
+    "homepage": "https://github.com/mulekick/vittel"
 }

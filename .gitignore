@@ -7,7 +7,7 @@ dist/*
 # exclude uploaded files
 **/uploads/*
 # include directories
-!**/uploads/.placeholder
+!**/.gitkeep
 # exclude jest coverage files
 coverage
 # exclude certificate and private key

@@ -29,7 +29,7 @@ const
         } catch (e:TypeError | unknown) {
             // fetch can fail with ERR_CONNECTION_ABORTED or the server can
             // reply with HTTP 500, so let's render a consistent error
-            hydrate(`upload failed (no token ? file too large ?)`);
+            hydrate(`upload failed 😬`);
         }
     },
     // random number between 2 values
