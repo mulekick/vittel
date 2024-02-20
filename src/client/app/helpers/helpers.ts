@@ -13,7 +13,7 @@ const
             hydrate(await readable.text());
         } catch (e:TypeError | unknown) {
             // render the error
-            hydrate(e.message);
+            hydrate(e instanceof TypeError ? e.message : `unexpected error occured`);
         }
     },
     postAsync = async(route:string, hydrate:React.Dispatch<React.SetStateAction<string>>, body:FormData):Promise<void> => {

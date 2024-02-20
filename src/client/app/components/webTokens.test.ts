@@ -5,7 +5,7 @@
 // import modules
 import React from "react";
 import {jest, describe, expect, it} from "@jest/globals";
-import {render, screen} from "@testing-library/react";
+import {render, screen as testScreen} from "@testing-library/react";
 import WebTokens from "./webTokens.tsx";
 
 // import jest-dom matchers
@@ -29,12 +29,12 @@ describe(`test web tokens component`, ():void => {
         render(React.createElement(WebTokens, {protectedContent: `some test value`}, null));
 
         // act
-        await screen.findByRole(`button`);
+        await testScreen.findByRole(`button`);
 
         // assert
-        expect(screen.getByText(/Stateless client-side sessions with JSON Web Tokens:/u)).toBeVisible();
-        expect(screen.getByRole(`button`)).toBeVisible();
-        expect(screen.getByRole(`button`)).toHaveTextContent(`request a token`);
-        expect(screen.getByText(`some test value`)).toBeVisible();
+        expect(testScreen.getByText(/Stateless client-side sessions with JSON Web Tokens:/u)).toBeVisible();
+        expect(testScreen.getByRole(`button`)).toBeVisible();
+        expect(testScreen.getByRole(`button`)).toHaveTextContent(`request a token`);
+        expect(testScreen.getByText(`some test value`)).toBeVisible();
     });
 });

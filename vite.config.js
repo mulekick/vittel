@@ -22,10 +22,12 @@ export default defineConfig(({command, mode}) => {
         // retrieve current config folder
         dirName = fileURLToPath(new URL(`.`, import.meta.url)),
         // retrieve environment files folder
-        envDir = resolve(dirName, `.env.files`);
+        envDir = resolve(dirName, `.env.files`),
+        // vite project root folder
+        rootDir = resolve(dirName, `src`, `client`);
 
     // use dotenv to load express related config into process.env
-    config({path: resolve(envDir, `.env.${ process.env.NODE_ENV }`)});
+    config({path: `${ envDir }/.env.${ process.env.NODE_ENV }`});
 
     const
         // destructure from process.env
@@ -36,14 +38,19 @@ export default defineConfig(({command, mode}) => {
         enableHttps = typeof APP_ENABLE_HTTPS === `string` && APP_ENABLE_HTTPS === `true`,
         // init config
         cfg = {
+            resolve: {
+                alias: {
+                    '~/': `${ rootDir }/`
+                }
+            },
             // environment files directory
             envDir,
             // project filesystem root
-            root: `src/client`,
+            root: rootDir,
             // base server path
             base: `/`,
             // static file serving for development (becomes / at build time)
-            publicDir: resolve(dirName, `src`, `client`, `public`),
+            publicDir: `${ rootDir }/public`,
             // prefix for environment variables
             envPrefix: `VITE_`,
             // interface to listen to (serve)
@@ -84,7 +91,7 @@ export default defineConfig(({command, mode}) => {
             build: {
                 // target modern browsers (overriden by legacy plugin)
                 // target: `modules`,
-                // build directory
+                // build directory (must be relative to project root ...)
                 outDir: `../../dist/client`,
                 // assets output directory for the build
                 assetsDir: `assets`,
@@ -93,7 +100,7 @@ export default defineConfig(({command, mode}) => {
                 // rollup bundle entry point (1 entry point per site page monkaS)
                 rollupOptions: {
                     input: {
-                        main: resolve(dirName, `src`, `client`, `index.html`)
+                        main: `${ rootDir }/index.html`
                     }
                 }
             },

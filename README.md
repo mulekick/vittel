@@ -111,8 +111,9 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 │   └── *.test.ts              # end to end tests files
 ├── node_modules                     
 │   └── *.*                    # ...
-├── src       
-│   ├── client                 
+├── src  
+│   │
+│   ├── client                 # ====== react app source files ======= 
 │   │   ├── app
 │   │   │   ├── *.tsx          # react components
 │   │   │   ├── *.ts           # non react code (helpers etc) 
@@ -124,19 +125,23 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 │   │   ├── scss               
 │   │   │   └── *.scss         # scss files for the react app
 │   │   └── index.html         # main html page (rollup entrypoint) 
-│   ├── helpers                    
-│   │   └── *.ts               # business agnostic code
-│   ├── middlewares            
-│   │   ├── *.ts               # express middlewares (implement business logic)
-│   │   └── *.test.ts          # unit tests for the business logic
-│   ├── routes                 
-│   │   ├── routes.ts          # main express router (mounted on VITE_SRV_ENTRYPOINT)
-│   │   └── *.ts               # express routers to import in routes.ts
-│   ├── uploads                 
-│   │   └── *.*                # uploads folder
-│   ├── config.ts              # express server config file
-│   ├── interfaces.ts          # typescript interfaces / types for the project
-│   └── server.ts              # main express server file    
+│   │
+│   ├── server                 # ==== express server source files ====
+│   │    ├── helpers                    
+│   │    │   └── *.ts           # business agnostic code
+│   │    ├── middlewares        
+│   │    │   ├── *.ts           # express middlewares (implement business logic)
+│   │    │   └── *.test.ts      # unit tests for the business logic
+│   │    ├── routes             
+│   │    │   ├── routes.ts      # main express router (mounted on VITE_SRV_ENTRYPOINT)
+│   │    │   └── *.ts           # express routers to import in routes.ts
+│   │    ├── uploads             
+│   │    │   └── *.*            # uploads folder
+│   │    ├── config.ts          # express server config file
+│   │    └── server.ts          # main express server file
+│   │
+│   └── interfaces.ts          # === typescript types / interfaces ===
+│    
 ├── .browserslistrc            # browserslist queries for babel, autoprefixer and vite
 ├── .eslintrc.json             # eslint config for typescript and react / jsx support
 ├── .postcssrc.json            # postcss plugins used for development and build

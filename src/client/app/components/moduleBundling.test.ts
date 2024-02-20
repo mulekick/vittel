@@ -5,7 +5,7 @@
 // import modules
 import React from "react";
 import {describe, expect, it} from "@jest/globals";
-import {render, screen} from "@testing-library/react";
+import {render, screen as testScreen} from "@testing-library/react";
 import ModuleBundling from "./moduleBundling.tsx";
 
 // import jest-dom matchers
@@ -20,11 +20,11 @@ describe(`test module bundling component`, ():void => {
         render(React.createElement(ModuleBundling, {pepe: `some test value`}, null));
 
         // act
-        await screen.findByTestId(`pepe`);
+        await testScreen.findByTestId(`pepe`);
 
         // assert
-        expect(screen.getByText(/Include npm modules in client bundle:/u)).toBeVisible();
-        expect(screen.getByRole(`link`)).toBeVisible();
-        expect(screen.getByDisplayValue(`some test value`)).toBeVisible();
+        expect(testScreen.getByText(/Include npm modules in client bundle:/u)).toBeVisible();
+        expect(testScreen.getByRole(`link`)).toBeVisible();
+        expect(testScreen.getByDisplayValue(`some test value`)).toBeVisible();
     });
 });

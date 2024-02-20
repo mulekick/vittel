@@ -19,7 +19,7 @@
             // run using tsx
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
             // not using nodemon in debug mode
-            "program": "${workspaceFolder}/src/server.ts"
+            "program": "${workspaceFolder}/src/server/server.ts"
         },
         {
             "type": "node",

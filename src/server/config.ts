@@ -10,14 +10,14 @@ import {config} from "dotenv";
 
 // import interfaces
 import {SecureVersion} from "node:tls";
-import {ConfigSignature} from "./interfaces.ts";
+import {ConfigSignature} from "../interfaces.ts";
 
 const
     // retrieve current folder
     dirName = fileURLToPath(new URL(`.`, import.meta.url));
 
 // use dotenv to load config file into process.env
-config({path: resolve(dirName, `../.env.files`, `.env.${ process.env.NODE_ENV }`)});
+config({path: resolve(dirName, `${ process.env.NODE_ENV === `production` ? `..` : `../..` }/.env.files`, `.env.${ process.env.NODE_ENV }`)});
 
 const
     // destructure from process.env

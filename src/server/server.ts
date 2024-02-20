@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === `production`) {
         // create abort controller
         controller:AbortController = new AbortController(),
         // start vite server
-        viteApp:ChildProcess = fork(resolve(dirName, `../node_modules/vite/bin/vite.js`), [ `serve` ], {
+        viteApp:ChildProcess = fork(resolve(dirName, `../../node_modules/vite/bin/vite.js`), [ `serve` ], {
             // submit to abort controller signal for termination
             signal: controller.signal,
             // not-so-obvious default option

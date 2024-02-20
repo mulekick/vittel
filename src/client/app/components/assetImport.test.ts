@@ -5,7 +5,7 @@
 // import modules
 import React from "react";
 import {jest, describe, expect, it} from "@jest/globals";
-import {render, screen} from "@testing-library/react";
+import {render, screen as testScreen} from "@testing-library/react";
 import AssetImport from "./assetImport.tsx";
 
 // import jest-dom matchers
@@ -23,10 +23,10 @@ describe(`test assets import component`, ():void => {
         render(React.createElement(AssetImport, {}, null));
 
         // act
-        await screen.findByAltText(`Vite logo`);
+        await testScreen.findByAltText(`Vite logo`);
 
         // assert
-        expect(screen.getByText(/Static assets imports as urls:/u)).toBeVisible();
-        expect(screen.getByAltText(`Vite logo`)).toBeVisible();
+        expect(testScreen.getByText(/Static assets imports as urls:/u)).toBeVisible();
+        expect(testScreen.getByAltText(`Vite logo`)).toBeVisible();
     });
 });

@@ -5,7 +5,7 @@
 // import modules
 import React from "react";
 import {describe, expect, it} from "@jest/globals";
-import {render, screen} from "@testing-library/react";
+import {render, screen as testScreen} from "@testing-library/react";
 import ResourceFetching from "./resourceFetching.tsx";
 
 // import jest-dom matchers
@@ -22,7 +22,7 @@ describe(`test resource fetching component`, ():void => {
         // act
 
         // assert
-        expect(screen.getByText(/Server resources fetching:/u)).toBeVisible();
-        expect(screen.getByText(`some test value`)).toBeVisible();
+        expect(testScreen.getByText(/Server resources fetching:/u)).toBeVisible();
+        expect(testScreen.getByText(`some test value`)).toBeVisible();
     });
 });

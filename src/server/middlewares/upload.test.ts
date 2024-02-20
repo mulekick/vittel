@@ -7,7 +7,7 @@
 // import modules
 import {Request, Response, NextFunction} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
-import type {RequestMock, ResponseMock, NextFunctionMock} from "../interfaces.ts";
+import type {RequestMock, ResponseMock, NextFunctionMock} from "../../interfaces.ts";
 
 // import middlewares
 import mUpload from "./upload.ts";

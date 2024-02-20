@@ -5,7 +5,7 @@
 // import modules
 import React from "react";
 import {jest, describe, expect, it} from "@jest/globals";
-import {render, screen} from "@testing-library/react";
+import {render, screen as testScreen} from "@testing-library/react";
 import FileUpload from "./fileUpload.tsx";
 
 // import jest-dom matchers
@@ -29,10 +29,10 @@ describe(`test file upload component`, ():void => {
         render(React.createElement(FileUpload, {}, null));
 
         // act
-        await screen.findByTestId(`afile`);
+        await testScreen.findByTestId(`afile`);
 
         // assert
-        expect(screen.getByText(/File uploads \(100 kb max, requires token\):/u)).toBeVisible();
-        expect(screen.getByTestId(`afile`)).toBeVisible();
+        expect(testScreen.getByText(/File uploads \(100 kb max, requires token\):/u)).toBeVisible();
+        expect(testScreen.getByTestId(`afile`)).toBeVisible();
     });
 });
