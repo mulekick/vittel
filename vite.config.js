@@ -38,11 +38,6 @@ export default defineConfig(({command, mode}) => {
         enableHttps = typeof APP_ENABLE_HTTPS === `string` && APP_ENABLE_HTTPS === `true`,
         // init config
         cfg = {
-            resolve: {
-                alias: {
-                    '~/': `${ rootDir }/`
-                }
-            },
             // environment files directory
             envDir,
             // project filesystem root

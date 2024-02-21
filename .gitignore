@@ -2,11 +2,15 @@
 node_modules
 # exclude build
 dist/*
-# gitignore pattern constraint ...
+# push dist uploads folder
 !dist/uploads
 # exclude uploaded files
 **/uploads/*
-# include directories
+# push dist build folder
+!dist/client
+# exclude dist build files
+**/dist/client/*
+# push directories
 !**/.gitkeep
 # exclude jest coverage files
 coverage
