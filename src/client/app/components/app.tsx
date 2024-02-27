@@ -43,10 +43,15 @@ const
         return <main>
             {/* title */}
             <span className="large">Vittel Features</span>
+            {/* data fetching */}
             <ResourceFetching content={content}/>
+            {/* client-side sessions */}
             <WebTokens protectedContent={protectedContent} />
+            {/* file uploads */}
             <FileUpload />
+            {/* static assets import */}
             <AssetImport />
+            {/* client side module bindling */}
             <ModuleBundling pepe={pepe} />
         </main>;
     };

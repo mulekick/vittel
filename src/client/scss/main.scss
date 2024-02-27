@@ -14,9 +14,16 @@ main {
     // @include box($width: 100%);
     // additional properties
     flex-wrap: wrap;
-    margin: 50px calc((100% - 500px) / 2);
-    // stop viewport shrinking
-    width: 500px;
+    margin: 50px calc((100% - $main_width) / 2);
+    width:$main_width;
+}
+
+// stop viewport shrinking
+@media (max-width: 1400px) {
+    main {
+        margin: 50px calc((100% - 400px) / 2);
+        width:400px;
+    }
 }
 
 article {

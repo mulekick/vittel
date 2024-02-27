@@ -2,7 +2,7 @@
 # automatically detected by :
 #  - @vitejs/plugin-legacy for the build targets
 #  - postcss for the css transformations
-#  - note : @babel/preset-env will ignore this file since jest test units only target server files
+#  - @babel/preset-env for transpilation of the react code before running components tests
 
 ChromeAndroid >= 107
 Chrome >= 31

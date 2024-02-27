@@ -8,7 +8,7 @@ import {faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 // in the build (eg. set the img src attribute programatically) ...
 
 // @ts-expect-error vite static asset import ...
-import viteLogo from "../../img/vite.svg";
+import viteLogo from "../../static/vite.svg";
 
 const
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars

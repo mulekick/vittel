@@ -118,27 +118,27 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 │   │   │   ├── *.tsx          # react components
 │   │   │   ├── *.ts           # non react code (helpers etc) 
 │   │   │   └── *.test.ts      # unit / react components tests
-│   │   ├── img
-│   │   │   └── *.*            # assets to include in the build (use named imports)
 │   │   ├── public             
 │   │   │   └── *.*            # statically served files (served from / in production mode)
 │   │   ├── scss               
 │   │   │   └── *.scss         # scss files for the react app
+│   │   ├── static
+│   │   │   └── *.*            # assets to include in the build (use named imports)
 │   │   └── index.html         # main html page (rollup entrypoint) 
 │   │
 │   ├── server                 # ==== express server source files ====
 │   │    ├── helpers                    
-│   │    │   └── *.ts           # business agnostic code
-│   │    ├── middlewares        
-│   │    │   ├── *.ts           # express middlewares (implement business logic)
-│   │    │   └── *.test.ts      # unit tests for the business logic
-│   │    ├── routes             
-│   │    │   ├── routes.ts      # main express router (mounted on VITE_SRV_ENTRYPOINT)
-│   │    │   └── *.ts           # express routers to import in routes.ts
-│   │    ├── uploads             
-│   │    │   └── *.*            # uploads folder
-│   │    ├── config.ts          # express server config file
-│   │    └── server.ts          # main express server file
+│   │    │   └── *.ts          # business agnostic code
+│   │    ├── middlewares       
+│   │    │   ├── *.ts          # express middlewares (implement business logic)
+│   │    │   └── *.test.ts     # unit tests for the business logic
+│   │    ├── routes            
+│   │    │   ├── routes.ts     # main express router (mounted on VITE_SRV_ENTRYPOINT)
+│   │    │   └── *.ts          # express routers to import in routes.ts
+│   │    ├── uploads            
+│   │    │   └── *.*           # uploads folder
+│   │    ├── config.ts         # express server config file
+│   │    └── server.ts         # main express server file
 │   │
 │   └── interfaces.ts          # === typescript types / interfaces ===
 │    
