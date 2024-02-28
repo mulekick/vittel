@@ -1,5 +1,11 @@
 # <center>Vittel</center>
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/mulekick/vittel)
+![GitHub License](https://img.shields.io/github/license/mulekick/vittel)
+![Last Commit](https://img.shields.io/github/last-commit/mulekick/vittel)
+![Docker Image Size](https://img.shields.io/docker/image-size/mulekick/vittel)
+![Docker Pulls](https://img.shields.io/docker/pulls/mulekick/vittel)
+
 Full-stack [unopinionated](https://stackoverflow.com/questions/802050/what-is-opinionated-software) express powered javascript framework that :
 
 | <center>**Uses**</center>                                                                                                    | <center>**For**</center>                                                                                                            |
@@ -127,18 +133,18 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 │   │   └── index.html         # main html page (rollup entrypoint) 
 │   │
 │   ├── server                 # ==== express server source files ====
-│   │    ├── helpers                    
-│   │    │   └── *.ts          # business agnostic code
-│   │    ├── middlewares       
-│   │    │   ├── *.ts          # express middlewares (implement business logic)
-│   │    │   └── *.test.ts     # unit tests for the business logic
-│   │    ├── routes            
-│   │    │   ├── routes.ts     # main express router (mounted on VITE_SRV_ENTRYPOINT)
-│   │    │   └── *.ts          # express routers to import in routes.ts
-│   │    ├── uploads            
-│   │    │   └── *.*           # uploads folder
-│   │    ├── config.ts         # express server config file
-│   │    └── server.ts         # main express server file
+│   │   ├── helpers                    
+│   │   │   └── *.ts           # business agnostic code
+│   │   ├── middlewares        
+│   │   │   ├── *.ts           # express middlewares (implement business logic)
+│   │   │   └── *.test.ts      # unit tests for the business logic
+│   │   ├── routes             
+│   │   │   ├── routes.ts      # main express router (mounted on VITE_SRV_ENTRYPOINT)
+│   │   │   └── *.ts           # express routers to import in routes.ts
+│   │   ├── uploads             
+│   │   │   └── *.*            # uploads folder
+│   │   ├── config.ts          # express server config file
+│   │   └── server.ts          # main express server file
 │   │
 │   └── interfaces.ts          # === typescript types / interfaces ===
 │    
