@@ -14,8 +14,8 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 
 // do not use jsx syntax in tests ...
-describe(`test resource fetching component`, ():void => {
-    it(`should render and display correct values`, ():void => {
+describe(`test resource fetching component`, (): void => {
+    it(`should render and display correct values`, (): void => {
         // arrange
         render(React.createElement(ResourceFetching, {content: `some test value`}, null));
 

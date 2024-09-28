@@ -6,7 +6,7 @@ import {mFetch, mFallback} from "../middlewares/fetch.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xPublic:Router = Router();
+    xPublic: Router = Router();
 
 xPublic
     // route for fecthing public data

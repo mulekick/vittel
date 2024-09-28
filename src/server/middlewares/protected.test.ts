@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
-/* eslint-disable init-declarations, no-shadow */
+/* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/init-declarations */
 
 // import modules
-import {Request, Response, NextFunction} from "express";
+import {Request, Response} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../../interfaces.ts";
 
@@ -32,46 +32,46 @@ describe(`test protected resources fetching`, () => {
         mockNext = jest.fn();
     });
 
-    describe(`token request middleware`, ():void => {
-        it(`should return a HTTP 201`, async():Promise<void> => {
+    describe(`token request middleware`, (): void => {
+        it(`should return a HTTP 201`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(201);
         });
-        it(`should add set-cookie header to response`, async():Promise<void> => {
+        it(`should add set-cookie header to response`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.cookie).toHaveBeenCalled();
         });
-        it(`should end response`, async():Promise<void> => {
+        it(`should end response`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mToken(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mToken(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.end).toHaveBeenCalled();
         });
     });
 
-    describe(`protection middleware (no token)`, ():void => {
-        it(`should pass error to next()`, async():Promise<void> => {
+    describe(`protection middleware (no token)`, (): void => {
+        it(`should pass error to next()`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mProtection(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mProtection(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockNext).toHaveBeenCalled();
         });
     });
 
-    describe(`fallback middleware`, ():void => {
-        it(`should return a HTTP 200`, ():void => {
+    describe(`fallback middleware`, (): void => {
+        it(`should return a HTTP 200`, (): void => {
             // call middleware with type assertions
-            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFallback(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        it(`should return a default message`, ():void => {
+        it(`should return a default message`, (): void => {
             // call middleware with type assertions
-            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFallback(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.send).toHaveBeenCalledWith(`you now have access to protected resources 😎`);
         });

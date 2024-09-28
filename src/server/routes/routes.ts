@@ -7,7 +7,7 @@ import xProtected from "./protected.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xRoutes:Router = Router();
+    xRoutes: Router = Router();
 
 // mount specific routers and middlewares to a single entrypoint for the server to use
 xRoutes

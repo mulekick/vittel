@@ -14,11 +14,11 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 
 // create mocks for assets ...
-jest.mock(`../../static/vite.svg`, ():string => ``);
+jest.mock(`../../static/vite.svg`, (): string => ``);
 
 // do not use jsx syntax in tests ...
-describe(`test assets import component`, ():void => {
-    it(`should render and display correct values`, async():Promise<void> => {
+describe(`test assets import component`, (): void => {
+    it(`should render and display correct values`, async(): Promise<void> => {
         // arrange
         render(React.createElement(AssetImport, {}, null));
 

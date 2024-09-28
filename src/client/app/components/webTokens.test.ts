@@ -14,17 +14,17 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 
 // create mocks for helpers ...
-jest.mock(`../helpers/env.ts`, ():Record<string, unknown> => ({
+jest.mock(`../helpers/env.ts`, (): Record<string, unknown> => ({
     VITE_SRV_ENTRYPOINT: `/api`
 }));
 
-jest.mock(`../helpers/helpers.ts`, ():Record<string, unknown> => ({
+jest.mock(`../helpers/helpers.ts`, (): Record<string, unknown> => ({
     getAsync: () => Promise.resolve()
 }));
 
 // do not use jsx syntax in tests ...
-describe(`test web tokens component`, ():void => {
-    it(`should render and display correct values`, async():Promise<void> => {
+describe(`test web tokens component`, (): void => {
+    it(`should render and display correct values`, async(): Promise<void> => {
         // arrange
         render(React.createElement(WebTokens, {protectedContent: `some test value`}, null));
 

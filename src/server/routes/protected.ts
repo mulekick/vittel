@@ -7,7 +7,7 @@ import mUpload from "../middlewares/upload.ts";
 
 const
     // eslint-disable-next-line new-cap
-    xProtected:Router = Router();
+    xProtected: Router = Router();
 
 xProtected
     // route for serving token

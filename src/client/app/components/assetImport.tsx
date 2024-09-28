@@ -11,15 +11,19 @@ import {faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import viteLogo from "../../static/vite.svg";
 
 const
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-    AssetImport = (props:Record<string, never>):React.JSX.Element => <article>
-        {/* assets import */}
-        <span className="small highlight">
-            <FontAwesomeIcon icon={faSquareCheck} /> Static assets imports as urls:
-        </span>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-    </article>;
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars, @stylistic/no-extra-parens
+    AssetImport = (props: Record<string, never>): React.JSX.Element => (
+        <article>
+            { /* assets import */ }
+            <span className="small highlight">
+                <FontAwesomeIcon icon={ faSquareCheck } />
+                { ` ` }
+                Static assets imports as urls:
+            </span>
+            <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
+                <img src={ String(viteLogo) } className="logo" alt="Vite logo" />
+            </a>
+        </article>
+    );
 
 export default AssetImport;

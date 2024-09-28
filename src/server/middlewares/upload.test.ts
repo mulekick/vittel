@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
-/* eslint-disable init-declarations, no-shadow */
+/* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/init-declarations */
 
 // import modules
-import {Request, Response, NextFunction} from "express";
+import {Request, Response} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../../interfaces.ts";
 
@@ -35,10 +35,10 @@ describe(`test file upload `, () => {
     // it is very difficult to mock a POST request containing multipart data
     // thus we can only test the error throwing on an invalid request ...
 
-    describe(`upload middleware`, ():void => {
-        it(`should pass error to next()`, async():Promise<void> => {
+    describe(`upload middleware`, (): void => {
+        it(`should pass error to next()`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mUpload(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            await mUpload(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockNext).toHaveBeenCalled();
         });

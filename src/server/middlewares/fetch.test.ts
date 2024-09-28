@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
-/* eslint-disable init-declarations, no-shadow */
+/* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/init-declarations */
 
 // import modules
-import {Request, Response, NextFunction} from "express";
+import {Request, Response} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../../interfaces.ts";
 
@@ -31,30 +31,30 @@ describe(`test unprotected resources fetching`, () => {
     });
 
     describe(`main middleware`, () => {
-        it(`should return a HTTP 200`, ():void => {
+        it(`should return a HTTP 200`, (): void => {
             // call middleware with type assertions
-            mFetch(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFetch(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        it(`should return a SHA-256 hash`, ():void => {
+        it(`should return a SHA-256 hash`, (): void => {
             // call middleware with type assertions
-            mFetch(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFetch(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.send).toHaveBeenCalled();
         });
     });
 
     describe(`fallback middleware`, () => {
-        it(`should return a HTTP 200`, ():void => {
+        it(`should return a HTTP 200`, (): void => {
             // call middleware with type assertions
-            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFallback(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        it(`should return a default message`, ():void => {
+        it(`should return a default message`, (): void => {
             // call middleware with type assertions
-            mFallback(mockRequest as Request, mockResponse as Response, mockNext as NextFunction);
+            void mFallback(mockRequest as Request, mockResponse as Response, mockNext);
             // actual test
             expect(mockResponse.send).toHaveBeenCalledWith(`resources sitting here will be served to anybody 😁`);
         });

@@ -14,8 +14,8 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 
 // do not use jsx syntax in tests ...
-describe(`test module bundling component`, ():void => {
-    it(`should render and display correct values`, async():Promise<void> => {
+describe(`test module bundling component`, (): void => {
+    it(`should render and display correct values`, async(): Promise<void> => {
         // arrange
         render(React.createElement(ModuleBundling, {pepe: `some test value`}, null));
 

@@ -1,4 +1,4 @@
-/* eslint-disable function-paren-newline */
+/* eslint-disable @stylistic/function-paren-newline */
 
 // import modules
 import React from "react";
