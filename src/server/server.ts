@@ -81,6 +81,8 @@ const
         res
             .status(404)
             .send(`requested resource is nowhere to be found 😭`);
+        // eslint compliance
+        return undefined;
     },
     // error handling route
     errorHandlingRoute: ErrorRequestHandler = (err, req, res, next) => {
@@ -92,6 +94,8 @@ const
         }
         // hand error to built-in error handler, print stack in server logs
         next(err);
+        // eslint compliance
+        return undefined;
     };
 
 xApp
