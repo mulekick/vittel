@@ -16,12 +16,12 @@ const
         return (
             <article>
                 { /* fetching */ }
-                <span className="small highlight">
+                <span className={ `small highlight` }>
                     <FontAwesomeIcon icon={ faSquareCheck } />
                     { ` ` }
-                    Server resources fetching:
+                    { `Server resources fetching:` }
                 </span>
-                <span className="small">{ content }</span>
+                <span className={ `small` }>{ content }</span>
             </article>
         );
     };

@@ -3,7 +3,7 @@
 export default {
     launch: {
         // use new headless mode
-        headless: `new`,
+        headless: true,
         // allow self-signed certificates
         args: [ `--ignore-certificate-errors` ]
     }

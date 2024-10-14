@@ -4,9 +4,8 @@ import {Router} from "express";
 // import middlewares
 import {mFetch, mFallback} from "../middlewares/fetch.ts";
 
-const
-    // eslint-disable-next-line new-cap
-    xPublic: Router = Router();
+// eslint-disable-next-line new-cap
+const xPublic: Router = Router();
 
 xPublic
     // route for fecthing public data

@@ -8,7 +8,7 @@ import {postAsync} from "../helpers/helpers.ts";
 import {VITE_SRV_ENTRYPOINT} from "../helpers/env.ts";
 
 const
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     FileUpload = (props: Record<string, never>): React.JSX.Element => {
         const
             // message
@@ -29,17 +29,17 @@ const
         return (
             <article>
                 { /* file upload */ }
-                <span className="small highlight">
+                <span className={ `small highlight` }>
                     <FontAwesomeIcon icon={ faSquareCheck } />
                     { ` ` }
-                    File uploads (100 kb max, requires token):
+                    { `File uploads (100 kb max, requires token):` }
                 </span>
                 { /* set form action for uploads */ }
-                <form className="small" encType="multipart/form-data" ref={ formRef } onSubmit={ onSubmit }>
-                    <p><input type="file" name="afile" data-testid="afile" /></p>
-                    <input type="submit" value="upload file" />
+                <form className={ `small` } encType={ `multipart/form-data` } ref={ formRef } onSubmit={ onSubmit }>
+                    <p><input type={ `file` } name={ `afile` } data-testid={ `afile` } /></p>
+                    <input type={ `submit` } value={ `upload file` } />
                 </form>
-                { lastUploaded ? <span className="small">{ lastUploaded }</span> : null }
+                { lastUploaded ? <span className={ `small` }>{ lastUploaded }</span> : null }
             </article>
         );
     };

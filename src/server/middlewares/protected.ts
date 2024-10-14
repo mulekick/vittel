@@ -5,6 +5,8 @@ import console from "node:console";
 import {RequestHandler} from "express";
 import config from "../config.ts";
 import {signToken, verifyToken} from "../helpers/jwt.ts";
+// eslint-disable-next-line node/no-missing-import
+import {JOSEError} from "jose/errors";
 
 const
     // destructure config values
@@ -71,8 +73,7 @@ const
 
         } catch (err: unknown) {
             // send a 401 if token is invalid
-            // @ts-expect-error jose error types are not exported ...
-            if (err.code === `ERR_JWT_EXPIRED` || err.code === `ERR_JWT_CLAIM_VALIDATION_FAILED`) {
+            if (err instanceof JOSEError && (err.code === `ERR_JWT_EXPIRED` || err.code === `ERR_JWT_CLAIM_VALIDATION_FAILED`)) {
                 res
                     .status(401)
                     .send(`you are not allowed to access this resource 😬`);

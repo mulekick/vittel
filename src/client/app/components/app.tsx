@@ -13,7 +13,7 @@ import {getAsync, getPepe} from "../helpers/helpers.ts";
 import {VITE_SRV_ENTRYPOINT} from "../helpers/env.ts";
 
 const
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     App = (props: Record<string, never>): React.JSX.Element => {
         const
             // lift all individual components states here
@@ -35,7 +35,7 @@ const
             }, 2.5e3);
 
             // returned function will execute at component unmount
-            return () => { clearInterval(interval.current); };
+            return () => {clearInterval(interval.current);};
         // trigger the effect after the first render only by passing empty deps
         }, []);
 
@@ -43,7 +43,7 @@ const
         return (
             <main>
                 { /* title */ }
-                <span className="large">Vittel Features</span>
+                <span className={ `large` }>{ `Vittel Features` }</span>
                 { /* data fetching */ }
                 <ResourceFetching content={ content } />
                 { /* client-side sessions */ }

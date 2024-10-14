@@ -81,6 +81,8 @@ const
         res
             .status(404)
             .send(`requested resource is nowhere to be found 😭`);
+        // eslint compliance
+        return undefined;
     },
     // error handling route
     errorHandlingRoute: ErrorRequestHandler = (err, req, res, next) => {
@@ -92,6 +94,8 @@ const
         }
         // hand error to built-in error handler, print stack in server logs
         next(err);
+        // eslint compliance
+        return undefined;
     };
 
 xApp
@@ -103,4 +107,4 @@ xApp
 const netServer: httpServer | httpsServer = APP_ENABLE_HTTPS ? httpsCreateServer(APP_TLS_OPTIONS, xApp) : httpCreateServer(xApp);
 
 // fire that shit up !
-netServer.listen(APP_PORT, APP_HOST, () => { console.log(`service listening on ${ APP_ENABLE_HTTPS ? `https` : `http` }://${ String(APP_HOST) }:${ String(APP_PORT) }`); });
+netServer.listen(APP_PORT, APP_HOST, () => {console.log(`service listening on ${ APP_ENABLE_HTTPS ? `https` : `http` }://${ String(APP_HOST) }:${ String(APP_PORT) }`);});

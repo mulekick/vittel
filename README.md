@@ -257,8 +257,10 @@ openssl req -x509 -key .server.key -new -outform PEM -out .server.crt -verbose
 | <code>[@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)</code>                               | The all-in-one Vite plugin for react projects                        |
 | <code>[autoprefixer](https://www.npmjs.com/package/autoprefixer)</code>                                               | Postcss plugin that adds vendor-specific prefixes to CSS rules       |
 | <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code>   | Babel transforms import.meta into legacy code in node.js             |
+| <code>[eslint](https://www.npmjs.com/package/eslint)</code>                                                           | Identify and report patterns found in ECMAScript code                |
 | <code>[eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)</code>                                 | React specific linting rules for eslint                              |
 | <code>[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)</code>                     | Enforces the rules of hooks in react functions                       |
+| <code>[globals](https://www.npmjs.com/package/globals)</code>                                                         | Global identifiers from different JavaScript environments            |
 | <code>[jest](https://www.npmjs.com/package/jest)</code>                                                               | Delightful javascript testing                                        |
 | <code>[jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom)</code>                           | DOM test environment for jest                                        |
 | <code>[jest-puppeteer](https://www.npmjs.com/package/jest-puppeteer)</code>                                           | Jest preset that enables end-to-end testing with puppeteer           |

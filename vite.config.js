@@ -1,4 +1,4 @@
-/* eslint-disable node/no-process-env, node/no-unpublished-import */
+/* eslint-disable node/no-process-env */
 
 // import primitives
 import process from "node:process";
@@ -15,7 +15,7 @@ import {config} from "dotenv";
 // note : for more flexibility and fine tuning, all paths included in this config
 // will be absolute paths pointing to subdirectories of the current project's root
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(({command, mode}) => {
 
     const

@@ -5,9 +5,8 @@ import {Router} from "express";
 import {mToken, mProtection, mFallback} from "../middlewares/protected.ts";
 import mUpload from "../middlewares/upload.ts";
 
-const
-    // eslint-disable-next-line new-cap
-    xProtected: Router = Router();
+// eslint-disable-next-line new-cap
+const xProtected: Router = Router();
 
 xProtected
     // route for serving token

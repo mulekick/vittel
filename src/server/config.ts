@@ -18,9 +18,8 @@ const dirName = fileURLToPath(new URL(`.`, import.meta.url));
 // use dotenv to load config file into process.env
 config({path: resolve(dirName, `${ process.env.NODE_ENV === `production` ? `..` : `../..` }/.env.files`, `.env.${ String(process.env.NODE_ENV) }`)});
 
-const
-    // destructure from process.env
-    {
+// destructure from process.env
+const {
         VITE_SRV_ENTRYPOINT,
         APP_HOST, APP_PORT,
         APP_ENABLE_HTTPS,
