@@ -8,9 +8,9 @@ import {resolve} from "node:path";
 // import modules
 import {config} from "dotenv";
 
-// import interfaces
-import {SecureVersion} from "node:tls";
-import {ConfigSignature} from "../interfaces.ts";
+// import types
+import type {SecureVersion} from "node:tls";
+import type {ConfigSignature} from "../interfaces.ts";
 
 // retrieve current folder
 const dirName = fileURLToPath(new URL(`.`, import.meta.url));

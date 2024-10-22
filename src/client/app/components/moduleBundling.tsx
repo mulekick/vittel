@@ -3,8 +3,8 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog} from "@fortawesome/free-solid-svg-icons";
 
-// import interfaces
-import {TextContentPropsSignature} from "../../../interfaces.ts";
+// import types
+import type {TextContentPropsSignature} from "../../../interfaces.ts";
 
 const
     // ...

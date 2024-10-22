@@ -9,13 +9,16 @@ import {ChildProcess, fork} from "node:child_process";
 import {resolve} from "node:path";
 
 // import modules
-import express, {Application, RequestHandler, ErrorRequestHandler} from "express";
+import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import config from "./config.ts";
 import xRoutes from "./routes/routes.ts";
+
+// import types
+import type {Application, RequestHandler, ErrorRequestHandler} from "express";
 
 const
     // destructure config values

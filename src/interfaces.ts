@@ -1,9 +1,7 @@
-// import primitives
-import {ServerOptions} from "node:https";
-
-// import modules
+// import types
+import type {ServerOptions} from "node:https";
 // eslint-disable-next-line @typescript-eslint/no-shadow
-import {Request, Response, NextFunction} from "express";
+import type {Request, Response, NextFunction} from "express";
 
 // react app interfaces - use a single signature for all components
 export interface TextContentPropsSignature {

@@ -1,8 +1,8 @@
 // import primitives
 import {createHash} from "node:crypto";
 
-// import modules
-import {RequestHandler} from "express";
+// import types
+import type {RequestHandler} from "express";
 
 const
     // data fetching middleware

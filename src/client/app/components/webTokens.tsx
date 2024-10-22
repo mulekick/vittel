@@ -7,8 +7,8 @@ import {faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import {getAsync} from "../helpers/helpers.ts";
 import {VITE_SRV_ENTRYPOINT} from "../helpers/env.ts";
 
-// import interfaces
-import {TextContentPropsSignature} from "../../../interfaces.ts";
+// import types
+import type {TextContentPropsSignature} from "../../../interfaces.ts";
 
 const
     // ...

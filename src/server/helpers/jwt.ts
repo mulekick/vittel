@@ -2,8 +2,11 @@
 import {KeyObject, createPrivateKey, createPublicKey, randomBytes} from "node:crypto";
 
 // import modules
+import {SignJWT, jwtVerify} from "jose";
 import config from "../config.ts";
-import {JWTPayload, JWTVerifyResult, SignJWT, jwtVerify} from "jose";
+
+// import types
+import type {JWTPayload, JWTVerifyResult} from "jose";
 
 const
     // subject (why we deliver a token)

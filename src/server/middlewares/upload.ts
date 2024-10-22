@@ -1,7 +1,9 @@
 // import modules
-import {RequestHandler} from "express";
 import formidable from "formidable";
 import config from "../config.ts";
+
+// import types
+import type {RequestHandler} from "express";
 
 const
     // destructure config values

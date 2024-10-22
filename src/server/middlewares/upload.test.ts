@@ -5,12 +5,14 @@
 /* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/init-declarations */
 
 // import modules
-import {Request, Response} from "express";
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import type {RequestMock, ResponseMock, NextFunctionMock} from "../../interfaces.ts";
 
 // import middlewares
 import mUpload from "./upload.ts";
+
+// import types
+import type {Request, Response} from "express";
 
 describe(`test file upload `, () => {
     let

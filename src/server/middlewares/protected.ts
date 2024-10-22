@@ -2,11 +2,13 @@
 import console from "node:console";
 
 // import modules
-import {RequestHandler} from "express";
 import config from "../config.ts";
 import {signToken, verifyToken} from "../helpers/jwt.ts";
 // eslint-disable-next-line node/no-missing-import
 import {JOSEError} from "jose/errors";
+
+// import types
+import type {RequestHandler} from "express";
 
 const
     // destructure config values

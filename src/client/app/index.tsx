@@ -7,6 +7,7 @@ import {createRoot} from "react-dom/client";
 import App from "./components/app.tsx";
 
 // use the built-in vite functionalities to flat import scss files ...
+// @ts-expect-error not using types for css files
 import "../scss/main.scss";
 
 // retrieve environment
