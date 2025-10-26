@@ -9,7 +9,7 @@
 3. [Prerequisites](#prerequisites)
 4. [Scaffold your project](#scaffold-your-project)
 5. [Project structure](#project-structure)
-6. [Tasks by package type](#tasks-by-package-type)
+6. [CI/CD pipeline](#cicd-pipeline)
 7. [Dependencies management](#dependencies-management)
 8. [Features](#features)
 9. [Footnotes](#footnotes)
@@ -110,7 +110,7 @@ my-vittel-project/
 
 - Individual packages structures are detailed in their respective `README` pages.
 
-## CI / CD pipeline
+## CI/CD pipeline
 
 - Available CI / CD [tasks](https://lerna.js.org/docs/features/run-tasks) are executed using `lerna` and depend on packages types :
 
@@ -188,7 +188,7 @@ npm run deps:install
 | <code>[puppeteer](https://pptr.dev/)</code>                               | Run end to end tests through browser automation. |
 | <code>[jest-puppeteer](https://github.com/argos-ci/jest-puppeteer)</code> | Add jest matchers support for end-to-end tests.  |
 
-#### CI/CD pipeline
+#### CI/CD
 
 | <center>**module**</center>                                                        | <center>**usage**</center>                                                  |
 |------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
