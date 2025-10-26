@@ -12,5 +12,3 @@ dist/*
 coverage
 # exclude certificate and private key
 .server.*
-# exclude docs
-docs

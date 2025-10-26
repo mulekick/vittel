@@ -6,5 +6,3 @@ dist/*
 coverage
 # push directories
 !**/.gitkeep
-# ignore generated docs
-docs
