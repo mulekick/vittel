@@ -1,0 +1,82 @@
+{
+    "targetDefaults": {
+        "list": {
+            "cache": true,
+            "dependsOn": []
+        },
+        "dev": {
+            "dependsOn": []
+        },
+        "typecheck": {
+            "cache": true,
+            "dependsOn": [
+                "^build"
+            ]
+        },
+        "lint": {
+            "cache": true,
+            "dependsOn": [
+                "typecheck"
+            ]
+        },
+        "test": {
+            "dependsOn": [
+                "lint",
+                "^build",
+                "^publish"
+            ]
+        },
+        "types:build": {
+            "cache": true,
+            "dependsOn": [
+                "test"
+            ],
+            "outputs": [
+                "{projectRoot}/dist"
+            ]
+        },
+        "build": {
+            "cache": true,
+            "dependsOn": [
+                "lint",
+                "test",
+                "types:build",
+                "^build",
+                "^publish"
+            ],
+            "outputs": [
+                "{projectRoot}/dist"
+            ]
+        },
+        "publish": {
+            "cache": true,
+            "dependsOn": [
+                "build"
+            ]
+        },
+        "docker:lockfile": {
+            "dependsOn": []
+        },
+        "docker:build": {
+            "cache": true,
+            "dependsOn": [
+                "build",
+                "docker:lockfile",
+                "^publish"
+            ]
+        },
+        "docker:push": {
+            "cache": true,
+            "dependsOn": [
+                "docker:build"
+            ]
+        },
+        "docs:build": {
+            "cache": true,
+            "dependsOn": [],
+            "outputs": [
+                "{projectRoot}/docs"
+            ]
+        }
+    }
+}

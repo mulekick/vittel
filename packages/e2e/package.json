@@ -1,0 +1,37 @@
+{
+    "name": "@vittel/e2e",
+    "version": "2.0.0",
+    "description": "End to end tests suite.",
+    "type": "module",
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc && echo 'type checking was successful'",
+        "lint": "npx eslint .",
+        "test": "ENV_DIR=\"$(pwd)/../backend/.env.files\" NODE_ENV=production npx jest ./src --runInBand",
+        "build": "echo \"stub task that runs e2e tests after dependencies build, do not remove\"",
+        "docker:build": "echo \"stub task that runs e2e tests after dependencies build, do not remove\""
+    },
+    "dependencies": {
+        "@vittel/frontend": "2.0.0",
+        "@vittel/backend": "2.0.0",
+        "@vittel/types": "^2.0.0",
+        "@vittel/utils": "^2.0.0"
+    },
+    "devDependencies": {
+        "dotenv": "^16.6.1",
+        "jest-puppeteer": "^11.0.0",
+        "puppeteer": "^24.3.0"
+    },
+    "engines": {
+        "node": ">=v22.15.0",
+        "npm": ">=10.9.2"
+    },
+    "os": [
+        "linux"
+    ],
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {},
+    "bugs": {},
+    "homepage": "https://github.com/mulekick/vittel"
+}

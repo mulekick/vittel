@@ -1,0 +1,10 @@
+# exclude node modules
+node_modules
+# exclude build
+dist/*
+# exclude jest report
+coverage
+# push directories
+!**/.gitkeep
+# ignore generated docs
+docs

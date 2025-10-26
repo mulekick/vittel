@@ -1,0 +1,13 @@
+{
+    "extends": "../../tsconfig.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "compilerOptions": {
+        // relative paths are resolved against current file location
+        "rootDir": "./src",
+        "outDir": "./dist",
+        // do not import *.ts files in packages, they are not bundled and need to import dependencies at runtime
+        "allowImportingTsExtensions": false,
+        // create *.d.ts files and *.d.ts.map files
+        "noEmit": false
+    }
+}

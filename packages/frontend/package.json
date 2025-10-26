@@ -1,0 +1,60 @@
+{
+    "name": "@vittel/frontend",
+    "version": "2.0.0",
+    "description": "Example react app.",
+    "type": "module",
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc && echo 'type checking was successful'",
+        "lint": "npx eslint .",
+        "dev": "NODE_ENV=development npx vite serve",
+        "test": "NODE_ENV=development npx jest ./src",
+        "build": "npx vite build",
+        "publish": "SERVING_DIR=\"$(realpath ../backend/dist/static)\" && rm -rf \"$SERVING_DIR\" && cp -rpf dist \"$SERVING_DIR\"",
+        "docs:build": "npx typedoc"
+    },
+    "dependencies": {
+        "@vittel/types": "^2.0.0",
+        "@vittel/utils": "^2.0.0"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.27.1",
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
+        "@fortawesome/free-brands-svg-icons": "^6.7.2",
+        "@fortawesome/free-regular-svg-icons": "^6.7.2",
+        "@fortawesome/free-solid-svg-icons": "^6.7.2",
+        "@fortawesome/react-fontawesome": "^0.2.2",
+        "@mulekick/pepe-ascii": "^1.0.2",
+        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
+        "@types/react": "^18.3.1",
+        "@types/react-dom": "^18.3.1",
+        "@types/wait-on": "^5.3.4",
+        "@vitejs/plugin-legacy": "^6.1.1",
+        "@vitejs/plugin-react": "^4.6.0",
+        "autoprefixer": "^10.4.21",
+        "dotenv": "^16.6.1",
+        "jest-environment-jsdom": "^30.0.2",
+        "postcss": "^8.5.6",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "sass": "^1.89.2",
+        "terser": "^5.43.1",
+        "vite": "^6.3.5",
+        "vite-plugin-webfont-dl": "^3.10.5"
+    },
+    "engines": {
+        "node": ">=v22.15.0",
+        "npm": ">=10.9.2"
+    },
+    "os": [
+        "linux"
+    ],
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {},
+    "bugs": {},
+    "homepage": "https://github.com/mulekick/vittel"
+}

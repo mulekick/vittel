@@ -1,18 +1,8 @@
 # exclude node modules
-node_modules
-# exclude build
-dist/*
-# push dist uploads folder
-!dist/uploads
-# exclude uploaded files
-**/uploads/*
-# push dist build folder
-!dist/client
-# exclude dist build files
-**/dist/client/*
-# push directories
-!**/.gitkeep
-# exclude jest coverage files
-coverage
-# exclude certificate and private key
-.server.*
+node_modules/
+# exclude lerna logs
+lerna-debug.*
+# project specifics
+.nx
+packages/**/package-lock.json
+**/*.tgz

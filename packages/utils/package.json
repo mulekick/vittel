@@ -1,0 +1,49 @@
+{
+    "name": "@vittel/utils",
+    "version": "2.0.0",
+    "description": "Shared utilities and functions.",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/utils.js",
+            "types": "./dist/utils.d.ts"
+        },
+        "./errors": {
+            "import": "./dist/errors.js",
+            "types": "./dist/errors.d.ts"
+        },
+        "./common": {
+            "import": "./dist/common.js",
+            "types": "./dist/common.d.ts"
+        }
+    },
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc --noEmit && echo 'type checking was successful'",
+        "lint": "npx eslint .",
+        "test": "npx jest ./src",
+        "types:build": "npx tsc",
+        "build": "ENTRYPOINTS=\"src/common.ts src/errors.ts src/utils.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node22.15.0 --packages=external --format=esm --analyze --outdir=dist",
+        "publish": "npm pack . --pack-destination ..",
+        "docs:build": "npx typedoc"
+    },
+    "dependencies": {
+        "@vittel/types": "^2.0.0",
+        "pino": "^9.7.0",
+        "pino-http": "^10.5.0",
+        "pino-pretty": "^13.0.0",
+        "zod": "^3.25.64"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3"
+    },
+    "engines": {
+        "node": ">=v22.15.0",
+        "npm": ">=10.9.2"
+    },
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {},
+    "bugs": {},
+    "homepage": "https://github.com/mulekick/vittel"
+}

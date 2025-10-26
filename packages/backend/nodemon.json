@@ -1,0 +1,18 @@
+{
+    "restartable": "rs",
+    "ignore": [
+        ".env.files",
+        ".vscode",
+        "dist",
+        "docs",
+        "eslint*",
+        "node_modules/**/node_modules",
+        "package*.json",
+        "typedoc.config.js"
+    ],
+    "execMap": {
+        "ts": "tsx --tsconfig ./tsconfig.json"
+    },
+    "verbose": true,
+    "ext": "ts,json"
+}

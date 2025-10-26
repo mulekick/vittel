@@ -1,0 +1,16 @@
+# exclude node modules
+node_modules
+# exclude build
+dist/*
+# push dist build folder
+!dist/static
+# exclude dist build files
+**/dist/static/*
+# push directories
+!**/.gitkeep
+# exclude jest coverage files
+coverage
+# exclude certificate and private key
+.server.*
+# exclude docs
+docs

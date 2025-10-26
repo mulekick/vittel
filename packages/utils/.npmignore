@@ -1,0 +1,8 @@
+# exclude everything except unexcludable files (package.json and /dist directory)
+*
+.*
+/*
+!/dist/*
+# exclude type declaration files for unit test
+**/dist/*.test.d.ts
+**/dist/*.test.d.ts.map

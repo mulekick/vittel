@@ -1,0 +1,44 @@
+{
+    "name": "@vittel/types",
+    "version": "2.0.0",
+    "description": "Shared types, enums & parsers.",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/types.d.ts"
+        },
+        "./enums": {
+            "import": "./dist/enums.js",
+            "types": "./dist/enums.d.ts"
+        },
+        "./parsers": {
+            "import": "./dist/parsers.js",
+            "types": "./dist/parsers.d.ts"
+        }
+    },
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc --noEmit && echo 'type checking was successful'",
+        "lint": "npx eslint .",
+        "test": "npx jest ./src",
+        "types:build": "npx tsc",
+        "build": "ENTRYPOINTS=\"src/parsers.ts src/enums.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node22.15.0 --packages=external --format=esm --analyze --outdir=dist",
+        "publish": "npm pack . --pack-destination ..",
+        "docs:build": "npx typedoc"
+    },
+    "dependencies": {
+        "zod": "^3.25.64"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3"
+    },
+    "engines": {
+        "node": ">=v22.15.0",
+        "npm": ">=10.9.2"
+    },
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {},
+    "bugs": {},
+    "homepage": "https://github.com/mulekick/vittel"
+}

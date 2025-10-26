@@ -1,0 +1,52 @@
+{
+    "name": "@vittel/backend",
+    "version": "2.0.0",
+    "description": "Example node.js server app.",
+    "type": "module",
+    "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc && echo 'type checking was successful'",
+        "lint": "npx eslint .",
+        "dev": "ENV_DIR=\"$(pwd)/.env.files\" NODE_ENV=development nodemon src/server.ts",
+        "test": "ENV_DIR=\"$(pwd)/.env.files\" NODE_ENV=development npx jest ./src",
+        "build": "ENTRYPOINTS=\"src/server.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node22.15.0 --packages=external --format=esm --analyze --outdir=dist --bundle",
+        "prod": "ENV_DIR=\"$(pwd)/.env.files\" NODE_ENV=production node dist/server.js",
+        "docker:lockfile": "cp ../../package-lock.json ./package-lock.json",
+        "docker:build": "SERVICE=\"vittel\" && BUILD_IMG=\"$(cat ../../docker.registry)/$SERVICE:latest\" && docker buildx build --build-context packages=\"..\" -t \"$BUILD_IMG\" .",
+        "docker:push": "SERVICE=\"vittel\" && BUILD_IMG=\"$(cat ../../docker.registry)/$SERVICE:latest\" && docker push \"$BUILD_IMG\"",
+        "docs:build": "npx typedoc"
+    },
+    "dependencies": {
+        "@vittel/frontend": "2.0.0",
+        "@vittel/types": "^2.0.0",
+        "@vittel/utils": "^2.0.0", 
+        "busboy": "^1.6.0",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.5",
+        "dotenv": "^16.6.1",
+        "express": "^4.21.2",
+        "helmet": "^8.1.0",
+        "jose": "^5.9.6",
+        "zod": "^3.25.64"
+    },
+    "devDependencies": {
+        "@types/busboy": "^1.5.4",
+        "@types/cookie-parser": "^1.4.9",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/wait-on": "^5.3.4",
+        "nodemon": "^3.1.10"
+    },
+    "engines": {
+        "node": ">=v22.15.0",
+        "npm": ">=10.9.2"
+    },
+    "os": [
+        "linux"
+    ],
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {},
+    "bugs": {},
+    "homepage": "https://github.com/mulekick/vittel"
+}

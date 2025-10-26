@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "compilerOptions": {
+        // relative paths are resolved against current file location
+        "rootDir": "./src",
+        "outDir": "./dist",
+        // broken jest-puppeteer declarations
+        "skipLibCheck": true
+    }
+}
