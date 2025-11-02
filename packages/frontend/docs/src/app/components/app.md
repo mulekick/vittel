@@ -20,7 +20,7 @@ React app main component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/app.tsx:27](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/frontend/src/app/components/app.tsx#L27)
+Defined in: [src/app/components/app.tsx:27](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/components/app.tsx#L27)
 
 Main react app component.
 

@@ -27,7 +27,7 @@ const SampleData: z.ZodObject<{
 }>;
 ```
 
-Defined in: [src/parsers.ts:56](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L56)
+Defined in: [src/parsers.ts:56](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L56)
 
 Parser for sample data objects.
 
@@ -42,7 +42,7 @@ const FakeMessage: z.ZodObject<{
 }>;
 ```
 
-Defined in: [src/parsers.ts:67](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L67)
+Defined in: [src/parsers.ts:67](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L67)
 
 Parser for mock message objects.
 
@@ -60,7 +60,7 @@ const parsers: {
 };
 ```
 
-Defined in: [src/parsers.ts:78](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L78)
+Defined in: [src/parsers.ts:78](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L78)
 
 Export wrapper for parser objects.
 
@@ -68,11 +68,11 @@ Export wrapper for parser objects.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="nullable-3"></a> `Nullable` | *typeof* [`Nullable`](#nullable) | [src/parsers.ts:79](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L79) |
-| <a id="arrayof-3"></a> `ArrayOf` | *typeof* [`ArrayOf`](#arrayof) | [src/parsers.ts:80](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L80) |
-| <a id="promiseof-3"></a> `PromiseOf` | *typeof* [`PromiseOf`](#promiseof) | [src/parsers.ts:81](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L81) |
-| <a id="fakemessage-1"></a> `FakeMessage` | *typeof* [`FakeMessage`](#fakemessage) | [src/parsers.ts:82](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L82) |
-| <a id="sampledata-1"></a> `SampleData` | *typeof* [`SampleData`](#sampledata) | [src/parsers.ts:83](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L83) |
+| <a id="nullable-3"></a> `Nullable` | *typeof* [`Nullable`](#nullable) | [src/parsers.ts:79](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L79) |
+| <a id="arrayof-3"></a> `ArrayOf` | *typeof* [`ArrayOf`](#arrayof) | [src/parsers.ts:80](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L80) |
+| <a id="promiseof-3"></a> `PromiseOf` | *typeof* [`PromiseOf`](#promiseof) | [src/parsers.ts:81](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L81) |
+| <a id="fakemessage-1"></a> `FakeMessage` | *typeof* [`FakeMessage`](#fakemessage) | [src/parsers.ts:82](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L82) |
+| <a id="sampledata-1"></a> `SampleData` | *typeof* [`SampleData`](#sampledata) | [src/parsers.ts:83](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L83) |
 
 ## Functions
 
@@ -82,7 +82,7 @@ Export wrapper for parser objects.
 function Nullable<T>(current): ZodUnion<[T, ZodNull]>;
 ```
 
-Defined in: [src/parsers.ts:27](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L27)
+Defined in: [src/parsers.ts:27](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L27)
 
 Returns a nullable parser for generic types.
 
@@ -116,7 +116,7 @@ A parser for the union of T and null.
 function ArrayOf<T>(current): ZodArray<T>;
 ```
 
-Defined in: [src/parsers.ts:37](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L37)
+Defined in: [src/parsers.ts:37](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L37)
 
 Returns an array parser for generic types.
 
@@ -150,7 +150,7 @@ A parser for an array of values of type T.
 function PromiseOf<T>(current): ZodPromise<T>;
 ```
 
-Defined in: [src/parsers.ts:47](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L47)
+Defined in: [src/parsers.ts:47](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/types/src/parsers.ts#L47)
 
 Returns a promise parser for generic types.
 

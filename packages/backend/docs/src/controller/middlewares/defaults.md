@@ -21,7 +21,7 @@ Default express middlewares.
 const defaultFallback: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/defaults.ts:20](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/middlewares/defaults.ts#L20)
+Defined in: [src/controller/middlewares/defaults.ts:20](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/defaults.ts#L20)
 
 Sync: app-wide default fallback middleware, uses wrapper for error routing
 
@@ -33,7 +33,7 @@ Sync: app-wide default fallback middleware, uses wrapper for error routing
 const errorHandling: ErrorRequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/defaults.ts:31](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/middlewares/defaults.ts#L31)
+Defined in: [src/controller/middlewares/defaults.ts:31](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/defaults.ts#L31)
 
 Async: app-wide error handling middleware (must match ErrorRequestHandler function type)
 
