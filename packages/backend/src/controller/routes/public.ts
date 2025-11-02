@@ -15,10 +15,6 @@ import {mFetch, mFallback} from "../middlewares/public.ts";
  * @see {@link mFetch | Route for fetching public data}
  * @see {@link mFallback | Fallback route for GET}
  */
-const xPublic: Router = Router();
-
-xPublic
+export const xPublic: Router = Router()
     .get(`/fetch`, mFetch)
     .get(`*`, mFallback);
-
-export {xPublic};

@@ -17,20 +17,20 @@ import type {RequestHandler} from "express";
  * Async data fetching middleware
  * @see {@link getData | Get public data}
  */
-export const mFetch: RequestHandler = (...args) => wrapMiddlewareExpress(async(req, res, next) => {
+export const mFetch: RequestHandler = wrapMiddlewareExpress(async(req, res) => {
     // initialize domain transaction
     const transaction = await getData();
     // response
     res.status(200).json(transaction);
-})(...args);
+});
 
 /**
  * Sync fallback middleware
  * @see {@link getFallback | Get fallback data}
  */
-export const mFallback: RequestHandler = (...args) => wrapMiddlewareExpress((req, res, next) => {
+export const mFallback: RequestHandler = wrapMiddlewareExpress((req, res) => {
     // initialize domain transaction
     const transaction = getFallback();
     // response
     res.status(200).send(transaction);
-})(...args);
+});

@@ -2,12 +2,12 @@
  * @jest-environment node
  */
 
-/* eslint-disable @typescript-eslint/init-declarations, n/no-sync */
+/* eslint-disable @typescript-eslint/init-declarations */
 
 // import modules
 import {jest, describe, beforeEach, it, expect} from "@jest/globals";
 import {DomainError} from "@vittel/utils/errors";
-import {mThrowErrorSync, mEmitErrorAsync} from "./errors.ts";
+import {mThrowError, mEmitError} from "./errors.ts";
 
 // import types
 import type {Request as ExpressRequest, Response as ExpressResponse} from "express";
@@ -33,7 +33,7 @@ describe(`test error handling patterns`, () => {
     describe(`sync error throwing middleware`, () => {
         it(`should pass error to next()`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mThrowErrorSync(mockRequest as ExpressRequest, mockResponse as ExpressResponse, mockNext);
+            await mThrowError(mockRequest as ExpressRequest, mockResponse as ExpressResponse, mockNext);
             // actual test
             expect(mockNext).toHaveBeenCalledWith(expect.any(DomainError));
         });
@@ -42,7 +42,7 @@ describe(`test error handling patterns`, () => {
     describe(`async error emitting middleware`, () => {
         it(`should pass error to next()`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mEmitErrorAsync(mockRequest as ExpressRequest, mockResponse as ExpressResponse, mockNext);
+            await mEmitError(mockRequest as ExpressRequest, mockResponse as ExpressResponse, mockNext);
             // actual test
             expect(mockNext).toHaveBeenCalledWith(expect.any(DomainError));
         });

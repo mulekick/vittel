@@ -26,7 +26,7 @@ Node.js based shared utility functions.
 const CORRELATION_ID_KEY: "x-correlation-id";
 ```
 
-Defined in: [src/utils.ts:50](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L50)
+Defined in: [src/utils.ts:51](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L51)
 
 Key used for storing correlation ID in the async local storage.
 
@@ -42,7 +42,7 @@ Key used for storing correlation ID in the async local storage.
 const asyncLocalStorage: AsyncLocalStorage<Map<string, string>>;
 ```
 
-Defined in: [src/utils.ts:58](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L58)
+Defined in: [src/utils.ts:59](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L59)
 
 Init async local storage.
 
@@ -58,7 +58,7 @@ Init async local storage.
 function setCorrelationId(id): void;
 ```
 
-Defined in: [src/utils.ts:66](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L66)
+Defined in: [src/utils.ts:67](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L67)
 
 Sync function that sets the correlation id for current async calls chain.
 
@@ -84,7 +84,7 @@ Throws a generic error if async local storage is not initialized.
 function correlationId(): string;
 ```
 
-Defined in: [src/utils.ts:79](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L79)
+Defined in: [src/utils.ts:80](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L80)
 
 Sync function that retrieves the correlation id for current async calls chain.
 
@@ -108,7 +108,7 @@ Throws a generic error if async local storage is not initialized or if the id is
 const setRequestLocalsExpress: RequestHandler;
 ```
 
-Defined in: [src/utils.ts:128](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L128)
+Defined in: [src/utils.ts:97](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L97)
 
 Express middleware that exposes async local storage to incoming http requests.
 
@@ -117,65 +117,34 @@ Express middleware that exposes async local storage to incoming http requests.
 - Pass request header in the event the initial transaction originates from another service.
 - `route` is passed only for typescript compliance, should be painless but beware.
 
-## Async local storage wrappers
-
-- Wrapper functions that add async local storage support to controller layer middlewares.
-
-### wrapAsyncContextExpress
-
-```ts
-const wrapAsyncContextExpress: AsyncContextWrapper<NextFunction>;
-```
-
-Defined in: [src/utils.ts:99](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L99)
-
-Sync wrapper that adds local storage support to functions initiating async call chains.
-
-#### Param
-
-The express middleware to wrap (sync or async).
-
-#### Param
-
-The current correlation id if the call chain was initiated from another service.
-
-#### Returns
-
-The wrapped middleware with async local storage support.
-
-#### Remarks
-
-- Uses a functional programming pattern (higher order function).
-- Returned function must be awaited to trigger the calls chain.
-
 ***
 
-### wrapAsyncContextFakeMessageQueue
+### setRequestLocalsFakeMessageQueue()
 
 ```ts
-const wrapAsyncContextFakeMessageQueue: AsyncContextWrapper<(...args) => Promise<void>>;
+function setRequestLocalsFakeMessageQueue(next, ...args): Promise<void>;
 ```
 
-Defined in: [src/utils.ts:116](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L116)
+Defined in: [src/utils.ts:132](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L132)
 
-Sync wrapper that adds local storage support to functions initiating async call chains.
+Middleware-like function that exposes async local storage to the message queue.
 
-#### Param
+#### Parameters
 
-The message queue middleware to wrap (sync or async).
-
-#### Param
-
-The current correlation id if the call chain was initiated from another service.
+| Parameter | Type |
+| ------ | ------ |
+| `next` | [`MessageHandler`](#messagehandler) |
+| ...`args` | \[[`FakeMessageQueue`](#fakemessagequeue), `unknown`\] |
 
 #### Returns
 
-The wrapped function with async local storage support.
+`Promise`\<`void`\>
 
 #### Remarks
 
-- Uses a functional programming pattern (higher order function).
-- Returned function must be awaited to trigger the calls chain.
+- Mimics the behavior of express middlewares, called for each incoming messages.
+- In the event some transaction id is included in the message, it can be assigned to h.
+- Message handler needs to be updated once an actual message queue is used.
 
 ## Logging
 
@@ -187,7 +156,7 @@ The wrapped function with async local storage support.
 const logWritables: DestinationStream;
 ```
 
-Defined in: [src/utils.ts:162](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L162)
+Defined in: [src/utils.ts:166](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L166)
 
 Specify outputs to write logs to using pino transports.
 
@@ -204,7 +173,7 @@ Specify outputs to write logs to using pino transports.
 const logger: Logger;
 ```
 
-Defined in: [src/utils.ts:184](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L184)
+Defined in: [src/utils.ts:188](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L188)
 
 Constant that will instantiate the pino logger and pipe it to the outputs.
 
@@ -216,7 +185,7 @@ Constant that will instantiate the pino logger and pipe it to the outputs.
 const httpLogger: HttpLogger;
 ```
 
-Defined in: [src/utils.ts:190](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L190)
+Defined in: [src/utils.ts:194](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L194)
 
 Wrapper around the main logger for use as an express logging middleware.
 
@@ -226,7 +195,7 @@ Wrapper around the main logger for use as an express logging middleware.
 
 ### FakeMessageQueue
 
-Defined in: [src/utils.ts:214](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L214)
+Defined in: [src/utils.ts:226](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L226)
 
 Mocks a message queue
 - Generates messages and mocks the send() method of an actual message queue.
@@ -272,7 +241,7 @@ static createMessage(): {
 };
 ```
 
-Defined in: [src/utils.ts:235](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L235)
+Defined in: [src/utils.ts:247](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L247)
 
 Sync: creates a fake incoming message.
 
@@ -289,7 +258,7 @@ Sync: creates a fake incoming message.
 send(channel, message): void;
 ```
 
-Defined in: [src/utils.ts:246](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L246)
+Defined in: [src/utils.ts:258](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L258)
 
 Sync: simulates sending a message on the queue.
 
@@ -308,7 +277,23 @@ Sync: simulates sending a message on the queue.
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/utils.ts:220](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L220) |
+| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/utils.ts:232](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L232) |
+
+## Other
+
+### MessageHandler
+
+```ts
+type MessageHandler = MessageHandler;
+```
+
+Defined in: [src/utils.ts:216](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L216)
+
+Signature for message queue middlewares.
+
+#### Remarks
+
+- Needs to be updated once a genuine message queue / no message queue at all is used.
 
 ## Try / catch wrappers
 
@@ -320,7 +305,7 @@ Sync: simulates sending a message on the queue.
 function wrapMiddlewareExpress(mid): RequestHandler;
 ```
 
-Defined in: [src/utils.ts:141](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/utils/src/utils.ts#L141)
+Defined in: [src/utils.ts:113](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L113)
 
 Sync wrapper that adds error handling support to express middlewares.
 
@@ -339,3 +324,32 @@ The wrapped middleware.
 #### Remarks
 
 - Uses a functional programming pattern (higher order function).
+
+***
+
+### wrapMiddlewareFakeMessageQueue()
+
+```ts
+function wrapMiddlewareFakeMessageQueue(mid): MessageHandler;
+```
+
+Defined in: [src/utils.ts:149](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/utils/src/utils.ts#L149)
+
+Sync wrapper that adds error handling support to message queue middlewares.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `mid` | [`MessageHandler`](#messagehandler) | The message queue middleware (sync or async). |
+
+#### Returns
+
+[`MessageHandler`](#messagehandler)
+
+The wrapped middleware.
+
+#### Remarks
+
+- Uses a functional programming pattern (higher order function).
+- Middleware type needs to be updated once an actual message queue is used.

@@ -17,16 +17,18 @@ import type {RequestHandler, ErrorRequestHandler} from "express";
 /**
  * Sync: app-wide default fallback middleware, uses wrapper for error routing
  */
-export const defaultFallback: RequestHandler = (...args) => wrapMiddlewareExpress((req, res, next) => {
+export const defaultFallback: RequestHandler = wrapMiddlewareExpress((req, res) => {
     // response
     res.status(404).send(`requested resource is nowhere to be found 😭`);
-})(...args);
+});
 
 /**
  * Async: app-wide error handling middleware (must match ErrorRequestHandler function type)
  * @see {@link handleError | General error handler}
+ * @remarks
+ * - **_Caution : the `next` parameter must be present for the errors to route correctly._**
  */
-export const errorHandling: ErrorRequestHandler = async(err, req, res, next) => {
+export const errorHandling: ErrorRequestHandler = (err, req, res, next) => {
     if (!res.headersSent) {
         // domain errors
         if (err instanceof DomainError) {
@@ -44,16 +46,15 @@ export const errorHandling: ErrorRequestHandler = async(err, req, res, next) => 
                 res.status(500).send(`unrecognized error 💀`);
                 break;
             }
-        // parsing / runtime / dependencies etc errors
+        // parsing errors
+        } else if (err instanceof z.ZodError) {
+            res.status(500).send(`parsing error: ${ err.issues.map(x => x.message).join(`\n`) } 🤬`);
+        // runtime / dependencies etc errors
         } else {
-            // send a 500 in this case
-            res.status(500).send(err instanceof z.ZodError ?
-                `parsing error: ${ err.issues.map(x => x.message).join(`\n`) } 🤬` :
-                `unexpected error '${ err instanceof Error ? err.message : `unknown` }' 😱`);
+            res.status(500).send(`unexpected error '${ err instanceof Error ? err.message : `unknown` }' 😱`);
         }
     }
-    // call general error handler
-    await handleError(err as unknown);
-    // eslint compliance
-    return undefined;
+    // ignore default express handler, call general error handler
+    void next;
+    void handleError(err as unknown);
 };

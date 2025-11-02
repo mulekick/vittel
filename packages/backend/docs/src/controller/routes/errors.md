@@ -21,11 +21,11 @@ Feature-specific express router.
 const xErrors: Router;
 ```
 
-Defined in: [src/controller/routes/errors.ts:20](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/controller/routes/errors.ts#L20)
+Defined in: [src/controller/routes/errors.ts:18](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/routes/errors.ts#L18)
 
 Mounts error handling patterns API middlewares on /error
 
 #### See
 
- - [Route for throwing an error](../middlewares/errors.md#mthrowerrorsync)
- - [Route for emitting an error](../middlewares/errors.md#memiterrorasync)
+ - [Route for throwing an error](../middlewares/errors.md#mthrowerror)
+ - [Route for emitting an error](../middlewares/errors.md#memiterror)

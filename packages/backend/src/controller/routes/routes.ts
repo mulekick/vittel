@@ -18,11 +18,7 @@ import {xErrors} from "./errors.ts";
  * @see {@link xProtected | Route for serving protected data}
  * @see {@link xErrors | Route for benchmarking error handlers}
  */
-const xRoutes: Router = Router();
-
-xRoutes
+export const xRoutes: Router = Router()
     .use(`/public`, xPublic)
     .use(`/protected`, xProtected)
     .use(`/error`, xErrors);
-
-export {xRoutes};

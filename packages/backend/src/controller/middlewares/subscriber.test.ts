@@ -10,7 +10,7 @@ import {mProcessMessage} from "./subscriber.ts";
 import {domainEvents} from "@vittel/types/enums";
 
 // import types
-import {FakeMessageQueue} from "@vittel/utils";
+import {FakeMessageQueue, setRequestLocalsFakeMessageQueue, wrapMiddlewareFakeMessageQueue} from "@vittel/utils";
 
 // write tests
 describe(`test message processing middleware`, (): void => {
@@ -28,7 +28,8 @@ describe(`test message processing middleware`, (): void => {
     describe(`when receiving a request for processing data`, () => {
         it(`should send a response message on the [processing] channel`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mProcessMessage(mockMessageQueue as FakeMessageQueue, {
+            const next = wrapMiddlewareFakeMessageQueue(mProcessMessage);
+            await setRequestLocalsFakeMessageQueue(next, mockMessageQueue as FakeMessageQueue, {
                 event: domainEvents.EVT_PROCESS_DATA,
                 data: `Test data processing event`
             });
@@ -43,7 +44,8 @@ describe(`test message processing middleware`, (): void => {
     describe(`when receiving a request for persisting data`, () => {
         it(`should send a response message on the [storage] channel`, async(): Promise<void> => {
             // call middleware with type assertions
-            await mProcessMessage(mockMessageQueue as FakeMessageQueue, {
+            const next = wrapMiddlewareFakeMessageQueue(mProcessMessage);
+            await setRequestLocalsFakeMessageQueue(next, mockMessageQueue as FakeMessageQueue, {
                 event: domainEvents.EVT_PERSIST_DATA,
                 data: 12346579
             });

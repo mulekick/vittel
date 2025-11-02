@@ -22,8 +22,6 @@ Example node.js server app.
 │   ├── data/
 │   │   └── *.ts             # data access features
 │   ├── domain/
-│   │   ├── classes/
-│   │   │   └── *.ts         # feature-specific classes
 │   │   ├── helpers/
 │   │   │   └── *.ts         # feature-agnostic code
 │   │   └── transactions/

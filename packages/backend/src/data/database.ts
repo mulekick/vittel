@@ -13,7 +13,7 @@ import {createHash} from "node:crypto";
 /**
  * Async: emulates database read (public)
  */
-export const getRandomDataAsync = (): Promise<string> => Promise.resolve(createHash(`sha256`)
+export const getRandomData = (): Promise<string> => Promise.resolve(createHash(`sha256`)
     .update(String(new Date().getTime()))
     .digest(`hex`)
     .substring(0, 48));
@@ -21,9 +21,9 @@ export const getRandomDataAsync = (): Promise<string> => Promise.resolve(createH
 /**
  * Sync: emulates database read (public)
  */
-export const getPublicDataSync = (): string => `resources sitting here will be served to anybody 😁`;
+export const getPublicData = (): string => `resources sitting here will be served to anybody 😁`;
 
 /**
  * Sync: emulates database read (protected)
  */
-export const getProtectedDataSync = (): string => `you now have access to protected resources 😎`;
+export const getProtectedData = (): string => `you now have access to protected resources 😎`;

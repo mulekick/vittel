@@ -7,8 +7,6 @@
  * - Returns results to the domain layer for validation and parsing.
  */
 
-/* eslint-disable security/detect-non-literal-fs-filename */
-
 // import primitives
 import {createWriteStream} from "node:fs";
 
@@ -16,6 +14,6 @@ import {createWriteStream} from "node:fs";
 import type {WriteStream} from "node:fs";
 
 /**
- * Sync: creates a writable stream to a file system path
+ * Sync: creates a writable stream to a file system path (demonstration: discard file to /dev/null)
  */
-export const getWritableStreamToFileSync = (path: string): WriteStream => createWriteStream(path);
+export const getWritableStreamToFile = (): WriteStream => createWriteStream(`/dev/null`);

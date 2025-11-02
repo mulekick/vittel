@@ -67,19 +67,20 @@ export class UnhandledRejectionError extends Error implements AsyncError {
 /**
  * General error handler: async function for centralized and consistent error handling.
  * @param err - The error to process (prefer unknown to not let requests time out).
+ * @remarks
+ * - Log warn for domain errors since they were anticipated by construction
+ * - Log error for any unanticipated error (parsing, runtime, etc)
  */
 export const handleError = async(err: unknown): Promise<void> => {
     // domain errors
-    if (err instanceof DomainError) {
-        // log warn for domain errors since they were anticipated by construction
+    if (err instanceof DomainError)
         logger.warn({id: correlationId(), err}, `domain error '${ err.message }' 💀`);
-    // parsing / runtime / dependencies etc errors
-    } else {
-        // log error for any unanticipated error ...
-        logger.error({id: correlationId(), err}, err instanceof z.ZodError ?
-            `parsing error: ${ err.issues.map(x => x.message).join(`\n`) } 🤬` :
-            `unexpected error '${ err instanceof Error ? err.message : `unknown` }' 😱`);
-    }
+    // parsing errors
+    else if (err instanceof z.ZodError)
+        logger.error({id: correlationId(), err}, `parsing error: ${ err.issues.map(x => x.message).join(`\n`) } 🤬`);
+    // runtime / dependencies etc errors
+    else
+        logger.error({id: correlationId(), err}, `unexpected error '${ err instanceof Error ? err.message : `unknown` }' 😱`);
     // emulate async external logging etc
     await new Promise(r => {setImmediate(r);});
 };

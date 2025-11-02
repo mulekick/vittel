@@ -22,7 +22,7 @@ Feature agnostic helpers.
 function signToken(payload): Promise<string>;
 ```
 
-Defined in: [src/domain/helpers/jwt.ts:42](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/domain/helpers/jwt.ts#L42)
+Defined in: [src/domain/helpers/jwt.ts:42](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/domain/helpers/jwt.ts#L42)
 
 Async: create jwt string from payload object
 
@@ -44,7 +44,7 @@ Async: create jwt string from payload object
 function verifyToken(token): Promise<JWTVerifyResult<JWTPayload>>;
 ```
 
-Defined in: [src/domain/helpers/jwt.ts:59](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/domain/helpers/jwt.ts#L59)
+Defined in: [src/domain/helpers/jwt.ts:59](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/domain/helpers/jwt.ts#L59)
 
 Async: verify jwt signature from string
 

@@ -6,21 +6,15 @@
  * - Routes that expose the error handling patterns API.
  */
 
-/* eslint-disable n/no-sync */
-
 // import modules
 import {Router} from "express";
-import {mThrowErrorSync, mEmitErrorAsync} from "../middlewares/errors.ts";
+import {mThrowError, mEmitError} from "../middlewares/errors.ts";
 
 /**
  * Mounts error handling patterns API middlewares on /error
- * @see {@link mThrowErrorSync | Route for throwing an error}
- * @see {@link mEmitErrorAsync | Route for emitting an error}
+ * @see {@link mThrowError | Route for throwing an error}
+ * @see {@link mEmitError | Route for emitting an error}
  */
-const xErrors: Router = Router();
-
-xErrors
-    .get(`/throw`, mThrowErrorSync)
-    .get(`/emit`, mEmitErrorAsync);
-
-export {xErrors};
+export const xErrors: Router = Router()
+    .get(`/throw`, mThrowError)
+    .get(`/emit`, mEmitError);

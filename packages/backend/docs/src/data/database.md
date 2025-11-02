@@ -16,13 +16,13 @@ Database access features.
 
 ## Functions
 
-### getRandomDataAsync()
+### getRandomData()
 
 ```ts
-function getRandomDataAsync(): Promise<string>;
+function getRandomData(): Promise<string>;
 ```
 
-Defined in: [src/data/database.ts:16](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/data/database.ts#L16)
+Defined in: [src/data/database.ts:16](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/data/database.ts#L16)
 
 Async: emulates database read (public)
 
@@ -32,13 +32,13 @@ Async: emulates database read (public)
 
 ***
 
-### getPublicDataSync()
+### getPublicData()
 
 ```ts
-function getPublicDataSync(): string;
+function getPublicData(): string;
 ```
 
-Defined in: [src/data/database.ts:24](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/data/database.ts#L24)
+Defined in: [src/data/database.ts:24](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/data/database.ts#L24)
 
 Sync: emulates database read (public)
 
@@ -48,13 +48,13 @@ Sync: emulates database read (public)
 
 ***
 
-### getProtectedDataSync()
+### getProtectedData()
 
 ```ts
-function getProtectedDataSync(): string;
+function getProtectedData(): string;
 ```
 
-Defined in: [src/data/database.ts:29](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/data/database.ts#L29)
+Defined in: [src/data/database.ts:29](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/data/database.ts#L29)
 
 Sync: emulates database read (protected)
 

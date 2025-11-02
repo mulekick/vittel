@@ -34,12 +34,13 @@ import {pino, transport} from "pino";
 import {pinoHttp} from "pino-http";
 import {domainEvents} from "@vittel/types/enums";
 import {rnd} from "./common.js";
+import {handleError} from "./errors.js";
 
 // import types
-import type {NextFunction, RequestHandler} from "express";
+import type {RequestHandler} from "express";
 import type {DestinationStream, Logger} from "pino";
 import type {HttpLogger} from "pino-http";
-import type {AsyncContextWrapper, FakeMessage} from "@vittel/types";
+import type {FakeMessage} from "@vittel/types";
 
 /**
  * Key used for storing correlation ID in the async local storage.
@@ -87,38 +88,6 @@ export const correlationId = (): string => {
 };
 
 /**
- * Sync wrapper that adds local storage support to functions initiating async call chains.
- * @category Async local storage wrappers
- * @param fn - The express middleware to wrap (sync or async).
- * @param uuid - The current correlation id if the call chain was initiated from another service.
- * @returns The wrapped middleware with async local storage support.
- * @remarks
- * - Uses a functional programming pattern (higher order function).
- * - Returned function must be awaited to trigger the calls chain.
- */
-export const wrapAsyncContextExpress: AsyncContextWrapper<NextFunction> = (fn, uuid) => (...args) => {
-    asyncLocalStorage.run(new Map(), (f, id) => {
-        setCorrelationId(id);
-        f(...args);
-    }, fn, uuid);
-};
-
-/**
- * Sync wrapper that adds local storage support to functions initiating async call chains.
- * @category Async local storage wrappers
- * @param fn - The message queue middleware to wrap (sync or async).
- * @param uuid - The current correlation id if the call chain was initiated from another service.
- * @returns The wrapped function with async local storage support.
- * @remarks
- * - Uses a functional programming pattern (higher order function).
- * - Returned function must be awaited to trigger the calls chain.
- */
-export const wrapAsyncContextFakeMessageQueue: AsyncContextWrapper<(...args: [FakeMessageQueue, unknown])=> Promise<void>> = (fn, uuid) => (...args) => asyncLocalStorage.run(new Map(), async(f, id) => {
-    setCorrelationId(id);
-    await f(...args);
-}, fn, uuid);
-
-/**
  * Express middleware that exposes async local storage to incoming http requests.
  * @category Async local storage middlewares
  * @remarks
@@ -127,7 +96,10 @@ export const wrapAsyncContextFakeMessageQueue: AsyncContextWrapper<(...args: [Fa
  */
 export const setRequestLocalsExpress: RequestHandler = (req, res, next) => {
     const h = req.headers[CORRELATION_ID_KEY];
-    wrapAsyncContextExpress(next, typeof h === `string` && h.length ? h : undefined)(`route`);
+    asyncLocalStorage.run(new Map(), (f, id) => {
+        setCorrelationId(id);
+        f(`route`);
+    }, next, typeof h === `string` && h.length ? h : undefined);
 };
 
 /**
@@ -142,13 +114,45 @@ export const wrapMiddlewareExpress = (mid: RequestHandler): RequestHandler => as
     try {
         // run middleware
         await mid(req, res, next);
-        // eslint compliance
-        return undefined;
     } catch (err: unknown) {
         // delegate to error handling middleware
+        // eslint-disable-next-line n/callback-return
         next(err);
-        // eslint compliance
-        return undefined;
+    }
+};
+
+/**
+ * Middleware-like function that exposes async local storage to the message queue.
+ * @category Async local storage middlewares
+ * @remarks
+ * - Mimics the behavior of express middlewares, called for each incoming messages.
+ * - In the event some transaction id is included in the message, it can be assigned to h.
+ * - Message handler needs to be updated once an actual message queue is used.
+ */
+export const setRequestLocalsFakeMessageQueue = (next: MessageHandler, ...args: Parameters<MessageHandler>): Promise<void> => {
+    const h = undefined;
+    return asyncLocalStorage.run(new Map(), (f, id) => {
+        setCorrelationId(id);
+        return f(...args);
+    }, next, h);
+};
+
+/**
+ * Sync wrapper that adds error handling support to message queue middlewares.
+ * @category Try / catch wrappers
+ * @param mid - The message queue middleware (sync or async).
+ * @returns The wrapped middleware.
+ * @remarks
+ * - Uses a functional programming pattern (higher order function).
+ * - Middleware type needs to be updated once an actual message queue is used.
+ */
+export const wrapMiddlewareFakeMessageQueue = (mid: MessageHandler): MessageHandler => async(...args) => {
+    try {
+        // run middleware
+        await mid(...args);
+    } catch (err: unknown) {
+        // route error to general error handler ...
+        void handleError(err);
     }
 };
 
@@ -204,6 +208,14 @@ export const httpLogger: HttpLogger = pinoHttp({
 });
 
 /**
+ * Signature for message queue middlewares.
+ * @useDeclaredType
+ * @remarks
+ * - Needs to be updated once a genuine message queue / no message queue at all is used.
+ */
+export type MessageHandler = (mq: FakeMessageQueue, msg: unknown)=> Promise<void>;
+
+/**
  * Mocks a message queue
  * - Generates messages and mocks the send() method of an actual message queue.
  * - Imported by the controller layer of the backend service so as to subscribe to it.
@@ -222,12 +234,12 @@ export class FakeMessageQueue extends EventEmitter {
     /**
      * Mocks "process incoming data" events.
      */
-    private static toProcess: Array<string> = [ `Some event`, `Another event`, `One more event` ];
+    private static toProcess = [ `Some event`, `Another event`, `One more event` ];
 
     /**
      * Mocks "persist incoming data" events.
      */
-    private static toPersist: Array<number> = [ 1555263, 98766300, 10000065 ];
+    private static toPersist = [ 1555263, 98766300, 10000065 ];
 
     /**
      * Sync: creates a fake incoming message.

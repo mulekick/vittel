@@ -25,7 +25,7 @@ Shared types and interfaces.
 type Nullable<T> = ZodNull | T["_output"];
 ```
 
-Defined in: [src/types.ts:35](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L35)
+Defined in: [src/types.ts:35](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L35)
 
 Generic type for nullable.
 
@@ -43,7 +43,7 @@ Generic type for nullable.
 type ArrayOf<T> = T["_output"][];
 ```
 
-Defined in: [src/types.ts:43](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L43)
+Defined in: [src/types.ts:43](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L43)
 
 Generic type for arrays.
 
@@ -61,7 +61,7 @@ Generic type for arrays.
 type PromiseOf<T> = Promise<T["_output"]>;
 ```
 
-Defined in: [src/types.ts:51](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L51)
+Defined in: [src/types.ts:51](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L51)
 
 Generic type for promises.
 
@@ -79,7 +79,7 @@ Generic type for promises.
 type TypedFunction<R, T> = TypedFunction<R, T>;
 ```
 
-Defined in: [src/types.ts:60](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L60)
+Defined in: [src/types.ts:60](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L60)
 
 Generic type for functions.
 
@@ -92,40 +92,13 @@ Generic type for functions.
 
 ***
 
-### AsyncContextWrapper\<T\>
+### DomainCallback\<R, T\>
 
 ```ts
-type AsyncContextWrapper<T> = AsyncContextWrapper<T>;
+type DomainCallback<R, T> = DomainCallback<R, T>;
 ```
 
-Defined in: [src/types.ts:72](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L72)
-
-Function type for wrappers that provide local context tracking support for async functions.
-
-#### Type Parameters
-
-| Type Parameter | Description |
-| ------ | ------ |
-| `T` | The return type of the function. |
-
-#### Type Param
-
-The parameter types for the function.
-
-#### Remarks
-
-- Returns a function that executes the function passed as parameter with async context support.
-- Pass an existing uuid when calling the wrapper if the call was triggered from another service.
-
-***
-
-### BindDomainCallback\<R, T\>
-
-```ts
-type BindDomainCallback<R, T> = BindDomainCallback<R, T>;
-```
-
-Defined in: [src/types.ts:93](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L93)
+Defined in: [src/types.ts:81](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L81)
 
 Generic type for functions that bind controller objects to domain callback functions.
 
@@ -154,7 +127,7 @@ Generic type for functions that bind controller objects to domain callback funct
 
 ### TransactionError
 
-Defined in: [src/types.ts:106](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L106)
+Defined in: [src/types.ts:94](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L94)
 
 Domain transaction error object type.
 
@@ -162,14 +135,14 @@ Domain transaction error object type.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="type"></a> `type` | [`domainErrors`](enums.md#domainerrors) | Domain error that occured during the transaction. | [src/types.ts:107](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L107) |
-| <a id="payload"></a> `payload` | `unknown` | Payload that may be associated with the error, unrelated to the original transaction payload. | [src/types.ts:108](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L108) |
+| <a id="type"></a> `type` | [`domainErrors`](enums.md#domainerrors) | Domain error that occured during the transaction. | [src/types.ts:95](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L95) |
+| <a id="payload"></a> `payload` | `unknown` | Payload that may be associated with the error, unrelated to the original transaction payload. | [src/types.ts:96](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L96) |
 
 ***
 
 ### AsyncError
 
-Defined in: [src/types.ts:120](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L120)
+Defined in: [src/types.ts:108](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L108)
 
 Unhandled promise rejection error object type.
 
@@ -182,7 +155,7 @@ Unhandled promise rejection error object type.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="id"></a> `id` | `string` | Correlation id for the async call chains where the promise rejected. | [src/types.ts:121](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L121) |
+| <a id="id"></a> `id` | `string` | Correlation id for the async call chains where the promise rejected. | [src/types.ts:109](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L109) |
 
 ***
 
@@ -192,7 +165,7 @@ Unhandled promise rejection error object type.
 type RequestMock = Partial<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>;
 ```
 
-Defined in: [src/types.ts:135](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L135)
+Defined in: [src/types.ts:123](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L123)
 
 Jest mock function for express request.
 
@@ -208,7 +181,7 @@ Jest mock function for express request.
 type ResponseMock = Partial<Response<any, Record<string, any>>>;
 ```
 
-Defined in: [src/types.ts:144](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L144)
+Defined in: [src/types.ts:132](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L132)
 
 Jest mock function for express response.
 
@@ -224,7 +197,7 @@ Jest mock function for express response.
 type NextFunctionMock = NextFunction;
 ```
 
-Defined in: [src/types.ts:153](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L153)
+Defined in: [src/types.ts:141](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L141)
 
 Jest mock function for express next function.
 
@@ -236,7 +209,7 @@ Jest mock function for express next function.
 
 ### BackendConfigSignature
 
-Defined in: [src/types.ts:178](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L178)
+Defined in: [src/types.ts:166](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L166)
 
 Configuration type for the backend server.
 
@@ -248,24 +221,24 @@ Configuration type for the backend server.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="dirname"></a> `dirName` | `string` | Server process working directory | [src/types.ts:179](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L179) |
-| <a id="vite_srv_entrypoint"></a> `VITE_SRV_ENTRYPOINT` | `string` | Server API root route | [src/types.ts:180](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L180) |
-| <a id="app_host"></a> `APP_HOST` | `string` | Express server host | [src/types.ts:181](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L181) |
-| <a id="app_port"></a> `APP_PORT` | `number` | Express server port | [src/types.ts:182](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L182) |
-| <a id="app_enable_https"></a> `APP_ENABLE_HTTPS` | `boolean` | HTTPS enabled / disabled | [src/types.ts:183](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L183) |
-| <a id="app_serve_bundle"></a> `APP_SERVE_BUNDLE` | `boolean` | Server serves react app bundle at / | [src/types.ts:184](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L184) |
-| <a id="app_bundle_dir"></a> `APP_BUNDLE_DIR` | `string` | React app bundle directory | [src/types.ts:185](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L185) |
-| <a id="app_max_upload_size"></a> `APP_MAX_UPLOAD_SIZE` | `number` | Max size allowed for uploads | [src/types.ts:186](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L186) |
-| <a id="app_keypair_alg"></a> `APP_KEYPAIR_ALG` | `string` | The key pair algorithm. | [src/types.ts:187](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L187) |
-| <a id="app_cookie_name"></a> `APP_COOKIE_NAME` | `string` | Cookie holding the JWT | [src/types.ts:188](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L188) |
-| <a id="app_token_validity"></a> `APP_TOKEN_VALIDITY` | `number` | JWT validity duration in seconds | [src/types.ts:189](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L189) |
-| <a id="app_tls_options"></a> `APP_TLS_OPTIONS` | `ServerOptions` | Server TLS configuration options | [src/types.ts:190](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L190) |
+| <a id="dirname"></a> `dirName` | `string` | Server process working directory | [src/types.ts:167](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L167) |
+| <a id="vite_srv_entrypoint"></a> `VITE_SRV_ENTRYPOINT` | `string` | Server API root route | [src/types.ts:168](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L168) |
+| <a id="app_host"></a> `APP_HOST` | `string` | Express server host | [src/types.ts:169](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L169) |
+| <a id="app_port"></a> `APP_PORT` | `number` | Express server port | [src/types.ts:170](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L170) |
+| <a id="app_enable_https"></a> `APP_ENABLE_HTTPS` | `boolean` | HTTPS enabled / disabled | [src/types.ts:171](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L171) |
+| <a id="app_serve_bundle"></a> `APP_SERVE_BUNDLE` | `boolean` | Server serves react app bundle at / | [src/types.ts:172](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L172) |
+| <a id="app_bundle_dir"></a> `APP_BUNDLE_DIR` | `string` | React app bundle directory | [src/types.ts:173](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L173) |
+| <a id="app_max_upload_size"></a> `APP_MAX_UPLOAD_SIZE` | `number` | Max size allowed for uploads | [src/types.ts:174](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L174) |
+| <a id="app_keypair_alg"></a> `APP_KEYPAIR_ALG` | `string` | The key pair algorithm. | [src/types.ts:175](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L175) |
+| <a id="app_cookie_name"></a> `APP_COOKIE_NAME` | `string` | Cookie holding the JWT | [src/types.ts:176](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L176) |
+| <a id="app_token_validity"></a> `APP_TOKEN_VALIDITY` | `number` | JWT validity duration in seconds | [src/types.ts:177](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L177) |
+| <a id="app_tls_options"></a> `APP_TLS_OPTIONS` | `ServerOptions` | Server TLS configuration options | [src/types.ts:178](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L178) |
 
 ***
 
 ### FrontendConfigSignature
 
-Defined in: [src/types.ts:203](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L203)
+Defined in: [src/types.ts:191](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L191)
 
 Configuration type for the react client app.
 
@@ -273,11 +246,11 @@ Configuration type for the react client app.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="base_url"></a> `BASE_URL` | `string` | ??? | [src/types.ts:204](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L204) |
-| <a id="mode"></a> `MODE` | `string` | Run the app in development or production mode | [src/types.ts:205](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L205) |
-| <a id="vite_host"></a> `VITE_HOST` | `string` | Vite server host | [src/types.ts:206](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L206) |
-| <a id="vite_port"></a> `VITE_PORT` | `number` | Vite server port | [src/types.ts:207](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L207) |
-| <a id="vite_srv_entrypoint-1"></a> `VITE_SRV_ENTRYPOINT` | `string` | Server API root route | [src/types.ts:208](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L208) |
+| <a id="base_url"></a> `BASE_URL` | `string` | ??? | [src/types.ts:192](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L192) |
+| <a id="mode"></a> `MODE` | `string` | Run the app in development or production mode | [src/types.ts:193](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L193) |
+| <a id="vite_host"></a> `VITE_HOST` | `string` | Vite server host | [src/types.ts:194](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L194) |
+| <a id="vite_port"></a> `VITE_PORT` | `number` | Vite server port | [src/types.ts:195](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L195) |
+| <a id="vite_srv_entrypoint-1"></a> `VITE_SRV_ENTRYPOINT` | `string` | Server API root route | [src/types.ts:196](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L196) |
 
 ## Domain types
 
@@ -292,7 +265,7 @@ type FakeMessage = {
 };
 ```
 
-Defined in: [src/types.ts:220](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L220)
+Defined in: [src/types.ts:208](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L208)
 
 Mock message objects.
 
@@ -304,7 +277,7 @@ Mock message objects.
 event: string;
 ```
 
-Defined in: [src/parsers.ts:68](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L68)
+Defined in: [src/parsers.ts:68](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L68)
 
 ##### data?
 
@@ -312,7 +285,7 @@ Defined in: [src/parsers.ts:68](https://github.com/mulekick/vittel/blob/fd6f7ece
 optional data: unknown;
 ```
 
-Defined in: [src/parsers.ts:69](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L69)
+Defined in: [src/parsers.ts:69](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L69)
 
 ***
 
@@ -325,7 +298,7 @@ type SampleData = {
 };
 ```
 
-Defined in: [src/types.ts:227](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L227)
+Defined in: [src/types.ts:215](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L215)
 
 Sample data objects.
 
@@ -337,7 +310,7 @@ Sample data objects.
 data: string;
 ```
 
-Defined in: [src/parsers.ts:57](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L57)
+Defined in: [src/parsers.ts:57](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L57)
 
 ##### timestamp
 
@@ -345,7 +318,7 @@ Defined in: [src/parsers.ts:57](https://github.com/mulekick/vittel/blob/fd6f7ece
 timestamp: number;
 ```
 
-Defined in: [src/parsers.ts:58](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L58)
+Defined in: [src/parsers.ts:58](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L58)
 
 ## React types
 
@@ -353,7 +326,7 @@ Defined in: [src/parsers.ts:58](https://github.com/mulekick/vittel/blob/fd6f7ece
 
 ### ResourceFetchingSignature
 
-Defined in: [src/types.ts:238](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L238)
+Defined in: [src/types.ts:226](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L226)
 
 "Resource fetching" component props type.
 
@@ -361,15 +334,15 @@ Defined in: [src/types.ts:238](https://github.com/mulekick/vittel/blob/fd6f7ece7
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="content"></a> `content` | \{ `data`: `string`; `timestamp`: `number`; \} | [src/types.ts:239](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L239) |
-| `content.data` | `string` | [src/parsers.ts:57](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L57) |
-| `content.timestamp` | `number` | [src/parsers.ts:58](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/parsers.ts#L58) |
+| <a id="content"></a> `content` | \{ `data`: `string`; `timestamp`: `number`; \} | [src/types.ts:227](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L227) |
+| `content.data` | `string` | [src/parsers.ts:57](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L57) |
+| `content.timestamp` | `number` | [src/parsers.ts:58](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/parsers.ts#L58) |
 
 ***
 
 ### WebTokensSignature
 
-Defined in: [src/types.ts:247](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L247)
+Defined in: [src/types.ts:235](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L235)
 
 "Web tokens" component props type.
 
@@ -377,13 +350,13 @@ Defined in: [src/types.ts:247](https://github.com/mulekick/vittel/blob/fd6f7ece7
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="protectedcontent"></a> `protectedContent` | `string` | [src/types.ts:248](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L248) |
+| <a id="protectedcontent"></a> `protectedContent` | `string` | [src/types.ts:236](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L236) |
 
 ***
 
 ### ModuleBundlingSignature
 
-Defined in: [src/types.ts:256](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L256)
+Defined in: [src/types.ts:244](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L244)
 
 "Module bundling" component props type.
 
@@ -391,4 +364,4 @@ Defined in: [src/types.ts:256](https://github.com/mulekick/vittel/blob/fd6f7ece7
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="pepe"></a> `pepe` | `string` | [src/types.ts:257](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/types/src/types.ts#L257) |
+| <a id="pepe"></a> `pepe` | `string` | [src/types.ts:245](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/types/src/types.ts#L245) |

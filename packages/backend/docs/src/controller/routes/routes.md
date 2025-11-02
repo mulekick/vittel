@@ -21,7 +21,7 @@ Main express router
 const xRoutes: Router;
 ```
 
-Defined in: [src/controller/routes/routes.ts:21](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/controller/routes/routes.ts#L21)
+Defined in: [src/controller/routes/routes.ts:21](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/routes/routes.ts#L21)
 
 Mounts imported routers on the app entrypoint
 

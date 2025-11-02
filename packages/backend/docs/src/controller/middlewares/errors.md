@@ -15,32 +15,32 @@ Feature-specific express middleware.
 
 ## Variables
 
-### mThrowErrorSync
+### mThrowError
 
 ```ts
-const mThrowErrorSync: RequestHandler;
+const mThrowError: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/errors.ts:22](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/controller/middlewares/errors.ts#L22)
+Defined in: [src/controller/middlewares/errors.ts:20](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/middlewares/errors.ts#L20)
 
 Sync: trigger error in domain
 
 #### See
 
-[Throw error (sync)](../../domain/transactions/errors.md#throwerrorsync)
+[Throw error (sync)](../../domain/transactions/errors.md#throwerror)
 
 ***
 
-### mEmitErrorAsync
+### mEmitError
 
 ```ts
-const mEmitErrorAsync: RequestHandler;
+const mEmitError: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/errors.ts:33](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/controller/middlewares/errors.ts#L33)
+Defined in: [src/controller/middlewares/errors.ts:31](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/middlewares/errors.ts#L31)
 
 Async: trigger error in domain, event emitter emits error, promise rejects
 
 #### See
 
-[Emit error (async)](../../domain/transactions/errors.md#emiterrorasync)
+[Emit error (async)](../../domain/transactions/errors.md#emiterror)

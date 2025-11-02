@@ -23,7 +23,7 @@ const {APP_ENABLE_HTTPS, APP_COOKIE_NAME} = config;
  * Delivers a token everytime, equivalent to the '/login' route
  * @see {@link issueToken | Issue a token}
  */
-export const mToken: RequestHandler = (...args) => wrapMiddlewareExpress(async(req, res, next) => {
+export const mToken: RequestHandler = wrapMiddlewareExpress(async(req, res) => {
     // initialize domain transaction
     const transaction = await issueToken();
     // response
@@ -41,26 +41,26 @@ export const mToken: RequestHandler = (...args) => wrapMiddlewareExpress(async(r
     })
         // no data transmission
         .status(201).end();
-})(...args);
+});
 
 /**
  * Protection middleware, verifies JWT validity
  * @see {@link validateToken | Validate a token}
  */
-export const mProtection: RequestHandler = (...args) => wrapMiddlewareExpress(async(req, res, next) => {
+export const mProtection: RequestHandler = wrapMiddlewareExpress(async(req, res, next) => {
     // initialize domain transaction
     await validateToken((req.cookies as Record<string, string>)[APP_COOKIE_NAME]);
     // proceed to next middleware
     next();
-})(...args);
+});
 
 /**
  * Fallback middleware
  * @see {@link getFallback | Get fallback data}
  */
-export const mFallback: RequestHandler = (...args) => wrapMiddlewareExpress((req, res, next) => {
+export const mFallback: RequestHandler = wrapMiddlewareExpress((req, res) => {
     // initialize domain transaction
     const transaction = getFallback();
     // response
     res.status(200).send(transaction);
-})(...args);
+});

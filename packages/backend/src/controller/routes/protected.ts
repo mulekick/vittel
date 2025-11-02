@@ -18,12 +18,8 @@ import {mUpload} from "../middlewares/upload.ts";
  * @see {@link mUpload | Route to process file uploads}
  * @see {@link mFallback | Protected resources sit there}
  */
-const xProtected: Router = Router();
-
-xProtected
+export const xProtected: Router = Router()
     .get(`/token`, mToken)
     .use(mProtection)
     .post(`/upload`, mUpload)
     .get(`*`, mFallback);
-
-export {xProtected};

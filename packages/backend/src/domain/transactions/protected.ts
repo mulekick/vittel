@@ -8,15 +8,13 @@
  * - Do not import controller layer modules here to remain framework agnostic.
  */
 
-/* eslint-disable n/no-sync */
-
 // import modules
 import {z} from "zod";
 import {JOSEError} from "jose/errors";
 import {correlationId, logger} from "@vittel/utils";
 import {DomainError, domainErrors} from "@vittel/utils/errors";
 import {signToken, verifyToken} from "../helpers/jwt.ts";
-import {getProtectedDataSync} from "../../data/database.ts";
+import {getProtectedData} from "../../data/database.ts";
 
 // import parsers
 import {parsers} from "@vittel/types/parsers";
@@ -52,6 +50,6 @@ export const validateToken = async(token: string | undefined): Promise<null> => 
 
 /**
  * Sync: call to data layer (protected)
- * @see {@link getProtectedDataSync | Data layer call}
+ * @see {@link getProtectedData | Data layer call}
  */
-export const getFallback = (): string => z.string().parse(getProtectedDataSync());
+export const getFallback = (): string => z.string().parse(getProtectedData());

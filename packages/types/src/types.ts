@@ -60,18 +60,6 @@ export type PromiseOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parser
 export type TypedFunction<R extends Array<unknown>, T> = (...args: R)=> T;
 
 /**
- * Function type for wrappers that provide local context tracking support for async functions.
- * @category Builtin types
- * @typeParam R The parameter types for the function.
- * @typeParam T The return type of the function.
- * @useDeclaredType
- * @remarks
- * - Returns a function that executes the function passed as parameter with async context support.
- * - Pass an existing uuid when calling the wrapper if the call was triggered from another service.
- */
-export type AsyncContextWrapper<T> = T extends TypedFunction<infer Z, infer X> ? (fn: (...args: Z)=> X, uuid?: string)=> (...args: Z)=> X : never;
-
-/**
  * Generic type for functions that bind controller objects to domain callback functions.
  * @category Builtin types
  * @typeParam R The types of controller objects to bind to the domain callback.
@@ -90,7 +78,7 @@ export type AsyncContextWrapper<T> = T extends TypedFunction<infer Z, infer X> ?
  * - See [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
  * - See also [parameters vs arguments](https://developer.mozilla.org/en-US/docs/Glossary/Parameter#parameters_versus_arguments) (for clarity).
  */
-export type BindDomainCallback<R extends Array<unknown>, T> = T extends TypedFunction<infer Z, infer X> ? (...args: [...R, ...Z])=> X : never;
+export type DomainCallback<R extends Array<unknown>, T> = T extends TypedFunction<infer Z, infer X> ? (...args: [...R, ...Z])=> X : never;
 
 // ##############################################################
 // #                         ERROR TYPES                        #

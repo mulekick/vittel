@@ -6,33 +6,31 @@
  * - Middlewares that call the error handling patterns API and use middleware wrapper for error routing.
  */
 
-/* eslint-disable n/no-sync */
-
 // import modules
 import {wrapMiddlewareExpress} from "@vittel/utils";
-import {throwErrorSync, emitErrorAsync} from "../../domain/transactions/errors.ts";
+import {throwError, emitError} from "../../domain/transactions/errors.ts";
 
 // import types
 import type {RequestHandler} from "express";
 
 /**
  * Sync: trigger error in domain
- * @see {@link throwErrorSync | Throw error (sync)}
+ * @see {@link throwError | Throw error (sync)}
  */
-export const mThrowErrorSync: RequestHandler = (...args) => wrapMiddlewareExpress((req, res, next) => {
+export const mThrowError: RequestHandler = wrapMiddlewareExpress((req, res) => {
     // initialize domain transaction
-    const transaction = throwErrorSync();
+    const transaction = throwError();
     // response
     res.status(200).send(transaction);
-})(...args);
+});
 
 /**
  * Async: trigger error in domain, event emitter emits error, promise rejects
- * @see {@link emitErrorAsync | Emit error (async)}
+ * @see {@link emitError | Emit error (async)}
  */
-export const mEmitErrorAsync: RequestHandler = (...args) => wrapMiddlewareExpress(async(req, res, next) => {
+export const mEmitError: RequestHandler = wrapMiddlewareExpress(async(req, res) => {
     // initialize domain transaction
-    const transaction = await emitErrorAsync();
+    const transaction = await emitError();
     // response
     res.status(200).send(transaction);
-})(...args);
+});

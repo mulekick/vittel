@@ -16,21 +16,15 @@ File system access features.
 
 ## Functions
 
-### getWritableStreamToFileSync()
+### getWritableStreamToFile()
 
 ```ts
-function getWritableStreamToFileSync(path): WriteStream;
+function getWritableStreamToFile(): WriteStream;
 ```
 
-Defined in: [src/data/filesystem.ts:21](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/data/filesystem.ts#L21)
+Defined in: [src/data/filesystem.ts:19](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/data/filesystem.ts#L19)
 
-Sync: creates a writable stream to a file system path
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `path` | `string` |
+Sync: creates a writable stream to a file system path (demonstration: discard file to /dev/null)
 
 #### Returns
 

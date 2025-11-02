@@ -21,7 +21,7 @@ Feature-specific express middleware.
 const mUpload: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/fd6f7ece7df6639cbc3c099ded62d635ce6ae274/packages/backend/src/controller/middlewares/upload.ts#L29)
+Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/8307f932f4f19ea2d97df542348a9b002b5fc519/packages/backend/src/controller/middlewares/upload.ts#L29)
 
 Async file upload middleware
 - Advanced example of strict isolation of the controller layer from the domain layer
@@ -31,5 +31,5 @@ Async file upload middleware
 
 #### See
 
- - [Upload a file](../../domain/transactions/upload.md#createfileuploader)
+ - [Upload a file](../../domain/transactions/upload.md#createuploader)
  - [Get upload results](../../domain/transactions/upload.md#getuploadresult)

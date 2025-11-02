@@ -37,17 +37,17 @@
     - Code for a server app that executes in a node.js environment.
     - Supports different configs for development and production mode.
     - CI/CD pipeline builds the package into a docker image ready for deployment.
-    - [`@vittel/backend`](packages/backend/README.md) is included as template.
+    - [`@vittel/backend`](packages/backend/README.md) is included as a template.
 3. **Frontend packages** :
     - Code for a browser app that is statically served by another service (node.js or external).
     - Supports different configs for development and production mode.
     - CI/CD pipeline builds the package and publishes it to a static serving location.
-    - [`@vittel/frontend`](packages/frontend/README.md) is included as template.
+    - [`@vittel/frontend`](packages/frontend/README.md) is included as a template.
 4. **E2e packages** :
     - Code for end-to-end tests, not part of the app itself.
     - End-to-end tests support browser automation with `puppeteer` and `jest`.
     - CI/CD pipeline will error (thus alert) should any of those tests fail.
-    - [`@vittel/e2e`](packages/e2e/README.md) is included as template.
+    - [`@vittel/e2e`](packages/e2e/README.md) is included as a template.
 5. **External packages** :
     - Non-typescript services required for app operation or e2e tests (databases, proxies, message queues, etc).
     - Such services usually contain only configuration assets and optionally a `Dockerfile`.

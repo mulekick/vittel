@@ -20,12 +20,12 @@ import {DomainError} from "@vittel/utils/errors";
 /**
  * Async: process incoming data
  */
-const processIncomingDataSomehow = (data: string): Promise<string> => Promise.resolve(`event data processed: ${ data }`);
+const processDataSomehow = (data: string): Promise<string> => Promise.resolve(`event data processed: ${ data }`);
 
 /**
  * Async: persist incoming data
  */
-const persistIncomingDataSomehow = (data: number): Promise<string> => Promise.resolve(`event data persisted: ${ String(data) }`);
+const persistDataSomehow = (data: number): Promise<string> => Promise.resolve(`event data persisted: ${ String(data) }`);
 
 /**
  * User processed event callback function type
@@ -51,17 +51,17 @@ export const processFakeEvent = async(message: unknown, onProcessed: dataProcess
     // mock processing time and execute callbacks ...
     switch (event) {
     case domainEvents.EVT_PROCESS_DATA :
-        await new Promise(r => {setTimeout(r, rnd(1, 10) * 1e3);});
+        // await new Promise(r => {setTimeout(r, rnd(1, 5) * 1e3);});
         onProcessed({
             event: domainEvents.EVT_DATA_PROCESSED,
-            payload: await processIncomingDataSomehow(z.string().parse(data))
+            payload: await processDataSomehow(z.string().parse(data))
         });
         break;
     case domainEvents.EVT_PERSIST_DATA :
-        await new Promise(r => {setTimeout(r, rnd(1, 10) * 1e3);});
+        // await new Promise(r => {setTimeout(r, rnd(1, 5) * 1e3);});
         onPersisted({
             event: domainEvents.EVT_DATA_PERSISTED,
-            payload: await persistIncomingDataSomehow(z.number().parse(data))
+            payload: await persistDataSomehow(z.number().parse(data))
         });
         break;
     default :

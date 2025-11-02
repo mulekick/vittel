@@ -24,5 +24,5 @@ export enum domainEvents {
     EVT_PROCESS_DATA = `processData`,
     EVT_PERSIST_DATA = `persistData`,
     EVT_DATA_PROCESSED = `dataProcessed`,
-    EVT_DATA_PERSISTED = `dataPresisted`
+    EVT_DATA_PERSISTED = `dataPersisted`
 };

@@ -8,11 +8,9 @@
  * - Do not import controller layer modules here to remain framework agnostic.
  */
 
-/* eslint-disable n/no-sync */
-
 // import modules
 import {z} from "zod";
-import {getRandomDataAsync, getPublicDataSync} from "../../data/database.ts";
+import {getRandomData, getPublicData} from "../../data/database.ts";
 
 // import parsers
 import {parsers} from "@vittel/types/parsers";
@@ -22,11 +20,11 @@ import type {SampleData} from "@vittel/types";
 
 /**
  * Async: call to data layer (public)
- * @see {@link getRandomDataAsync | Data layer call}
+ * @see {@link getRandomData | Data layer call}
  */
 export const getData = async(): Promise<SampleData> => {
     const result = {
-        data: await getRandomDataAsync(),
+        data: await getRandomData(),
         timestamp: new Date().getTime()
     };
     return parsers.SampleData.parse(result);
@@ -34,6 +32,6 @@ export const getData = async(): Promise<SampleData> => {
 
 /**
  * Sync: call to data layer (public)
- * @see {@link getPublicDataSync | Data layer call}
+ * @see {@link getPublicData | Data layer call}
  */
-export const getFallback = (): string => z.string().parse(getPublicDataSync());
+export const getFallback = (): string => z.string().parse(getPublicData());

@@ -21,8 +21,6 @@
 | [src/controller/routes/routes](src/controller/routes/routes.md) | Main express router |
 | [src/data/database](src/data/database.md) | Database access features. |
 | [src/data/filesystem](src/data/filesystem.md) | File system access features. |
-| [src/domain/classes/emitter](src/domain/classes/emitter.md) | Event emitter based class for demonstration. |
-| [src/domain/classes/uploader](src/domain/classes/uploader.md) | Duplex stream based file uploading class. |
 | [src/domain/helpers/jwt](src/domain/helpers/jwt.md) | Feature agnostic helpers. |
 | [src/domain/transactions/errors](src/domain/transactions/errors.md) | Features that involve handling and routing of errors. |
 | [src/domain/transactions/messages](src/domain/transactions/messages.md) | Domain feature that involve message-related processing. |
