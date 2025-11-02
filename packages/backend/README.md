@@ -76,6 +76,6 @@ Example node.js server app.
 - The node app build serves the react app, thus package [`@vittel/frontend`](../frontend/README.md) is included as a dependency.
 - In a real world scenario, the react app build would be published elsewhere to be served by a [reverse proxy](https://github.com/goldbergyoni/nodebestpractices/blob/master/sections/production/delegatetoproxy.md).
 - `src/controller/middlewares` also stores non HTTP based middlewares ([message queues](./src/controller/middlewares/subscriber.ts) etc) that access the server API. 
-- Example implementations of [data streams](./src/domain/classes/uploader.ts) and [event emitters](./src/domain/classes/emitter.ts) usage in the domain layer are available.
+- Example implementations of [data streams](./src/domain/transactions/upload.ts) and [event emitters](./src/domain/transactions/errors.ts) usage in the domain layer are available.
 - `src/stub.test.ts` should not be removed so the `test` task does not fail if no other test files exist.
 - Run `npx lerna run docs:build` to build the [docs](./docs/README.md) for all packages for details about specific modules.
