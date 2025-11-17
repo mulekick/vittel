@@ -28,4 +28,4 @@ Client-side environment variables.
 const default: FrontendConfigSignature;
 ```
 
-Defined in: [src/app/helpers/env.ts:20](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/frontend/src/app/helpers/env.ts#L20)
+Defined in: [src/app/helpers/env.ts:20](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/frontend/src/app/helpers/env.ts#L20)

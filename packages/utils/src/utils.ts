@@ -2,17 +2,15 @@
  * Node.js based shared utility functions.
  * @module
  * @showCategories
- * @categoryDescription Async local storage
+ * @categoryDescription 1. Async local storage
  * - Manages the persistence of values during async call chains that may involve multiple services.
- * @categoryDescription Async local storage wrappers
- * - Wrapper functions that add async local storage support to controller layer middlewares.
- * @categoryDescription Async local storage middlewares
+ * @categoryDescription 2. Async local storage middlewares
  * - Framework-specific middlewares enabling async local storage support for incoming requests.
- * @categoryDescription Try / catch wrappers
+ * @categoryDescription 3. Try / catch wrappers
  * - Wrapper functions that add error handling support to framework-specific middlewares.
- * @categoryDescription Logging
+ * @categoryDescription 4. Logging
  * - Provides centralized, feature agnostic logging features.
- * @categoryDescription Miscellaneous
+ * @categoryDescription 5. Miscellaneous
  * - Provides centralized, feature agnostic miscellaneous features.
  * @remarks
  * - Scope : GENERAL
@@ -46,7 +44,7 @@ import type {FakeMessage} from "@vittel/types";
  * Key used for storing correlation ID in the async local storage.
  * @remarks
  * - Used as an http header as well for cross service requests.
- * @category Async local storage
+ * @category 1. Async local storage
  */
 export const CORRELATION_ID_KEY = `x-correlation-id`;
 
@@ -54,13 +52,13 @@ export const CORRELATION_ID_KEY = `x-correlation-id`;
  * Init async local storage.
  * @remarks
  * - Init with a map object to persist multiple values if needed.
- * @category Async local storage
+ * @category 1. Async local storage
  */
 export const asyncLocalStorage: AsyncLocalStorage<Map<string, string>> = new AsyncLocalStorage<Map<string, string>>();
 
 /**
  * Sync function that sets the correlation id for current async calls chain.
- * @category Async local storage
+ * @category 1. Async local storage
  * @param id - The current correlation id if the call chain was initiated from another service.
  * @throws Throws a generic error if async local storage is not initialized.
  */
@@ -73,7 +71,7 @@ export const setCorrelationId = (id: string | undefined): void => {
 
 /**
  * Sync function that retrieves the correlation id for current async calls chain.
- * @category Async local storage
+ * @category 1. Async local storage
  * @returns The current correlation id.
  * @throws Throws a generic error if async local storage is not initialized or if the id is not found.
  */
@@ -89,7 +87,7 @@ export const correlationId = (): string => {
 
 /**
  * Express middleware that exposes async local storage to incoming http requests.
- * @category Async local storage middlewares
+ * @category 2. Async local storage middlewares
  * @remarks
  * - Pass request header in the event the initial transaction originates from another service.
  * - `route` is passed only for typescript compliance, should be painless but beware.
@@ -104,7 +102,7 @@ export const setRequestLocalsExpress: RequestHandler = (req, res, next) => {
 
 /**
  * Sync wrapper that adds error handling support to express middlewares.
- * @category Try / catch wrappers
+ * @category 3. Try / catch wrappers
  * @param mid - The original express middleware (sync or async).
  * @returns The wrapped middleware.
  * @remarks
@@ -123,7 +121,7 @@ export const wrapMiddlewareExpress = (mid: RequestHandler): RequestHandler => as
 
 /**
  * Middleware-like function that exposes async local storage to the message queue.
- * @category Async local storage middlewares
+ * @category 2. Async local storage middlewares
  * @remarks
  * - Mimics the behavior of express middlewares, called for each incoming messages.
  * - In the event some transaction id is included in the message, it can be assigned to h.
@@ -139,7 +137,7 @@ export const setRequestLocalsFakeMessageQueue = (next: MessageHandler, ...args: 
 
 /**
  * Sync wrapper that adds error handling support to message queue middlewares.
- * @category Try / catch wrappers
+ * @category 3. Try / catch wrappers
  * @param mid - The message queue middleware (sync or async).
  * @returns The wrapped middleware.
  * @remarks
@@ -158,7 +156,7 @@ export const wrapMiddlewareFakeMessageQueue = (mid: MessageHandler): MessageHand
 
 /**
  * Specify outputs to write logs to using pino transports.
- * @category Logging
+ * @category 4. Logging
  * @remarks
  * 1. Local log file / observability service endpoint etc, discard for now.
  * 2. Stdout, use options to prettify the output.
@@ -183,13 +181,13 @@ export const logWritables = transport({
 
 /**
  * Constant that will instantiate the pino logger and pipe it to the outputs.
- * @category Logging
+ * @category 4. Logging
  */
 export const logger: Logger = pino(logWritables);
 
 /**
  * Wrapper around the main logger for use as an express logging middleware.
- * @category Logging
+ * @category 4. Logging
  */
 export const httpLogger: HttpLogger = pinoHttp({
     // define a custom request id function
@@ -209,6 +207,7 @@ export const httpLogger: HttpLogger = pinoHttp({
 
 /**
  * Signature for message queue middlewares.
+ * @category 5. Miscellaneous
  * @useDeclaredType
  * @remarks
  * - Needs to be updated once a genuine message queue / no message queue at all is used.
@@ -220,7 +219,7 @@ export type MessageHandler = (mq: FakeMessageQueue, msg: unknown)=> Promise<void
  * - Generates messages and mocks the send() method of an actual message queue.
  * - Imported by the controller layer of the backend service so as to subscribe to it.
  * - This class can be discarded once a genuine message queue / no message queue at all is used.
- * @category Miscellaneous
+ * @category 5. Miscellaneous
  * @class
  */
 export class FakeMessageQueue extends EventEmitter {

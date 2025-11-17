@@ -26,7 +26,7 @@ Feature-specific express router.
 const xPublic: Router;
 ```
 
-Defined in: [src/controller/routes/public.ts:18](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/controller/routes/public.ts#L18)
+Defined in: [src/controller/routes/public.ts:18](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/routes/public.ts#L18)
 
 Mounts public API middlewares on /public
 

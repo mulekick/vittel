@@ -25,7 +25,7 @@ Client side module bundling component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/moduleBundling.tsx:19](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/frontend/src/app/components/moduleBundling.tsx#L19)
+Defined in: [src/app/components/moduleBundling.tsx:19](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/frontend/src/app/components/moduleBundling.tsx#L19)
 
 Minimal component for external module bundling support.
 

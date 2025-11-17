@@ -26,7 +26,7 @@ Feature-specific express middleware.
 const mUpload: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/controller/middlewares/upload.ts#L29)
+Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/middlewares/upload.ts#L29)
 
 Async file upload middleware
 

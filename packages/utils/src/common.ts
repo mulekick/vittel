@@ -2,7 +2,7 @@
  * Common shared utility functions.
  * @module
  * @showCategories
- * @categoryDescription Miscellaneous
+ * @categoryDescription 1. Miscellaneous
  * - Provides centralized, feature agnostic miscellaneous features.
  * @remarks
  * - Scope : GENERAL
@@ -14,12 +14,12 @@
 
 /**
  * Config only util to handle type conversion from dotenv values.
- * @category Miscellaneous
+ * @category 1. Miscellaneous
  */
 export const configParseNumber = (value: string, defaultValue: number): number => (value && value.length && typeof Number(value) === `number` ? Number(value) : defaultValue);
 
 /**
  * Returns a random number between 2 values.
- * @category Miscellaneous
+ * @category 1. Miscellaneous
  */
 export const rnd = (lb: number, ub: number): number => lb + Math.round(Math.random() * (ub - lb));

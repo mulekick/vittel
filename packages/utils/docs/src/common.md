@@ -11,7 +11,7 @@ Common shared utility functions.
 ## Table of contents
 
 * [Remarks](#remarks)
-* [Miscellaneous](#miscellaneous)
+* [1. Miscellaneous](#1-miscellaneous)
 
 ## Remarks
 
@@ -21,7 +21,7 @@ Common shared utility functions.
 * Domain-specific functions will be declared at the package scope.
 * This module can be imported in node.js based packages as well as browser packages.
 
-## Miscellaneous
+## 1. Miscellaneous
 
 * Provides centralized, feature agnostic miscellaneous features.
 
@@ -31,7 +31,7 @@ Common shared utility functions.
 function configParseNumber(value, defaultValue): number;
 ```
 
-Defined in: [src/common.ts:19](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/utils/src/common.ts#L19)
+Defined in: [src/common.ts:19](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/common.ts#L19)
 
 Config only util to handle type conversion from dotenv values.
 
@@ -54,7 +54,7 @@ Config only util to handle type conversion from dotenv values.
 function rnd(lb, ub): number;
 ```
 
-Defined in: [src/common.ts:25](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/utils/src/common.ts#L25)
+Defined in: [src/common.ts:25](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/common.ts#L25)
 
 Returns a random number between 2 values.
 

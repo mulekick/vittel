@@ -2,11 +2,11 @@
  * Shared types and interfaces.
  * @module
  * @showCategories
- * @categoryDescription Builtin types
+ * @categoryDescription 1. Builtin types
  * - Types that are transversal to all app layers (controller / domain / data).
- * @categoryDescription Domain types
+ * @categoryDescription 2. Domain types
  * - Types for feature oriented objects from the domain layer.
- * @categoryDescription React types
+ * @categoryDescription 3. React types
  * - Types for react component props static typing in the frontend packages.
  * @remarks
  * - Scope : GENERAL.
@@ -28,7 +28,7 @@ import type {parsers} from "./parsers.ts";
 
 /**
  * Generic type for nullable.
- * @category Builtin types
+ * @category 1. Builtin types
  * @typeParam T Initial type to be rendered nullable.
  * @useDeclaredType
  */
@@ -36,7 +36,7 @@ export type Nullable<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers
 
 /**
  * Generic type for arrays.
- * @category Builtin types
+ * @category 1. Builtin types
  * @typeParam T Initial type to parse the array with.
  * @useDeclaredType
  */
@@ -45,7 +45,7 @@ export type ArrayOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers.
 /**
  * Generic type for promises.
  * @typeParam T Initial type to be promisified.
- * @category Builtin types
+ * @category 1. Builtin types
  * @useDeclaredType
  */
 export type PromiseOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers.PromiseOf<T>>>;
@@ -54,14 +54,14 @@ export type PromiseOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parser
  * Generic type for functions.
  * @typeParam R Function parameters type tuple.
  * @typeParam T Return value type (can be a promise).
- * @category Builtin types
+ * @category 1. Builtin types
  * @useDeclaredType
  */
 export type TypedFunction<R extends Array<unknown>, T> = (...args: R)=> T;
 
 /**
  * Generic type for functions that bind controller objects to domain callback functions.
- * @category Builtin types
+ * @category 1. Builtin types
  * @typeParam R The types of controller objects to bind to the domain callback.
  * @typeParam T The function type of the callback the domain will execute.
  * @useDeclaredType
@@ -86,7 +86,7 @@ export type DomainCallback<R extends Array<unknown>, T> = T extends TypedFunctio
 
 /**
  * Domain transaction error object type.
- * @category Builtin types
+ * @category 1. Builtin types
  * @interface
  * @property type - Domain error that occured during the transaction.
  * @property payload - Payload that may be associated with the error, unrelated to the original transaction payload.
@@ -98,7 +98,7 @@ export interface TransactionError {
 
 /**
  * Unhandled promise rejection error object type.
- * @category Builtin types
+ * @category 1. Builtin types
  * @interface
  * @property id - Correlation id for the async call chains where the promise rejected.
  * @remarks
@@ -115,7 +115,7 @@ export interface AsyncError {
 
 /**
  * Jest mock function for express request.
- * @category Builtin types
+ * @category 1. Builtin types
  * @useDeclaredType
  * @remarks
  * - Used to write jest unit tests for express middlewares.
@@ -124,7 +124,7 @@ export type RequestMock = Partial<ExpressRequest>;
 
 /**
  * Jest mock function for express response.
- * @category Builtin types
+ * @category 1. Builtin types
  * @useDeclaredType
  * @remarks
  * - Used to write jest unit tests for express middlewares.
@@ -133,7 +133,7 @@ export type ResponseMock = Partial<ExpressResponse>;
 
 /**
  * Jest mock function for express next function.
- * @category Builtin types
+ * @category 1. Builtin types
  * @useDeclaredType
  * @remarks
  * - Used to write jest unit tests for express middlewares.
@@ -146,7 +146,7 @@ export type NextFunctionMock = NextFunction;
 
 /**
  * Configuration type for the backend server.
- * @category Builtin types
+ * @category 1. Builtin types
  * @interface
  * @property dirName - Server process working directory
  * @property VITE_SRV_ENTRYPOINT - Server API root route
@@ -180,7 +180,7 @@ export interface BackendConfigSignature {
 
 /**
  * Configuration type for the react client app.
- * @category Builtin types
+ * @category 1. Builtin types
  * @interface
  * @property BASE_URL - ???
  * @property MODE - Run the app in development or production mode
@@ -202,14 +202,14 @@ export interface FrontendConfigSignature {
 
 /**
  * Mock message objects.
- * @category Domain types
+ * @category 2. Domain types
  * @useDeclaredType
  */
 export type FakeMessage = z.infer<typeof parsers.FakeMessage>;
 
 /**
  * Sample data objects.
- * @category Domain types
+ * @category 2. Domain types
  * @useDeclaredType
  */
 export type SampleData = z.infer<typeof parsers.SampleData>;
@@ -220,7 +220,7 @@ export type SampleData = z.infer<typeof parsers.SampleData>;
 
 /**
  * "Resource fetching" component props type.
- * @category React types
+ * @category 3. React types
  * @interface
  */
 export interface ResourceFetchingSignature {
@@ -229,7 +229,7 @@ export interface ResourceFetchingSignature {
 
 /**
  * "Web tokens" component props type.
- * @category React types
+ * @category 3. React types
  * @interface
  */
 export interface WebTokensSignature {
@@ -238,7 +238,7 @@ export interface WebTokensSignature {
 
 /**
  * "Module bundling" component props type.
- * @category React types
+ * @category 3. React types
  * @interface
  */
 export interface ModuleBundlingSignature {

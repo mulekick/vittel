@@ -26,7 +26,7 @@ Feature-specific express middleware.
 const mFetch: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/public.ts:20](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/controller/middlewares/public.ts#L20)
+Defined in: [src/controller/middlewares/public.ts:20](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/middlewares/public.ts#L20)
 
 Async data fetching middleware
 
@@ -42,7 +42,7 @@ Async data fetching middleware
 const mFallback: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/public.ts:31](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/controller/middlewares/public.ts#L31)
+Defined in: [src/controller/middlewares/public.ts:31](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/middlewares/public.ts#L31)
 
 Sync fallback middleware
 
