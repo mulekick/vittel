@@ -8,11 +8,16 @@
 
 Feature agnostic helpers.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Functions](#functions)
+
 ## Remarks
 
-- Scope : DOMAIN / HELPERS.
-- Implements feature-agnostic helpers in dedicated modules.
-- Helpers functions should not involve the controller or data layers.
+* Scope : DOMAIN / HELPERS.
+* Implements feature-agnostic helpers in dedicated modules.
+* Helpers functions should not involve the controller or data layers.
 
 ## Functions
 
@@ -22,7 +27,7 @@ Feature agnostic helpers.
 function signToken(payload): Promise<string>;
 ```
 
-Defined in: [src/domain/helpers/jwt.ts:42](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/helpers/jwt.ts#L42)
+Defined in: [src/domain/helpers/jwt.ts:42](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/helpers/jwt.ts#L42)
 
 Async: create jwt string from payload object
 
@@ -34,7 +39,7 @@ Async: create jwt string from payload object
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`<`string`>
 
 ***
 
@@ -44,7 +49,7 @@ Async: create jwt string from payload object
 function verifyToken(token): Promise<JWTVerifyResult<JWTPayload>>;
 ```
 
-Defined in: [src/domain/helpers/jwt.ts:59](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/helpers/jwt.ts#L59)
+Defined in: [src/domain/helpers/jwt.ts:59](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/helpers/jwt.ts#L59)
 
 Async: verify jwt signature from string
 
@@ -56,4 +61,4 @@ Async: verify jwt signature from string
 
 #### Returns
 
-`Promise`\<`JWTVerifyResult`\<`JWTPayload`\>\>
+`Promise`<`JWTVerifyResult`<`JWTPayload`>>

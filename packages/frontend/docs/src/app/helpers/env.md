@@ -8,12 +8,17 @@
 
 Client-side environment variables.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CLIENT / HELPERS.
-- This module proxyies the values retrieved from the vite-specific env property
-- Doing so is mandatory so the config can be mocked in the jest tests for the app.
-- Type annotations are needed because of the tsconfig "isolatedModules" flag.
+* Scope : CLIENT / HELPERS.
+* This module proxyies the values retrieved from the vite-specific env property
+* Doing so is mandatory so the config can be mocked in the jest tests for the app.
+* Type annotations are needed because of the tsconfig "isolatedModules" flag.
 
 ## Variables
 
@@ -23,4 +28,4 @@ Client-side environment variables.
 const default: FrontendConfigSignature;
 ```
 
-Defined in: [src/app/helpers/env.ts:20](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/helpers/env.ts#L20)
+Defined in: [src/app/helpers/env.ts:20](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/helpers/env.ts#L20)

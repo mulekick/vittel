@@ -8,9 +8,14 @@
 
 Feature-agnostic client side helpers.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Functions](#functions)
+
 ## Remarks
 
-- Scope : CLIENT / HELPERS.
+* Scope : CLIENT / HELPERS.
 
 ## Functions
 
@@ -20,7 +25,7 @@ Feature-agnostic client side helpers.
 function getStringAsync(route, hydrate): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:20](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/helpers/helpers.ts#L20)
+Defined in: [src/app/helpers/helpers.ts:20](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/helpers/helpers.ts#L20)
 
 Async helper for GET requests to the server API.
 
@@ -29,11 +34,11 @@ Async helper for GET requests to the server API.
 | Parameter | Type |
 | ------ | ------ |
 | `route` | `string` |
-| `hydrate` | `Dispatch`\<`SetStateAction`\<`string`\>\> |
+| `hydrate` | `Dispatch`<`SetStateAction`<`string`>> |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`<`void`>
 
 ***
 
@@ -43,7 +48,7 @@ Async helper for GET requests to the server API.
 function getObjectAsync(route, hydrate): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:40](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/helpers/helpers.ts#L40)
+Defined in: [src/app/helpers/helpers.ts:40](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/helpers/helpers.ts#L40)
 
 Async helper for GET requests to the server API.
 
@@ -52,11 +57,11 @@ Async helper for GET requests to the server API.
 | Parameter | Type |
 | ------ | ------ |
 | `route` | `string` |
-| `hydrate` | `Dispatch`\<`SetStateAction`\<\{ \}\>\> |
+| `hydrate` | `Dispatch`<`SetStateAction`<{ }>> |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`<`void`>
 
 ***
 
@@ -69,7 +74,7 @@ function postFileAsync(
 body): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:63](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/helpers/helpers.ts#L63)
+Defined in: [src/app/helpers/helpers.ts:63](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/helpers/helpers.ts#L63)
 
 Async helper for POST requests to the server API.
 
@@ -78,12 +83,12 @@ Async helper for POST requests to the server API.
 | Parameter | Type |
 | ------ | ------ |
 | `route` | `string` |
-| `hydrate` | `Dispatch`\<`SetStateAction`\<`string`\>\> |
+| `hydrate` | `Dispatch`<`SetStateAction`<`string`>> |
 | `body` | `FormData` |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`<`void`>
 
 ***
 
@@ -93,7 +98,7 @@ Async helper for POST requests to the server API.
 function getPepe(): string;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:86](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/frontend/src/app/helpers/helpers.ts#L86)
+Defined in: [src/app/helpers/helpers.ts:86](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/helpers/helpers.ts#L86)
 
 Helper for client-side bundled module.
 

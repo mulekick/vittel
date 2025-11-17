@@ -8,12 +8,17 @@
 
 Features that involve public data.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Functions](#functions)
+
 ## Remarks
 
-- Scope : DOMAIN / TRANSACTIONS.
-- Domain processing can involve calls to the data layer or not.
-- Results will be parsed and returned if valid, or and error will be thrown.
-- Do not import controller layer modules here to remain framework agnostic.
+* Scope : DOMAIN / TRANSACTIONS.
+* Domain processing can involve calls to the data layer or not.
+* Results will be parsed and returned if valid, or and error will be thrown.
+* Do not import controller layer modules here to remain framework agnostic.
 
 ## Functions
 
@@ -24,14 +29,14 @@ function getData(): Promise<{
 }>;
 ```
 
-Defined in: [src/domain/transactions/public.ts:25](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/transactions/public.ts#L25)
+Defined in: [src/domain/transactions/public.ts:25](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/public.ts#L25)
 
 Async: call to data layer (public)
 
 #### Returns
 
-`Promise`\<\{
-\}\>
+`Promise`<{
+}>
 
 #### See
 
@@ -45,7 +50,7 @@ Async: call to data layer (public)
 function getFallback(): string;
 ```
 
-Defined in: [src/domain/transactions/public.ts:37](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/transactions/public.ts#L37)
+Defined in: [src/domain/transactions/public.ts:37](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/public.ts#L37)
 
 Sync: call to data layer (public)
 

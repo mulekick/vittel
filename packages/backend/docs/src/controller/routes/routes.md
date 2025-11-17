@@ -8,10 +8,15 @@
 
 Main express router
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / ROUTES.
-- Mounts specific routers to VITE_SRV_ENTRYPOINT to expose the server API.
+* Scope : CONTROLLER / ROUTES.
+* Mounts specific routers to VITE\_SRV\_ENTRYPOINT to expose the server API.
 
 ## Variables
 
@@ -21,12 +26,12 @@ Main express router
 const xRoutes: Router;
 ```
 
-Defined in: [src/controller/routes/routes.ts:21](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/routes/routes.ts#L21)
+Defined in: [src/controller/routes/routes.ts:21](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/routes/routes.ts#L21)
 
 Mounts imported routers on the app entrypoint
 
 #### See
 
- - [Route for serving public data](public.md#xpublic)
- - [Route for serving protected data](protected.md#xprotected)
- - [Route for benchmarking error handlers](errors.md#xerrors)
+* [Route for serving public data](public.md#xpublic)
+* [Route for serving protected data](protected.md#xprotected)
+* [Route for benchmarking error handlers](errors.md#xerrors)

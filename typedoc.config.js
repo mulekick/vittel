@@ -15,7 +15,7 @@ export default {
         name: `markdown`,
         path: `./docs`
     } ],
-    plugin: [ `typedoc-plugin-missing-exports`, `typedoc-plugin-markdown` ],
+    plugin: [ `typedoc-plugin-missing-exports`, `typedoc-plugin-markdown`, `typedoc-plugin-remark` ],
     // typedoc-plugin-missing-exports specific
     placeInternalsInOwningModule: true,
     // typedoc-plugin-markdown specific
@@ -33,5 +33,21 @@ export default {
         `source-order`
     ],
     // skip type checking
-    skipErrorChecking: true
+    skipErrorChecking: true,
+    // TOC
+    remarkPlugins: [ {
+        applyTo: `*`,
+        plugins: [
+            [ `remark-insert-headings`, {
+                text: `Table of contents`,
+                position: `start`,
+                minHeadingCount: 2
+            } ],
+            [ `remark-toc`, {
+                ordered: false,
+                tight: true,
+                maxDepth: 2
+            } ]
+        ]
+    } ]
 };

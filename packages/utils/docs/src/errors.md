@@ -8,33 +8,39 @@
 
 Layer-agnostic errors management.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Classes](#classes)
+* [Functions](#functions)
+
 ## Remarks
 
-- Scope : GENERAL
-- Custom error classes and global error handlers.
-- Manages the routing of errors across all app layers to a centralized location.
-- Errors, exceptions and rejected promises will eventually be routed to those handlers.
-- This module can only be imported in node.js based packages since it imports node primitives.
+* Scope : GENERAL
+* Custom error classes and global error handlers.
+* Manages the routing of errors across all app layers to a centralized location.
+* Errors, exceptions and rejected promises will eventually be routed to those handlers.
+* This module can only be imported in node.js based packages since it imports node primitives.
 
 ## Classes
 
 ### DomainError
 
-Defined in: [src/errors.ts:36](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L36)
+Defined in: [src/errors.ts:36](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L36)
 
 Custom error class for specific and identified domain errors.
 
 #### Remarks
 
-- Any error happening in an external library will be forwarded as is to the error handler.
+* Any error happening in an external library will be forwarded as is to the error handler.
 
 #### Extends
 
-- `Error`
+* `Error`
 
 #### Implements
 
-- `TransactionError`
+* `TransactionError`
 
 #### Constructors
 
@@ -47,7 +53,7 @@ new DomainError(
    payload): DomainError;
 ```
 
-Defined in: [src/errors.ts:39](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L39)
+Defined in: [src/errors.ts:39](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L39)
 
 ###### Parameters
 
@@ -71,29 +77,29 @@ Error.constructor
 
 | Property | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="type"></a> `type` | `readonly` | `domainErrors` | The specific domain error that occured during the transaction. | [src/errors.ts:37](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L37) |
-| <a id="payload"></a> `payload` | `readonly` | `unknown` | Generic payload that may be associated with the error, unrelated to the original transaction payload. | [src/errors.ts:38](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L38) |
+| <a id="type"></a> `type` | `readonly` | `domainErrors` | The specific domain error that occured during the transaction. | [src/errors.ts:37](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L37) |
+| <a id="payload"></a> `payload` | `readonly` | `unknown` | Generic payload that may be associated with the error, unrelated to the original transaction payload. | [src/errors.ts:38](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L38) |
 
 ***
 
 ### UnhandledRejectionError
 
-Defined in: [src/errors.ts:56](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L56)
+Defined in: [src/errors.ts:56](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L56)
 
 Custom error class for unhandled rejected promises.
 
 #### Remarks
 
-- Restores the original stack of the error the promise rejected with.
-- Used only in the server unhandled rejections handler.
+* Restores the original stack of the error the promise rejected with.
+* Used only in the server unhandled rejections handler.
 
 #### Extends
 
-- `Error`
+* `Error`
 
 #### Implements
 
-- `AsyncError`
+* `AsyncError`
 
 #### Constructors
 
@@ -106,7 +112,7 @@ new UnhandledRejectionError(
    stack): UnhandledRejectionError;
 ```
 
-Defined in: [src/errors.ts:58](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L58)
+Defined in: [src/errors.ts:58](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L58)
 
 ###### Parameters
 
@@ -114,7 +120,7 @@ Defined in: [src/errors.ts:58](https://github.com/mulekick/vittel/blob/37a2bd1e3
 | ------ | ------ |
 | `message` | `string` |
 | `id` | `string` |
-| `stack` | `undefined` \| `string` |
+| `stack` | `undefined` | `string` |
 
 ###### Returns
 
@@ -130,7 +136,7 @@ Error.constructor
 
 | Property | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="id"></a> `id` | `readonly` | `string` | Correlation id for the async call chains where the promise rejected. | [src/errors.ts:57](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L57) |
+| <a id="id"></a> `id` | `readonly` | `string` | Correlation id for the async call chains where the promise rejected. | [src/errors.ts:57](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L57) |
 
 ## Functions
 
@@ -140,7 +146,7 @@ Error.constructor
 function handleError(err): Promise<void>;
 ```
 
-Defined in: [src/errors.ts:74](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L74)
+Defined in: [src/errors.ts:74](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L74)
 
 General error handler: async function for centralized and consistent error handling.
 
@@ -152,12 +158,12 @@ General error handler: async function for centralized and consistent error handl
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`<`void`>
 
 #### Remarks
 
-- Log warn for domain errors since they were anticipated by construction
-- Log error for any unanticipated error (parsing, runtime, etc)
+* Log warn for domain errors since they were anticipated by construction
+* Log error for any unanticipated error (parsing, runtime, etc)
 
 ***
 
@@ -167,7 +173,7 @@ General error handler: async function for centralized and consistent error handl
 function unhandledRejection(err, p): void;
 ```
 
-Defined in: [src/errors.ts:95](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L95)
+Defined in: [src/errors.ts:95](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L95)
 
 Sync function that routes unhandled promise rejections to last resort handler.
 
@@ -176,7 +182,7 @@ Sync function that routes unhandled promise rejections to last resort handler.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `err` | `unknown` | The error to process. |
-| `p` | `Promise`\<`unknown`\> | The promise that rejected with this error. |
+| `p` | `Promise`<`unknown`> | The promise that rejected with this error. |
 
 #### Returns
 
@@ -184,7 +190,7 @@ Sync function that routes unhandled promise rejections to last resort handler.
 
 #### Remarks
 
-- Discards rejected promise, logs and rethrows.
+* Discards rejected promise, logs and rethrows.
 
 ***
 
@@ -194,7 +200,7 @@ Sync function that routes unhandled promise rejections to last resort handler.
 function uncaughtException(err, exceptionOrigin): void;
 ```
 
-Defined in: [src/errors.ts:108](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/errors.ts#L108)
+Defined in: [src/errors.ts:108](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/errors.ts#L108)
 
 Sync function that logs the exception and exits in the event regular error handling throws (unhandled).
 
@@ -211,4 +217,4 @@ Sync function that logs the exception and exits in the event regular error handl
 
 #### Remarks
 
-- Logs the exception with correlation id if available, then fails and exits.
+* Logs the exception with correlation id if available, then fails and exits.

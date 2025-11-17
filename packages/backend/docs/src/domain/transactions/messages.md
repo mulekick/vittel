@@ -8,12 +8,18 @@
 
 Domain feature that involve message-related processing.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Type Aliases](#type-aliases)
+* [Functions](#functions)
+
 ## Remarks
 
-- Scope : DOMAIN / TRANSACTIONS.
-- Domain processing can involve calls to the data layer or not.
-- Results will be parsed and returned if valid, or and error will be thrown.
-- Do not import controller layer modules here to remain framework agnostic.
+* Scope : DOMAIN / TRANSACTIONS.
+* Domain processing can involve calls to the data layer or not.
+* Results will be parsed and returned if valid, or and error will be thrown.
+* Do not import controller layer modules here to remain framework agnostic.
 
 ## Type Aliases
 
@@ -23,10 +29,11 @@ Domain feature that involve message-related processing.
 type dataProcessedCallback = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:34](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/transactions/messages.ts#L34)
+Defined in: [src/domain/transactions/messages.ts:34](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L34)
 
 User processed event callback function type
-- Exported so the controller objects can bind to it.
+
+* Exported so the controller objects can bind to it.
 
 #### Parameters
 
@@ -46,10 +53,11 @@ User processed event callback function type
 type dataPersistedCallback = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:40](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/transactions/messages.ts#L40)
+Defined in: [src/domain/transactions/messages.ts:40](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L40)
 
 User processed event callback function type
-- Exported so the controller objects can bind to it.
+
+* Exported so the controller objects can bind to it.
 
 #### Parameters
 
@@ -72,12 +80,13 @@ function processFakeEvent(
 onPersisted): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:48](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/domain/transactions/messages.ts#L48)
+Defined in: [src/domain/transactions/messages.ts:48](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L48)
 
 Async: process incoming messages
-- The domain parses and processes the contents of incoming messages.
-- It then passes results to a callback specific to the type of event received.
-- Thus, domain-specific events need **not** to be imported in the controller.
+
+* The domain parses and processes the contents of incoming messages.
+* It then passes results to a callback specific to the type of event received.
+* Thus, domain-specific events need **not** to be imported in the controller.
 
 #### Parameters
 
@@ -89,4 +98,4 @@ Async: process incoming messages
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`<`void`>

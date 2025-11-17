@@ -8,10 +8,15 @@
 
 Feature-specific express router.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / ROUTES.
-- Routes that expose the public API.
+* Scope : CONTROLLER / ROUTES.
+* Routes that expose the public API.
 
 ## Variables
 
@@ -21,11 +26,11 @@ Feature-specific express router.
 const xPublic: Router;
 ```
 
-Defined in: [src/controller/routes/public.ts:18](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/routes/public.ts#L18)
+Defined in: [src/controller/routes/public.ts:18](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/routes/public.ts#L18)
 
 Mounts public API middlewares on /public
 
 #### See
 
- - [Route for fetching public data](../middlewares/public.md#mfetch)
- - [Fallback route for GET](../middlewares/public.md#mfallback)
+* [Route for fetching public data](../middlewares/public.md#mfetch)
+* [Fallback route for GET](../middlewares/public.md#mfallback)

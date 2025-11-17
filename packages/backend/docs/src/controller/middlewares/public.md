@@ -8,10 +8,15 @@
 
 Feature-specific express middleware.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / MIDDLEWARES.
-- Middlewares that call the public API and use middleware wrapper for error routing.
+* Scope : CONTROLLER / MIDDLEWARES.
+* Middlewares that call the public API and use middleware wrapper for error routing.
 
 ## Variables
 
@@ -21,7 +26,7 @@ Feature-specific express middleware.
 const mFetch: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/public.ts:20](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/public.ts#L20)
+Defined in: [src/controller/middlewares/public.ts:20](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/public.ts#L20)
 
 Async data fetching middleware
 
@@ -37,7 +42,7 @@ Async data fetching middleware
 const mFallback: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/public.ts:31](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/public.ts#L31)
+Defined in: [src/controller/middlewares/public.ts:31](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/public.ts#L31)
 
 Sync fallback middleware
 

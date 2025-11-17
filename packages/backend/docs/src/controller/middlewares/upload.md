@@ -8,10 +8,15 @@
 
 Feature-specific express middleware.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / MIDDLEWARES.
-- Middlewares that call the file upload API and use middleware wrapper for error routing.
+* Scope : CONTROLLER / MIDDLEWARES.
+* Middlewares that call the file upload API and use middleware wrapper for error routing.
 
 ## Variables
 
@@ -21,15 +26,16 @@ Feature-specific express middleware.
 const mUpload: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/upload.ts#L29)
+Defined in: [src/controller/middlewares/upload.ts:29](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/upload.ts#L29)
 
 Async file upload middleware
-- Advanced example of strict isolation of the controller layer from the domain layer
-- The `Uploader` object (domain) consumes the readable stream returned by busboy (controller)
-- See https://github.com/mscdex/busboy?tab=readme-ov-file#special-parser-stream-events
-- Using a class allows for additional processing (read the total upload size)
+
+* Advanced example of strict isolation of the controller layer from the domain layer
+* The `Uploader` object (domain) consumes the readable stream returned by busboy (controller)
+* See https://github.com/mscdex/busboy?tab=readme-ov-file#special-parser-stream-events
+* Using a class allows for additional processing (read the total upload size)
 
 #### See
 
- - [Upload a file](../../domain/transactions/upload.md#createuploader)
- - [Get upload results](../../domain/transactions/upload.md#getuploadresult)
+* [Upload a file](../../domain/transactions/upload.md#createuploader)
+* [Get upload results](../../domain/transactions/upload.md#getuploadresult)

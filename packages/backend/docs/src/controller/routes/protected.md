@@ -8,10 +8,15 @@
 
 Feature-specific express router.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / ROUTES.
-- Routes that expose the protected API.
+* Scope : CONTROLLER / ROUTES.
+* Routes that expose the protected API.
 
 ## Variables
 
@@ -21,13 +26,13 @@ Feature-specific express router.
 const xProtected: Router;
 ```
 
-Defined in: [src/controller/routes/protected.ts:21](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/routes/protected.ts#L21)
+Defined in: [src/controller/routes/protected.ts:21](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/routes/protected.ts#L21)
 
 Mounts protected API middlewares on /protected
 
 #### See
 
- - [Route for serving token](../middlewares/protected.md#mtoken)
- - [Protection middleware](../middlewares/protected.md#mprotection)
- - [Route to process file uploads](../middlewares/upload.md#mupload)
- - [Protected resources sit there](../middlewares/protected.md#mfallback)
+* [Route for serving token](../middlewares/protected.md#mtoken)
+* [Protection middleware](../middlewares/protected.md#mprotection)
+* [Route to process file uploads](../middlewares/upload.md#mupload)
+* [Protected resources sit there](../middlewares/protected.md#mfallback)

@@ -8,10 +8,15 @@
 
 Feature-specific express middleware.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Variables](#variables)
+
 ## Remarks
 
-- Scope : CONTROLLER / MIDDLEWARES.
-- Middlewares that call the protected API and use middleware wrapper for error routing.
+* Scope : CONTROLLER / MIDDLEWARES.
+* Middlewares that call the protected API and use middleware wrapper for error routing.
 
 ## Variables
 
@@ -21,7 +26,7 @@ Feature-specific express middleware.
 const mToken: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:26](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/protected.ts#L26)
+Defined in: [src/controller/middlewares/protected.ts:26](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/protected.ts#L26)
 
 Delivers a token everytime, equivalent to the '/login' route
 
@@ -37,7 +42,7 @@ Delivers a token everytime, equivalent to the '/login' route
 const mProtection: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:50](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/protected.ts#L50)
+Defined in: [src/controller/middlewares/protected.ts:50](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/protected.ts#L50)
 
 Protection middleware, verifies JWT validity
 
@@ -53,7 +58,7 @@ Protection middleware, verifies JWT validity
 const mFallback: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:61](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/backend/src/controller/middlewares/protected.ts#L61)
+Defined in: [src/controller/middlewares/protected.ts:61](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/controller/middlewares/protected.ts#L61)
 
 Fallback middleware
 

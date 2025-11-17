@@ -8,17 +8,22 @@
 
 Common shared utility functions.
 
+## Table of contents
+
+* [Remarks](#remarks)
+* [Miscellaneous](#miscellaneous)
+
 ## Remarks
 
-- Scope : GENERAL
-- Utility functions that cover all app layers (controller, domain and data).
-- Centralized in a dedicated package to avoid code redundancy across packages.
-- Domain-specific functions will be declared at the package scope.
-- This module can be imported in node.js based packages as well as browser packages.
+* Scope : GENERAL
+* Utility functions that cover all app layers (controller, domain and data).
+* Centralized in a dedicated package to avoid code redundancy across packages.
+* Domain-specific functions will be declared at the package scope.
+* This module can be imported in node.js based packages as well as browser packages.
 
 ## Miscellaneous
 
-- Provides centralized, feature agnostic miscellaneous features.
+* Provides centralized, feature agnostic miscellaneous features.
 
 ### configParseNumber()
 
@@ -26,7 +31,7 @@ Common shared utility functions.
 function configParseNumber(value, defaultValue): number;
 ```
 
-Defined in: [src/common.ts:19](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/common.ts#L19)
+Defined in: [src/common.ts:19](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/common.ts#L19)
 
 Config only util to handle type conversion from dotenv values.
 
@@ -49,7 +54,7 @@ Config only util to handle type conversion from dotenv values.
 function rnd(lb, ub): number;
 ```
 
-Defined in: [src/common.ts:25](https://github.com/mulekick/vittel/blob/37a2bd1e32f88747d55d69b67de69e392e6e005b/packages/utils/src/common.ts#L25)
+Defined in: [src/common.ts:25](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/utils/src/common.ts#L25)
 
 Returns a random number between 2 values.
 

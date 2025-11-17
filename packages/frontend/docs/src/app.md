@@ -10,6 +10,6 @@ React app root.
 
 ## Remarks
 
-- Scope : CLIENT.
-- Uses builtin vite features to import scss files.
-- Fontawesome styles will compile into a dedicated style tag in the build.
+* Scope : CLIENT.
+* Uses builtin vite features to import scss files.
+* Fontawesome styles will compile into a dedicated style tag in the build.

@@ -10,5 +10,5 @@ Main server file.
 
 ## Remarks
 
-- Scope : GENERAL.
-- Main server file, entrypoint for the application.
+* Scope : GENERAL.
+* Main server file, entrypoint for the application.
