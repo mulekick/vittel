@@ -25,7 +25,7 @@ Features that involve file upload / streaming of data.
 
 ### Uploader
 
-Defined in: [src/domain/transactions/upload.ts:39](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L39)
+Defined in: [src/domain/transactions/upload.ts:39](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L39)
 
 Duplex stream based file uploading class.
 
@@ -52,7 +52,7 @@ new Uploader(
    mime): Uploader;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:47](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L47)
+Defined in: [src/domain/transactions/upload.ts:47](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L47)
 
 ###### Parameters
 
@@ -76,9 +76,9 @@ Duplex.constructor
 
 | Property | Modifier | Type | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="filename"></a> `filename` | `public` | `string` | [src/domain/transactions/upload.ts:41](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L41) |
-| <a id="mime"></a> `mime` | `public` | `string` | [src/domain/transactions/upload.ts:43](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L43) |
-| <a id="totalbytesread"></a> `totalBytesRead` | `public` | `number` | [src/domain/transactions/upload.ts:45](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L45) |
+| <a id="filename"></a> `filename` | `public` | `string` | [src/domain/transactions/upload.ts:41](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L41) |
+| <a id="mime"></a> `mime` | `public` | `string` | [src/domain/transactions/upload.ts:43](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L43) |
+| <a id="totalbytesread"></a> `totalBytesRead` | `public` | `number` | [src/domain/transactions/upload.ts:45](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L45) |
 
 #### Methods
 
@@ -88,7 +88,7 @@ Duplex.constructor
 _read(size): void;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:58](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L58)
+Defined in: [src/domain/transactions/upload.ts:58](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L58)
 
 **`Internal`**
 
@@ -119,7 +119,7 @@ _write(
    callback): void;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:68](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L68)
+Defined in: [src/domain/transactions/upload.ts:68](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L68)
 
 **`Internal`**
 
@@ -151,7 +151,7 @@ Duplex._write
 _final(callback): void;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:87](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L87)
+Defined in: [src/domain/transactions/upload.ts:87](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L87)
 
 **`Internal`**
 
@@ -181,7 +181,7 @@ Duplex._final
 function createUploader(file, mime): Uploader;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:99](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L99)
+Defined in: [src/domain/transactions/upload.ts:99](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L99)
 
 Sync: call to data layer
 
@@ -210,7 +210,7 @@ Sync: call to data layer
 function getUploadResult(upload): string;
 ```
 
-Defined in: [src/domain/transactions/upload.ts:121](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/upload.ts#L121)
+Defined in: [src/domain/transactions/upload.ts:121](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/upload.ts#L121)
 
 Sync: read uploader object properties
 

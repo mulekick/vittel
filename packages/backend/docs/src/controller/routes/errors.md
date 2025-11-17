@@ -26,7 +26,7 @@ Feature-specific express router.
 const xErrors: Router;
 ```
 
-Defined in: [src/controller/routes/errors.ts:18](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/routes/errors.ts#L18)
+Defined in: [src/controller/routes/errors.ts:18](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/routes/errors.ts#L18)
 
 Mounts error handling patterns API middlewares on /error
 

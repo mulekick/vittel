@@ -35,7 +35,7 @@ Node.js based shared utility functions.
 const CORRELATION_ID_KEY: "x-correlation-id";
 ```
 
-Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L49)
+Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L49)
 
 Key used for storing correlation ID in the async local storage.
 
@@ -51,7 +51,7 @@ Key used for storing correlation ID in the async local storage.
 const asyncLocalStorage: AsyncLocalStorage<Map<string, string>>;
 ```
 
-Defined in: [src/utils.ts:57](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L57)
+Defined in: [src/utils.ts:57](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L57)
 
 Init async local storage.
 
@@ -67,7 +67,7 @@ Init async local storage.
 function setCorrelationId(id): void;
 ```
 
-Defined in: [src/utils.ts:65](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L65)
+Defined in: [src/utils.ts:65](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L65)
 
 Sync function that sets the correlation id for current async calls chain.
 
@@ -93,7 +93,7 @@ Throws a generic error if async local storage is not initialized.
 function correlationId(): string;
 ```
 
-Defined in: [src/utils.ts:78](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L78)
+Defined in: [src/utils.ts:78](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L78)
 
 Sync function that retrieves the correlation id for current async calls chain.
 
@@ -117,7 +117,7 @@ Throws a generic error if async local storage is not initialized or if the id is
 const setRequestLocalsExpress: RequestHandler;
 ```
 
-Defined in: [src/utils.ts:95](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L95)
+Defined in: [src/utils.ts:95](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L95)
 
 Express middleware that exposes async local storage to incoming http requests.
 
@@ -134,7 +134,7 @@ Express middleware that exposes async local storage to incoming http requests.
 function setRequestLocalsFakeMessageQueue(next, ...args): Promise<void>;
 ```
 
-Defined in: [src/utils.ts:130](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L130)
+Defined in: [src/utils.ts:130](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L130)
 
 Middleware-like function that exposes async local storage to the message queue.
 
@@ -165,7 +165,7 @@ Middleware-like function that exposes async local storage to the message queue.
 function wrapMiddlewareExpress(mid): RequestHandler;
 ```
 
-Defined in: [src/utils.ts:111](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L111)
+Defined in: [src/utils.ts:111](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L111)
 
 Sync wrapper that adds error handling support to express middlewares.
 
@@ -193,7 +193,7 @@ The wrapped middleware.
 function wrapMiddlewareFakeMessageQueue(mid): MessageHandler;
 ```
 
-Defined in: [src/utils.ts:147](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L147)
+Defined in: [src/utils.ts:147](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L147)
 
 Sync wrapper that adds error handling support to message queue middlewares.
 
@@ -224,7 +224,7 @@ The wrapped middleware.
 const logWritables: DestinationStream;
 ```
 
-Defined in: [src/utils.ts:164](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L164)
+Defined in: [src/utils.ts:164](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L164)
 
 Specify outputs to write logs to using pino transports.
 
@@ -241,7 +241,7 @@ Specify outputs to write logs to using pino transports.
 const logger: Logger;
 ```
 
-Defined in: [src/utils.ts:186](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L186)
+Defined in: [src/utils.ts:186](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L186)
 
 Constant that will instantiate the pino logger and pipe it to the outputs.
 
@@ -253,7 +253,7 @@ Constant that will instantiate the pino logger and pipe it to the outputs.
 const httpLogger: HttpLogger;
 ```
 
-Defined in: [src/utils.ts:192](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L192)
+Defined in: [src/utils.ts:192](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L192)
 
 Wrapper around the main logger for use as an express logging middleware.
 
@@ -267,7 +267,7 @@ Wrapper around the main logger for use as an express logging middleware.
 type MessageHandler = MessageHandler;
 ```
 
-Defined in: [src/utils.ts:215](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L215)
+Defined in: [src/utils.ts:215](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L215)
 
 Signature for message queue middlewares.
 
@@ -279,7 +279,7 @@ Signature for message queue middlewares.
 
 ### FakeMessageQueue
 
-Defined in: [src/utils.ts:225](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L225)
+Defined in: [src/utils.ts:225](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L225)
 
 Mocks a message queue
 
@@ -326,7 +326,7 @@ static createMessage(): {
 };
 ```
 
-Defined in: [src/utils.ts:246](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L246)
+Defined in: [src/utils.ts:246](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L246)
 
 Sync: creates a fake incoming message.
 
@@ -343,7 +343,7 @@ Sync: creates a fake incoming message.
 send(channel, message): void;
 ```
 
-Defined in: [src/utils.ts:257](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L257)
+Defined in: [src/utils.ts:257](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L257)
 
 Sync: simulates sending a message on the queue.
 
@@ -362,4 +362,4 @@ Sync: simulates sending a message on the queue.
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/utils.ts:231](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/utils/src/utils.ts#L231) |
+| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/utils.ts:231](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L231) |

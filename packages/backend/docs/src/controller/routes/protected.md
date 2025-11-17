@@ -26,7 +26,7 @@ Feature-specific express router.
 const xProtected: Router;
 ```
 
-Defined in: [src/controller/routes/protected.ts:21](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/routes/protected.ts#L21)
+Defined in: [src/controller/routes/protected.ts:21](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/routes/protected.ts#L21)
 
 Mounts protected API middlewares on /protected
 

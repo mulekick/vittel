@@ -27,7 +27,7 @@ File system access features.
 function getWritableStreamToFile(): WriteStream;
 ```
 
-Defined in: [src/data/filesystem.ts:19](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/data/filesystem.ts#L19)
+Defined in: [src/data/filesystem.ts:19](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/filesystem.ts#L19)
 
 Sync: creates a writable stream to a file system path (demonstration: discard file to /dev/null)
 

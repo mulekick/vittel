@@ -29,7 +29,7 @@ Feature-specific message queue subscriber.
 const mProcessMessage: MessageHandler;
 ```
 
-Defined in: [src/controller/middlewares/subscriber.ts:40](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/middlewares/subscriber.ts#L40)
+Defined in: [src/controller/middlewares/subscriber.ts:40](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/middlewares/subscriber.ts#L40)
 
 Sync message processing middleware
 
@@ -45,7 +45,7 @@ Sync message processing middleware
 function subscribe(): void;
 ```
 
-Defined in: [src/controller/middlewares/subscriber.ts:61](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/controller/middlewares/subscriber.ts#L61)
+Defined in: [src/controller/middlewares/subscriber.ts:61](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/middlewares/subscriber.ts#L61)
 
 Simulate incoming messages
 

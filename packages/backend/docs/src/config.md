@@ -27,6 +27,6 @@ Server config file.
 const default: BackendConfigSignature;
 ```
 
-Defined in: [src/config.ts:55](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/config.ts#L55)
+Defined in: [src/config.ts:55](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/config.ts#L55)
 
 Create typed config object ... epic typescript situation, break the app on purpose if the config is missing.

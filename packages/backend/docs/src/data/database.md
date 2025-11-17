@@ -27,7 +27,7 @@ Database access features.
 function getRandomData(): Promise<string>;
 ```
 
-Defined in: [src/data/database.ts:16](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/data/database.ts#L16)
+Defined in: [src/data/database.ts:16](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L16)
 
 Async: emulates database read (public)
 
@@ -43,7 +43,7 @@ Async: emulates database read (public)
 function getPublicData(): string;
 ```
 
-Defined in: [src/data/database.ts:24](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/data/database.ts#L24)
+Defined in: [src/data/database.ts:24](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L24)
 
 Sync: emulates database read (public)
 
@@ -59,7 +59,7 @@ Sync: emulates database read (public)
 function getProtectedData(): string;
 ```
 
-Defined in: [src/data/database.ts:29](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/data/database.ts#L29)
+Defined in: [src/data/database.ts:29](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L29)
 
 Sync: emulates database read (protected)
 

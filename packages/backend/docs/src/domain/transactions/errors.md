@@ -30,7 +30,7 @@ handleError | General error handler
 
 ### EventDrivenObject
 
-Defined in: [src/domain/transactions/errors.ts:29](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L29)
+Defined in: [src/domain/transactions/errors.ts:29](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L29)
 
 Template clas for event-driven domain processing.
 
@@ -77,7 +77,7 @@ EventEmitter.constructor
 startProcessing(): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:47](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L47)
+Defined in: [src/domain/transactions/errors.ts:47](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L47)
 
 Async: throws a domain error during processing, used for error handling patterns benchmarking.
 
@@ -91,7 +91,7 @@ Async: throws a domain error during processing, used for error handling patterns
 process(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:61](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L61)
+Defined in: [src/domain/transactions/errors.ts:61](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L61)
 
 Sync: returns a promise that will resolve with the result of some event driven processing.
 
@@ -103,8 +103,8 @@ Sync: returns a promise that will resolve with the result of some event driven p
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="error"></a> `ERROR` | `readonly` | `"error"` | Emitted when processing encounters an error. | [src/domain/transactions/errors.ts:35](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L35) |
-| <a id="done"></a> `DONE` | `readonly` | `"done"` | Emitted once processing is done. | [src/domain/transactions/errors.ts:41](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L41) |
+| <a id="error"></a> `ERROR` | `readonly` | `"error"` | Emitted when processing encounters an error. | [src/domain/transactions/errors.ts:35](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L35) |
+| <a id="done"></a> `DONE` | `readonly` | `"done"` | Emitted once processing is done. | [src/domain/transactions/errors.ts:41](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L41) |
 
 ## Functions
 
@@ -114,7 +114,7 @@ Sync: returns a promise that will resolve with the result of some event driven p
 function throwError(): string;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:73](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L73)
+Defined in: [src/domain/transactions/errors.ts:73](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L73)
 
 Sync: throw error, route to error handler
 
@@ -130,7 +130,7 @@ Sync: throw error, route to error handler
 function emitError(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:82](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/backend/src/domain/transactions/errors.ts#L82)
+Defined in: [src/domain/transactions/errors.ts:82](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L82)
 
 Async: emit error, route to error handler
 
