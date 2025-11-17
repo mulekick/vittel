@@ -29,7 +29,7 @@ Domain feature that involve message-related processing.
 type dataProcessedCallback = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:34](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L34)
+Defined in: [src/domain/transactions/messages.ts:34](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/domain/transactions/messages.ts#L34)
 
 User processed event callback function type
 
@@ -53,7 +53,7 @@ User processed event callback function type
 type dataPersistedCallback = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:40](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L40)
+Defined in: [src/domain/transactions/messages.ts:40](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/domain/transactions/messages.ts#L40)
 
 User processed event callback function type
 
@@ -80,7 +80,7 @@ function processFakeEvent(
 onPersisted): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:48](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/messages.ts#L48)
+Defined in: [src/domain/transactions/messages.ts:48](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/domain/transactions/messages.ts#L48)
 
 Async: process incoming messages
 

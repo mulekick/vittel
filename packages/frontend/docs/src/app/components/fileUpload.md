@@ -25,7 +25,7 @@ File upload component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/fileUpload.tsx:21](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/frontend/src/app/components/fileUpload.tsx#L21)
+Defined in: [src/app/components/fileUpload.tsx:21](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/frontend/src/app/components/fileUpload.tsx#L21)
 
 Minimal component for file upload support.
 

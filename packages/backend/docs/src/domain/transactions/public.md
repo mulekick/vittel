@@ -29,7 +29,7 @@ function getData(): Promise<{
 }>;
 ```
 
-Defined in: [src/domain/transactions/public.ts:25](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/public.ts#L25)
+Defined in: [src/domain/transactions/public.ts:25](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/domain/transactions/public.ts#L25)
 
 Async: call to data layer (public)
 
@@ -50,7 +50,7 @@ Async: call to data layer (public)
 function getFallback(): string;
 ```
 
-Defined in: [src/domain/transactions/public.ts:37](https://github.com/mulekick/vittel/blob/3532f724925003c84ae885b0d804aa5aad6d7294/packages/backend/src/domain/transactions/public.ts#L37)
+Defined in: [src/domain/transactions/public.ts:37](https://github.com/mulekick/vittel/blob/5f5a282cab3549c41384350c4d9168ea7afb97a5/packages/backend/src/domain/transactions/public.ts#L37)
 
 Sync: call to data layer (public)
 
