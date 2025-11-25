@@ -30,9 +30,9 @@ Shared types, enums & parsers.
 
 ## Required shell variables for [`package.json`](./package.json) scripts
 
-| variable      | usage                                                                                              |
-|---------------|----------------------------------------------------------------------------------------------------|
-| `ENTRYPOINTS` | List of **_ALL_** typescript files that contain **_implementations_** (as opposed to declarations) |
+| variable      | usage                                                             |
+|---------------|-------------------------------------------------------------------|
+| `ENTRYPOINTS` | List of typescript implementation files, supports shell expansion |
 
 - _The value for each variable must be consistent across all scripts._
 

@@ -35,7 +35,7 @@ const App = (props: Record<string, never>): React.JSX.Element => {
     const interval = useRef<number | NodeJS.Timeout>();
 
     // effect hook will be triggered after the DOM updates
-    useEffect((): ()=> void => {
+    useEffect((): () => void => {
         // update frequency : 2.5 seconds
         interval.current = setInterval(() => {
             // make synchronous calls and pass the state update functions

@@ -10,40 +10,40 @@
  * - Wrapper functions that add error handling support to framework-specific middlewares.
  * @categoryDescription 4. Logging
  * - Provides centralized, feature agnostic logging features.
- * @categoryDescription 5. Miscellaneous
- * - Provides centralized, feature agnostic miscellaneous features.
+ * @categoryDescription 5. Data access
+ * - Allows exported shared database access functions.
+ * - Functions are imported in packages and bound to package-specific clients using the "data accessor" pattern.
  * @remarks
  * - Scope : GENERAL
  * - Utility functions that cover all app layers (controller, domain and data).
  * - Centralized in a dedicated package to avoid code redundancy across packages.
- * - Domain-specific functions will be declared at the package scope.
  * - This module can only be imported in node.js based packages since it imports node primitives.
+ * - TODO : export a wrapper class for db client, pass client instance to the contructor :
+ *   1. Client is instantiated in backend package data layer (npm packages do not include configs)
+ *   2. Data accessors are implemented as methods of the wrapper class, `DataAccessor` type may become superfluous.
  */
-
-/* eslint-disable security/detect-object-injection */
 
 // import primitives
 import {AsyncLocalStorage} from "node:async_hooks";
 import {randomUUID} from "node:crypto";
-import EventEmitter from "node:events";
 
 // import modules
 import {pino, transport} from "pino";
 import {pinoHttp} from "pino-http";
-import {domainEvents} from "@vittel/types/enums";
-import {rnd} from "./common.js";
 import {handleError} from "./errors.js";
+import {FakeDatabaseClient} from "./mocks.js";
 
 // import types
+import type {WriteStream} from "node:fs";
 import type {RequestHandler} from "express";
+import type {MessageHandler} from "./mocks.js";
 import type {DestinationStream, Logger} from "pino";
 import type {HttpLogger} from "pino-http";
-import type {FakeMessage} from "@vittel/types";
 
 /**
- * Key used for storing correlation ID in the async local storage.
+ * Key used for storing correlation ID in async local storage.
  * @remarks
- * - Used as an http header as well for cross service requests.
+ * - Used as an http header as well as for cross service requests.
  * @category 1. Async local storage
  */
 export const CORRELATION_ID_KEY = `x-correlation-id`;
@@ -52,27 +52,28 @@ export const CORRELATION_ID_KEY = `x-correlation-id`;
  * Init async local storage.
  * @remarks
  * - Init with a map object to persist multiple values if needed.
+ * - Does not need specific configuration so it can be created as a side effect.
  * @category 1. Async local storage
  */
 export const asyncLocalStorage: AsyncLocalStorage<Map<string, string>> = new AsyncLocalStorage<Map<string, string>>();
 
 /**
- * Sync function that sets the correlation id for current async calls chain.
+ * Set the correlation id for current async calls chain.
  * @category 1. Async local storage
- * @param id - The current correlation id if the call chain was initiated from another service.
+ * @param id - Current correlation id if the call chain was initiated from another service.
  * @throws Throws a generic error if async local storage is not initialized.
  */
 export const setCorrelationId = (id: string | undefined): void => {
     const store = asyncLocalStorage.getStore();
     if (!(store instanceof Map))
         throw new Error(`async local storage not initialized.`);
-    store.set(CORRELATION_ID_KEY, String(id || randomUUID()));
+    store.set(CORRELATION_ID_KEY, id || randomUUID());
 };
 
 /**
- * Sync function that retrieves the correlation id for current async calls chain.
+ * Retrieve the correlation id for current async calls chain.
  * @category 1. Async local storage
- * @returns The current correlation id.
+ * @returns Current correlation id.
  * @throws Throws a generic error if async local storage is not initialized or if the id is not found.
  */
 export const correlationId = (): string => {
@@ -93,6 +94,7 @@ export const correlationId = (): string => {
  * - `route` is passed only for typescript compliance, should be painless but beware.
  */
 export const setRequestLocalsExpress: RequestHandler = (req, res, next) => {
+    // eslint-disable-next-line security/detect-object-injection
     const h = req.headers[CORRELATION_ID_KEY];
     asyncLocalStorage.run(new Map(), (f, id) => {
         setCorrelationId(id);
@@ -103,7 +105,7 @@ export const setRequestLocalsExpress: RequestHandler = (req, res, next) => {
 /**
  * Sync wrapper that adds error handling support to express middlewares.
  * @category 3. Try / catch wrappers
- * @param mid - The original express middleware (sync or async).
+ * @param mid - Original express middleware (sync or async).
  * @returns The wrapped middleware.
  * @remarks
  * - Uses a functional programming pattern (higher order function).
@@ -120,18 +122,18 @@ export const wrapMiddlewareExpress = (mid: RequestHandler): RequestHandler => as
 };
 
 /**
- * Middleware-like function that exposes async local storage to the message queue.
+ * Middleware-like hook function that exposes async local storage to the message queue.
  * @category 2. Async local storage middlewares
  * @remarks
  * - Mimics the behavior of express middlewares, called for each incoming messages.
  * - In the event some transaction id is included in the message, it can be assigned to h.
  * - Message handler needs to be updated once an actual message queue is used.
  */
-export const setRequestLocalsFakeMessageQueue = (next: MessageHandler, ...args: Parameters<MessageHandler>): Promise<void> => {
+export const setRequestLocalsFakeMessageQueue = (next: MessageHandler, ...args: Parameters<MessageHandler>): void => {
     const h = undefined;
-    return asyncLocalStorage.run(new Map(), (f, id) => {
+    asyncLocalStorage.run(new Map(), (f, id) => {
         setCorrelationId(id);
-        return f(...args);
+        void f(...args);
     }, next, h);
 };
 
@@ -158,13 +160,18 @@ export const wrapMiddlewareFakeMessageQueue = (mid: MessageHandler): MessageHand
  * Specify outputs to write logs to using pino transports.
  * @category 4. Logging
  * @remarks
- * 1. Local log file / observability service endpoint etc, discard for now.
- * 2. Stdout, use options to prettify the output.
+ * - Does not need specific configuration so it can be created as a side effect.
+ * - Prints logs to :
+ *   1. Local log file / observability service endpoint etc.
+ *   2. Stdout, use options to prettify the output.
  */
 export const logWritables = transport({
     targets: [ {
         target: `pino/file`,
-        options: {destination: `/dev/null`}
+        options: {
+            // discard for now
+            destination: `/dev/null`
+        }
     }, {
         target: `pino-pretty`,
         options: {
@@ -182,12 +189,16 @@ export const logWritables = transport({
 /**
  * Constant that will instantiate the pino logger and pipe it to the outputs.
  * @category 4. Logging
+ * @remarks
+ * - Does not need specific configuration so it can be created as a side effect.
  */
 export const logger: Logger = pino(logWritables);
 
 /**
  * Wrapper around the main logger for use as an express logging middleware.
  * @category 4. Logging
+ * @remarks
+ * - Does not need specific configuration so it can be created as a side effect.
  */
 export const httpLogger: HttpLogger = pinoHttp({
     // define a custom request id function
@@ -206,56 +217,34 @@ export const httpLogger: HttpLogger = pinoHttp({
 });
 
 /**
- * Signature for message queue middlewares.
- * @category 5. Miscellaneous
- * @useDeclaredType
- * @remarks
- * - Needs to be updated once a genuine message queue / no message queue at all is used.
+ * Create database client instance
+ * @category 5. Data access
  */
-export type MessageHandler = (mq: FakeMessageQueue, msg: unknown)=> Promise<void>;
+export const createDbClient = (databaseConfig: Record<string, unknown>): FakeDatabaseClient => {
+    void databaseConfig;
+    return new FakeDatabaseClient();
+};
 
 /**
- * Mocks a message queue
- * - Generates messages and mocks the send() method of an actual message queue.
- * - Imported by the controller layer of the backend service so as to subscribe to it.
- * - This class can be discarded once a genuine message queue / no message queue at all is used.
- * @category 5. Miscellaneous
- * @class
+ * Emulate database read (public)
+ * @category 5. Data access
  */
-export class FakeMessageQueue extends EventEmitter {
+export const getRandomData = (dbClient: FakeDatabaseClient): Promise<string> => dbClient.randomData();
 
-    /**
-     * Emitted when a new message arrives on the message queue.
-     * @eventProperty
-     */
-    static readonly MESSAGE = `message`;
+/**
+ * Emulate database read (public)
+ * @category 5. Data access
+ */
+export const getPublicData = (dbClient: FakeDatabaseClient): string => dbClient.publicData();
 
-    /**
-     * Mocks "process incoming data" events.
-     */
-    private static toProcess = [ `Some event`, `Another event`, `One more event` ];
+/**
+ * Emulate database read (protected)
+ * @category 5. Data access
+ */
+export const getProtectedData = (dbClient: FakeDatabaseClient): string => dbClient.protectedData();
 
-    /**
-     * Mocks "persist incoming data" events.
-     */
-    private static toPersist = [ 1555263, 98766300, 10000065 ];
-
-    /**
-     * Sync: creates a fake incoming message.
-     */
-    static createMessage(): FakeMessage {
-        const [ x, y ] = [ rnd(0, 3), rnd(0, 2) ];
-        return {
-            event: (x ? domainEvents.EVT_PROCESS_DATA : domainEvents.EVT_PERSIST_DATA) as domainEvents,
-            data: x ? FakeMessageQueue.toProcess[y] : FakeMessageQueue.toPersist[y]
-        };
-    }
-
-    /**
-     * Sync: simulates sending a message on the queue.
-     */
-    send(channel: string, message: unknown): void {
-        logger.info({id: correlationId()}, `[message queue] sending event ${ JSON.stringify(message) } on channel ${ channel }`);
-        void this;
-    }
-}
+/**
+ * Create a writable stream
+ * @category 5. Data access
+ */
+export const getWritableStreamToFile = (dbClient: FakeDatabaseClient): WriteStream => dbClient.writableStreamToFile();

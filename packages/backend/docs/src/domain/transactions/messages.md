@@ -23,17 +23,15 @@ Domain feature that involve message-related processing.
 
 ## Type Aliases
 
-### dataProcessedCallback()
+### onDataProcessed()
 
 ```ts
-type dataProcessedCallback = (message) => void;
+type onDataProcessed = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:34](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/messages.ts#L34)
+Defined in: [src/domain/transactions/messages.ts:37](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/messages.ts#L37)
 
-User processed event callback function type
-
-* Exported so the controller objects can bind to it.
+Expose "data processed" function type to the controller
 
 #### Parameters
 
@@ -47,17 +45,15 @@ User processed event callback function type
 
 ***
 
-### dataPersistedCallback()
+### onDataPersisted()
 
 ```ts
-type dataPersistedCallback = (message) => void;
+type onDataPersisted = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:40](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/messages.ts#L40)
+Defined in: [src/domain/transactions/messages.ts:42](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/messages.ts#L42)
 
-User processed event callback function type
-
-* Exported so the controller objects can bind to it.
+Expose "data persisted" function type to the controller
 
 #### Parameters
 
@@ -80,7 +76,7 @@ function processFakeEvent(
 onPersisted): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:48](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/messages.ts#L48)
+Defined in: [src/domain/transactions/messages.ts:50](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/messages.ts#L50)
 
 Async: process incoming messages
 
@@ -93,8 +89,8 @@ Async: process incoming messages
 | Parameter | Type |
 | ------ | ------ |
 | `message` | `unknown` |
-| `onProcessed` | [`dataProcessedCallback`](#dataprocessedcallback) |
-| `onPersisted` | [`dataPersistedCallback`](#datapersistedcallback) |
+| `onProcessed` | [`onDataProcessed`](#ondataprocessed) |
+| `onPersisted` | [`onDataPersisted`](#ondatapersisted) |
 
 #### Returns
 

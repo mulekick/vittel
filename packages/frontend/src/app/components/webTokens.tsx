@@ -13,7 +13,7 @@ import config from "../helpers/env.ts";
 import {getStringAsync} from "../helpers/helpers.ts";
 
 // import types
-import type {WebTokensSignature} from "@vittel/types";
+import type {WebTokensProps} from "@vittel/types";
 
 // retrieve environment
 const {VITE_SRV_ENTRYPOINT} = config;
@@ -21,7 +21,7 @@ const {VITE_SRV_ENTRYPOINT} = config;
 /**
  * Minimal component for web tokens support.
  */
-const WebTokens = (props: WebTokensSignature): React.JSX.Element => {
+const WebTokens = (props: WebTokensProps): React.JSX.Element => {
     // extract props
     const {protectedContent} = props;
     // retrieve token by triggering an async call and discarding return value

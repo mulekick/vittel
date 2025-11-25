@@ -20,6 +20,7 @@ import viteLogo from "../../static/vite.svg";
  * To use a named import and access the asset programatically for it to be included
  * In the build (eg. set the img src attribute programatically) ...
  */
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @stylistic/no-extra-parens
 const AssetImport = (props: Record<string, never>): React.JSX.Element => (
     <article>

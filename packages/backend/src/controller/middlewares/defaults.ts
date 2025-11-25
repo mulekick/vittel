@@ -15,7 +15,7 @@ import {DomainError, handleError, domainErrors} from "@vittel/utils/errors";
 import type {RequestHandler, ErrorRequestHandler} from "express";
 
 /**
- * Sync: app-wide default fallback middleware, uses wrapper for error routing
+ * App-wide default fallback middleware, uses wrapper for error routing
  */
 export const defaultFallback: RequestHandler = wrapMiddlewareExpress((req, res) => {
     // response
@@ -23,7 +23,7 @@ export const defaultFallback: RequestHandler = wrapMiddlewareExpress((req, res) 
 });
 
 /**
- * Async: app-wide error handling middleware (must match ErrorRequestHandler function type)
+ * App-wide express error handling middleware (must match ErrorRequestHandler function type)
  * @see {@link handleError | General error handler}
  * @remarks
  * - **_Caution : the `next` parameter must be present for the errors to route correctly._**

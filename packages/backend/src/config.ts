@@ -4,7 +4,7 @@
  * @remarks
  * - Scope : GENERAL.
  * - Uses dotenv to read the config file according to NODE_ENV value.
- * - Loads the config values from process.env and export the resulting config object
+ * - Loads the config values from process.env and export a config object
  */
 
 /* eslint-disable @stylistic/object-curly-newline */
@@ -50,7 +50,7 @@ const {
 } = process.env as Record<string, string>;
 
 /**
- * Create typed config object ... epic typescript situation, break the app on purpose if the config is missing.
+ * Create typed config object.
  */
 const appConfig: BackendConfigSignature = {
     dirName,

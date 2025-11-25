@@ -18,6 +18,8 @@ import {xErrors} from "./errors.ts";
  * @see {@link xProtected | Route for serving protected data}
  * @see {@link xErrors | Route for benchmarking error handlers}
  */
+
+// eslint-disable-next-line new-cap
 export const xRoutes: Router = Router()
     .use(`/public`, xPublic)
     .use(`/protected`, xProtected)

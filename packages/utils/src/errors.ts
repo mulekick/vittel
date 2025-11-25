@@ -5,7 +5,7 @@
  * - Scope : GENERAL
  * - Custom error classes and global error handlers.
  * - Manages the routing of errors across all app layers to a centralized location.
- * - Errors, exceptions and rejected promises will eventually be routed to those handlers.
+ * - All errors, exceptions and rejected promises will eventually be routed to those handlers.
  * - This module can only be imported in node.js based packages since it imports node primitives.
  */
 
@@ -26,10 +26,10 @@ import type {AsyncError, TransactionError} from "@vittel/types";
 export {domainErrors};
 
 /**
- * Custom error class for specific and identified domain errors.
+ * Custom error class for identified domain errors.
  * @class
- * @property type - The specific domain error that occured during the transaction.
- * @property payload - Generic payload that may be associated with the error, unrelated to the original transaction payload.
+ * @property type - Domain error that occured during the transaction.
+ * @property payload - Payload associated with the error, unrelated to the original transaction payload.
  * @remarks
  * - Any error happening in an external library will be forwarded as is to the error handler.
  */
@@ -66,7 +66,7 @@ export class UnhandledRejectionError extends Error implements AsyncError {
 
 /**
  * General error handler: async function for centralized and consistent error handling.
- * @param err - The error to process (prefer unknown to not let requests time out).
+ * @param err - Error to process (prefer unknown to not let requests time out).
  * @remarks
  * - Log warn for domain errors since they were anticipated by construction
  * - Log error for any unanticipated error (parsing, runtime, etc)
@@ -86,8 +86,8 @@ export const handleError = async(err: unknown): Promise<void> => {
 };
 
 /**
- * Sync function that routes unhandled promise rejections to last resort handler.
- * @param err - The error to process.
+ * Route unhandled promise rejections to last resort handler.
+ * @param err - Error to process.
  * @param p - The promise that rejected with this error.
  * @remarks
  * - Discards rejected promise, logs and rethrows.
@@ -99,8 +99,8 @@ export const unhandledRejection = (err: unknown, p: Promise<unknown>): void => {
 };
 
 /**
- * Sync function that logs the exception and exits in the event regular error handling throws (unhandled).
- * @param err - The error to process.
+ * Log the exception and exits in the event regular error handling throws (unhandled).
+ * @param err - Error to process.
  * @param exceptionOrigin - The exception origin.
  * @remarks
  * - Logs the exception with correlation id if available, then fails and exits.

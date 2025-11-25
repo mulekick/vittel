@@ -18,7 +18,6 @@ Common shared utility functions.
 * Scope : GENERAL
 * Utility functions that cover all app layers (controller, domain and data).
 * Centralized in a dedicated package to avoid code redundancy across packages.
-* Domain-specific functions will be declared at the package scope.
 * This module can be imported in node.js based packages as well as browser packages.
 
 ## 1. Miscellaneous
@@ -31,7 +30,7 @@ Common shared utility functions.
 function configParseNumber(value, defaultValue): number;
 ```
 
-Defined in: [src/common.ts:19](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/common.ts#L19)
+Defined in: [src/common.ts:18](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/common.ts#L18)
 
 Config only util to handle type conversion from dotenv values.
 
@@ -54,7 +53,7 @@ Config only util to handle type conversion from dotenv values.
 function rnd(lb, ub): number;
 ```
 
-Defined in: [src/common.ts:25](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/common.ts#L25)
+Defined in: [src/common.ts:24](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/common.ts#L24)
 
 Returns a random number between 2 values.
 

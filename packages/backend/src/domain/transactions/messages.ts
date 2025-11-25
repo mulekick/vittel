@@ -18,26 +18,28 @@ import {DomainError} from "@vittel/utils/errors";
 /* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/no-unsafe-enum-comparison */
 
 /**
- * Async: process incoming data
+ * Process incoming data
  */
-const processDataSomehow = (data: string): Promise<string> => Promise.resolve(`event data processed: ${ data }`);
+const processDataSomehow = (data: string): Promise<string> => new Promise(r => {
+    setTimeout(() => {r(`event data processed: ${ data }`);}, rnd(1, 5) * 1e3);
+});
 
 /**
  * Async: persist incoming data
  */
-const persistDataSomehow = (data: number): Promise<string> => Promise.resolve(`event data persisted: ${ String(data) }`);
+const persistDataSomehow = (data: number): Promise<string> => new Promise(r => {
+    setTimeout(() => {r(`event data persisted: ${ String(data) }`);}, rnd(1, 5) * 1e3);
+});
 
 /**
- * User processed event callback function type
- * - Exported so the controller objects can bind to it.
+ * Expose "data processed" function type to the controller
  */
-export type dataProcessedCallback = (message: unknown)=> void;
+export type onDataProcessed = (message: unknown) => void;
 
 /**
- * User processed event callback function type
- * - Exported so the controller objects can bind to it.
+ * Expose "data persisted" function type to the controller
  */
-export type dataPersistedCallback = (message: unknown)=> void;
+export type onDataPersisted = (message: unknown) => void;
 
 /**
  * Async: process incoming messages
@@ -45,20 +47,18 @@ export type dataPersistedCallback = (message: unknown)=> void;
  * - It then passes results to a callback specific to the type of event received.
  * - Thus, domain-specific events need **not** to be imported in the controller.
  */
-export const processFakeEvent = async(message: unknown, onProcessed: dataProcessedCallback, onPersisted: dataPersistedCallback): Promise<void> => {
+export const processFakeEvent = async(message: unknown, onProcessed: onDataProcessed, onPersisted: onDataPersisted): Promise<void> => {
     // parse incoming message
-    const {event, data} = parsers.FakeMessage.parse(message);
+    const {event, data} = parsers.SampleMessage.parse(message);
     // mock processing time and execute callbacks ...
     switch (event) {
     case domainEvents.EVT_PROCESS_DATA :
-        // await new Promise(r => {setTimeout(r, rnd(1, 5) * 1e3);});
         onProcessed({
             event: domainEvents.EVT_DATA_PROCESSED,
             payload: await processDataSomehow(z.string().parse(data))
         });
         break;
     case domainEvents.EVT_PERSIST_DATA :
-        // await new Promise(r => {setTimeout(r, rnd(1, 5) * 1e3);});
         onPersisted({
             event: domainEvents.EVT_DATA_PERSISTED,
             payload: await persistDataSomehow(z.number().parse(data))

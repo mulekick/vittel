@@ -11,12 +11,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog} from "@fortawesome/free-solid-svg-icons";
 
 // import types
-import type {ModuleBundlingSignature} from "@vittel/types";
+import type {ModuleBundlingProps} from "@vittel/types";
 
 /**
  * Minimal component for external module bundling support.
  */
-const ModuleBundling = (props: ModuleBundlingSignature): React.JSX.Element => {
+const ModuleBundling = (props: ModuleBundlingProps): React.JSX.Element => {
     // extract props
     const {pepe} = props;
 

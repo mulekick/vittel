@@ -1,15 +1,12 @@
-// global eslint options
 import muleslint from "@mulekick/eslint-config-muleslint";
-import typescript from "typescript-eslint";
+import {defineConfig} from "eslint/config";
 
-export default typescript.config(...muleslint, {
+// .eslintignore doesn't work with flat configs
+export default defineConfig(...muleslint, {
     rules: {
-        'new-cap': `off`,
-        'n/file-extension-in-import': `off`,
-        'n/no-process-env': `off`,
-        'n/no-extraneous-import': `off`,
-        'n/no-unpublished-import': `off`,
-        'import/no-unresolved': `off`
+        "n/no-extraneous-import": `off`,
+        "n/no-unpublished-import": `off`,
+        "import/no-unresolved": `off`
     }
 }, {
     ignores: [ `**/node_modules/**`, `**/dist/**`, `**/build/**` ]

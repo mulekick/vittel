@@ -15,15 +15,17 @@ Node.js based shared utility functions.
 * [2. Async local storage middlewares](#2-async-local-storage-middlewares)
 * [3. Try / catch wrappers](#3-try--catch-wrappers)
 * [4. Logging](#4-logging)
-* [5. Miscellaneous](#5-miscellaneous)
+* [5. Data access](#5-data-access)
 
 ## Remarks
 
 * Scope : GENERAL
 * Utility functions that cover all app layers (controller, domain and data).
 * Centralized in a dedicated package to avoid code redundancy across packages.
-* Domain-specific functions will be declared at the package scope.
 * This module can only be imported in node.js based packages since it imports node primitives.
+* TODO : export a wrapper class for db client, pass client instance to the contructor :
+  1. Client is instantiated in backend package data layer (npm packages do not include configs)
+  2. Data accessors are implemented as methods of the wrapper class, `DataAccessor` type may become superfluous.
 
 ## 1. Async local storage
 
@@ -35,13 +37,13 @@ Node.js based shared utility functions.
 const CORRELATION_ID_KEY: "x-correlation-id";
 ```
 
-Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L49)
+Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L49)
 
-Key used for storing correlation ID in the async local storage.
+Key used for storing correlation ID in async local storage.
 
 #### Remarks
 
-* Used as an http header as well for cross service requests.
+* Used as an http header as well as for cross service requests.
 
 ***
 
@@ -51,13 +53,14 @@ Key used for storing correlation ID in the async local storage.
 const asyncLocalStorage: AsyncLocalStorage<Map<string, string>>;
 ```
 
-Defined in: [src/utils.ts:57](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L57)
+Defined in: [src/utils.ts:58](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L58)
 
 Init async local storage.
 
 #### Remarks
 
 * Init with a map object to persist multiple values if needed.
+* Does not need specific configuration so it can be created as a side effect.
 
 ***
 
@@ -67,15 +70,15 @@ Init async local storage.
 function setCorrelationId(id): void;
 ```
 
-Defined in: [src/utils.ts:65](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L65)
+Defined in: [src/utils.ts:66](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L66)
 
-Sync function that sets the correlation id for current async calls chain.
+Set the correlation id for current async calls chain.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | `undefined` | `string` | The current correlation id if the call chain was initiated from another service. |
+| `id` | `string` | `undefined` | Current correlation id if the call chain was initiated from another service. |
 
 #### Returns
 
@@ -93,15 +96,15 @@ Throws a generic error if async local storage is not initialized.
 function correlationId(): string;
 ```
 
-Defined in: [src/utils.ts:78](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L78)
+Defined in: [src/utils.ts:79](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L79)
 
-Sync function that retrieves the correlation id for current async calls chain.
+Retrieve the correlation id for current async calls chain.
 
 #### Returns
 
 `string`
 
-The current correlation id.
+Current correlation id.
 
 #### Throws
 
@@ -117,7 +120,7 @@ Throws a generic error if async local storage is not initialized or if the id is
 const setRequestLocalsExpress: RequestHandler;
 ```
 
-Defined in: [src/utils.ts:95](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L95)
+Defined in: [src/utils.ts:96](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L96)
 
 Express middleware that exposes async local storage to incoming http requests.
 
@@ -131,23 +134,23 @@ Express middleware that exposes async local storage to incoming http requests.
 ### setRequestLocalsFakeMessageQueue()
 
 ```ts
-function setRequestLocalsFakeMessageQueue(next, ...args): Promise<void>;
+function setRequestLocalsFakeMessageQueue(next, ...args): void;
 ```
 
-Defined in: [src/utils.ts:130](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L130)
+Defined in: [src/utils.ts:132](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L132)
 
-Middleware-like function that exposes async local storage to the message queue.
+Middleware-like hook function that exposes async local storage to the message queue.
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `next` | [`MessageHandler`](#messagehandler) |
-| ...`args` | \[[`FakeMessageQueue`](#fakemessagequeue), `unknown`] |
+| `next` | [`MessageHandler`](mocks.md#messagehandler) |
+| ...`args` | \[[`FakeMessageQueueClient`](mocks.md#fakemessagequeueclient), `unknown`] |
 
 #### Returns
 
-`Promise`<`void`>
+`void`
 
 #### Remarks
 
@@ -165,7 +168,7 @@ Middleware-like function that exposes async local storage to the message queue.
 function wrapMiddlewareExpress(mid): RequestHandler;
 ```
 
-Defined in: [src/utils.ts:111](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L111)
+Defined in: [src/utils.ts:113](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L113)
 
 Sync wrapper that adds error handling support to express middlewares.
 
@@ -173,7 +176,7 @@ Sync wrapper that adds error handling support to express middlewares.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `mid` | `RequestHandler` | The original express middleware (sync or async). |
+| `mid` | `RequestHandler` | Original express middleware (sync or async). |
 
 #### Returns
 
@@ -193,7 +196,7 @@ The wrapped middleware.
 function wrapMiddlewareFakeMessageQueue(mid): MessageHandler;
 ```
 
-Defined in: [src/utils.ts:147](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L147)
+Defined in: [src/utils.ts:149](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L149)
 
 Sync wrapper that adds error handling support to message queue middlewares.
 
@@ -201,11 +204,11 @@ Sync wrapper that adds error handling support to message queue middlewares.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `mid` | [`MessageHandler`](#messagehandler) | The message queue middleware (sync or async). |
+| `mid` | [`MessageHandler`](mocks.md#messagehandler) | The message queue middleware (sync or async). |
 
 #### Returns
 
-[`MessageHandler`](#messagehandler)
+[`MessageHandler`](mocks.md#messagehandler)
 
 The wrapped middleware.
 
@@ -224,14 +227,16 @@ The wrapped middleware.
 const logWritables: DestinationStream;
 ```
 
-Defined in: [src/utils.ts:164](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L164)
+Defined in: [src/utils.ts:168](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L168)
 
 Specify outputs to write logs to using pino transports.
 
 #### Remarks
 
-1. Local log file / observability service endpoint etc, discard for now.
-2. Stdout, use options to prettify the output.
+* Does not need specific configuration so it can be created as a side effect.
+* Prints logs to :
+  1. Local log file / observability service endpoint etc.
+  2. Stdout, use options to prettify the output.
 
 ***
 
@@ -241,9 +246,13 @@ Specify outputs to write logs to using pino transports.
 const logger: Logger;
 ```
 
-Defined in: [src/utils.ts:186](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L186)
+Defined in: [src/utils.ts:195](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L195)
 
 Constant that will instantiate the pino logger and pipe it to the outputs.
+
+#### Remarks
+
+* Does not need specific configuration so it can be created as a side effect.
 
 ***
 
@@ -253,113 +262,123 @@ Constant that will instantiate the pino logger and pipe it to the outputs.
 const httpLogger: HttpLogger;
 ```
 
-Defined in: [src/utils.ts:192](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L192)
+Defined in: [src/utils.ts:203](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L203)
 
 Wrapper around the main logger for use as an express logging middleware.
 
-## 5. Miscellaneous
-
-* Provides centralized, feature agnostic miscellaneous features.
-
-### MessageHandler
-
-```ts
-type MessageHandler = MessageHandler;
-```
-
-Defined in: [src/utils.ts:215](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L215)
-
-Signature for message queue middlewares.
-
 #### Remarks
 
-* Needs to be updated once a genuine message queue / no message queue at all is used.
+* Does not need specific configuration so it can be created as a side effect.
+
+## 5. Data access
+
+* Allows exported shared database access functions.
+* Functions are imported in packages and bound to package-specific clients using the "data accessor" pattern.
+
+### createDbClient()
+
+```ts
+function createDbClient(databaseConfig): FakeDatabaseClient;
+```
+
+Defined in: [src/utils.ts:223](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L223)
+
+Create database client instance
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `databaseConfig` | `Record`<`string`, `unknown`> |
+
+#### Returns
+
+[`FakeDatabaseClient`](mocks.md#fakedatabaseclient)
 
 ***
 
-### FakeMessageQueue
-
-Defined in: [src/utils.ts:225](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L225)
-
-Mocks a message queue
-
-* Generates messages and mocks the send() method of an actual message queue.
-* Imported by the controller layer of the backend service so as to subscribe to it.
-* This class can be discarded once a genuine message queue / no message queue at all is used.
-
-#### Extends
-
-* `EventEmitter`
-
-#### Constructors
-
-##### Constructor
+### getRandomData()
 
 ```ts
-new FakeMessageQueue(options?): FakeMessageQueue;
+function getRandomData(dbClient): Promise<string>;
 ```
 
-Defined in: ../../node\_modules/@types/node/events.d.ts:134
+Defined in: [src/utils.ts:232](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L232)
 
-###### Parameters
+Emulate database read (public)
+
+#### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `options?` | `EventEmitterOptions` |
+| `dbClient` | [`FakeDatabaseClient`](mocks.md#fakedatabaseclient) |
 
-###### Returns
+#### Returns
 
-[`FakeMessageQueue`](#fakemessagequeue)
+`Promise`<`string`>
 
-###### Inherited from
+***
 
-```ts
-EventEmitter.constructor
-```
-
-#### Methods
-
-##### createMessage()
+### getPublicData()
 
 ```ts
-static createMessage(): {
-};
+function getPublicData(dbClient): string;
 ```
 
-Defined in: [src/utils.ts:246](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L246)
+Defined in: [src/utils.ts:238](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L238)
 
-Sync: creates a fake incoming message.
+Emulate database read (public)
 
-###### Returns
-
-```ts
-{
-}
-```
-
-##### send()
-
-```ts
-send(channel, message): void;
-```
-
-Defined in: [src/utils.ts:257](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L257)
-
-Sync: simulates sending a message on the queue.
-
-###### Parameters
+#### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `channel` | `string` |
-| `message` | `unknown` |
+| `dbClient` | [`FakeDatabaseClient`](mocks.md#fakedatabaseclient) |
 
-###### Returns
+#### Returns
 
-`void`
+`string`
 
-#### Events
+***
 
-| Event | Modifier | Type | Description | Defined in |
-| ------ | ------ | ------ | ------ | ------ |
-| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/utils.ts:231](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/utils/src/utils.ts#L231) |
+### getProtectedData()
+
+```ts
+function getProtectedData(dbClient): string;
+```
+
+Defined in: [src/utils.ts:244](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L244)
+
+Emulate database read (protected)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `dbClient` | [`FakeDatabaseClient`](mocks.md#fakedatabaseclient) |
+
+#### Returns
+
+`string`
+
+***
+
+### getWritableStreamToFile()
+
+```ts
+function getWritableStreamToFile(dbClient): WriteStream;
+```
+
+Defined in: [src/utils.ts:250](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/utils/src/utils.ts#L250)
+
+Create a writable stream
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `dbClient` | [`FakeDatabaseClient`](mocks.md#fakedatabaseclient) |
+
+#### Returns
+
+`WriteStream`

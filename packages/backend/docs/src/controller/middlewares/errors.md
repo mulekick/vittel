@@ -26,9 +26,9 @@ Feature-specific express middleware.
 const mThrowError: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/errors.ts:20](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/middlewares/errors.ts#L20)
+Defined in: [src/controller/middlewares/errors.ts:20](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/controller/middlewares/errors.ts#L20)
 
-Sync: trigger error in domain
+Trigger error in domain
 
 #### See
 
@@ -42,9 +42,9 @@ Sync: trigger error in domain
 const mEmitError: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/errors.ts:31](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/controller/middlewares/errors.ts#L31)
+Defined in: [src/controller/middlewares/errors.ts:31](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/controller/middlewares/errors.ts#L31)
 
-Async: trigger error in domain, event emitter emits error, promise rejects
+Trigger error in domain, event emitter emits error, promise rejects
 
 #### See
 

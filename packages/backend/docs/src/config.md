@@ -17,7 +17,7 @@ Server config file.
 
 * Scope : GENERAL.
 * Uses dotenv to read the config file according to NODE\_ENV value.
-* Loads the config values from process.env and export the resulting config object
+* Loads the config values from process.env and export a config object
 
 ## Variables
 
@@ -27,6 +27,6 @@ Server config file.
 const default: BackendConfigSignature;
 ```
 
-Defined in: [src/config.ts:55](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/config.ts#L55)
+Defined in: [src/config.ts:55](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/config.ts#L55)
 
-Create typed config object ... epic typescript situation, break the app on purpose if the config is missing.
+Create typed config object.

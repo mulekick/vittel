@@ -30,13 +30,13 @@ handleError | General error handler
 
 ### EventDrivenObject
 
-Defined in: [src/domain/transactions/errors.ts:29](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L29)
+Defined in: [src/domain/transactions/errors.ts:26](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L26)
 
 Template clas for event-driven domain processing.
 
 #### Remarks
 
-* This class is a template for how to handle processing and error routing in event-driven features.
+* Template for how to handle processing and error routing in event-driven features.
 * This class creates objects that emit `error` events which are routed in the same fashion as other errors.
 
 #### Extends
@@ -51,7 +51,7 @@ Template clas for event-driven domain processing.
 new EventDrivenObject(options?): EventDrivenObject;
 ```
 
-Defined in: ../../node\_modules/@types/node/events.d.ts:134
+Defined in: ../../node\_modules/@types/node/events.d.ts:101
 
 ###### Parameters
 
@@ -77,9 +77,9 @@ EventEmitter.constructor
 startProcessing(): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:47](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L47)
+Defined in: [src/domain/transactions/errors.ts:44](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L44)
 
-Async: throws a domain error during processing, used for error handling patterns benchmarking.
+Throw a domain error during processing, used for error handling patterns benchmarking.
 
 ###### Returns
 
@@ -91,9 +91,9 @@ Async: throws a domain error during processing, used for error handling patterns
 process(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:61](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L61)
+Defined in: [src/domain/transactions/errors.ts:58](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L58)
 
-Sync: returns a promise that will resolve with the result of some event driven processing.
+Returns a promise that will resolve with the result of some event driven processing.
 
 ###### Returns
 
@@ -103,8 +103,8 @@ Sync: returns a promise that will resolve with the result of some event driven p
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="error"></a> `ERROR` | `readonly` | `"error"` | Emitted when processing encounters an error. | [src/domain/transactions/errors.ts:35](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L35) |
-| <a id="done"></a> `DONE` | `readonly` | `"done"` | Emitted once processing is done. | [src/domain/transactions/errors.ts:41](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L41) |
+| <a id="error"></a> `ERROR` | `readonly` | `"error"` | Emitted when processing encounters an error. | [src/domain/transactions/errors.ts:32](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L32) |
+| <a id="done"></a> `DONE` | `readonly` | `"done"` | Emitted once processing is done. | [src/domain/transactions/errors.ts:38](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L38) |
 
 ## Functions
 
@@ -114,9 +114,9 @@ Sync: returns a promise that will resolve with the result of some event driven p
 function throwError(): string;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:73](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L73)
+Defined in: [src/domain/transactions/errors.ts:70](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L70)
 
-Sync: throw error, route to error handler
+Throw error, route to error handler
 
 #### Returns
 
@@ -130,13 +130,15 @@ Sync: throw error, route to error handler
 function emitError(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/errors.ts:82](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/errors.ts#L82)
+Defined in: [src/domain/transactions/errors.ts:80](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/errors.ts#L80)
 
-Async: emit error, route to error handler
-
-* Domain transaction initializes an event emitter instance
-* Transaction will be fulfilled once a specific event is emitted
+Emit error, route to error handler
 
 #### Returns
 
 `Promise`<`string`>
+
+#### Remarks
+
+* Domain transaction initializes an event emitter instance
+* Transaction will be fulfilled once a specific event is emitted

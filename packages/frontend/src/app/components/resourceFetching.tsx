@@ -11,12 +11,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 
 // import types
-import type {ResourceFetchingSignature} from "@vittel/types";
+import type {ResourceFetchingProps} from "@vittel/types";
 
 /**
  * Minimal component for server data fetching support.
  */
-const ResourceFetching = (props: ResourceFetchingSignature): React.JSX.Element => {
+const ResourceFetching = (props: ResourceFetchingProps): React.JSX.Element => {
     // extract props
     const {content} = props;
 

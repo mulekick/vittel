@@ -10,7 +10,7 @@
 
 // import modules
 import {z} from "zod";
-import {getRandomData, getPublicData} from "../../data/database.ts";
+import {randomData, publicData} from "../../data/database.ts";
 
 // import parsers
 import {parsers} from "@vittel/types/parsers";
@@ -24,7 +24,7 @@ import type {SampleData} from "@vittel/types";
  */
 export const getData = async(): Promise<SampleData> => {
     const result = {
-        data: await getRandomData(),
+        data: await randomData(),
         timestamp: new Date().getTime()
     };
     return parsers.SampleData.parse(result);
@@ -34,4 +34,4 @@ export const getData = async(): Promise<SampleData> => {
  * Sync: call to data layer (public)
  * @see {@link getPublicData | Data layer call}
  */
-export const getFallback = (): string => z.string().parse(getPublicData());
+export const getFallback = (): string => z.string().parse(publicData());

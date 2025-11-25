@@ -28,9 +28,9 @@ Features that involve restricted / protected data.
 function issueToken(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:25](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/protected.ts#L25)
+Defined in: [src/domain/transactions/protected.ts:22](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L22)
 
-Async: call to domain jwt issuance helper, will throw on fail
+Call to domain jwt issuance helper, will throw on fail
 
 #### Returns
 
@@ -44,15 +44,15 @@ Async: call to domain jwt issuance helper, will throw on fail
 function validateToken(token): Promise<null>;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:31](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/protected.ts#L31)
+Defined in: [src/domain/transactions/protected.ts:28](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L28)
 
-Async: call to domain jwt validation helper, will throw on fail
+Call to domain jwt validation helper, will throw on fail
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `token` | `undefined` | `string` |
+| `token` | `string` | `undefined` |
 
 #### Returns
 
@@ -70,9 +70,9 @@ Async: call to domain jwt validation helper, will throw on fail
 function getFallback(): string;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:55](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/domain/transactions/protected.ts#L55)
+Defined in: [src/domain/transactions/protected.ts:52](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L52)
 
-Sync: call to data layer (protected)
+Call to data layer (protected)
 
 #### Returns
 
@@ -80,4 +80,4 @@ Sync: call to data layer (protected)
 
 #### See
 
-[Data layer call](../../data/database.md#getprotecteddata)
+getProtectedData | Data layer call

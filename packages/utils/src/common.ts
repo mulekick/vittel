@@ -8,7 +8,6 @@
  * - Scope : GENERAL
  * - Utility functions that cover all app layers (controller, domain and data).
  * - Centralized in a dedicated package to avoid code redundancy across packages.
- * - Domain-specific functions will be declared at the package scope.
  * - This module can be imported in node.js based packages as well as browser packages.
  */
 

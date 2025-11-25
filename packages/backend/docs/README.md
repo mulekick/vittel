@@ -20,7 +20,6 @@
 | [src/controller/routes/public](src/controller/routes/public.md) | Feature-specific express router. |
 | [src/controller/routes/routes](src/controller/routes/routes.md) | Main express router |
 | [src/data/database](src/data/database.md) | Database access features. |
-| [src/data/filesystem](src/data/filesystem.md) | File system access features. |
 | [src/domain/helpers/jwt](src/domain/helpers/jwt.md) | Feature agnostic helpers. |
 | [src/domain/transactions/errors](src/domain/transactions/errors.md) | Features that involve handling and routing of errors. |
 | [src/domain/transactions/messages](src/domain/transactions/messages.md) | Domain feature that involve message-related processing. |

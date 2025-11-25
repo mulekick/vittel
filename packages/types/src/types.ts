@@ -10,9 +10,9 @@
  * - Types for react component props static typing in the frontend packages.
  * @remarks
  * - Scope : GENERAL.
- * - Types / interfaces used across the entire monorepo.
- * - When using the type-driven development approach, this is the starting point for adding or modifying app features.
- * - IMPORTANT : to avoid runtime issues, only types should be imported here with "import type".
+ * - Types and interfaces used across the entire monorepo.
+ * - When using the type-driven development approach, this is the starting point for modifying app features.
+ * - IMPORTANT : to avoid runtime issues, only types should be imported here with `import type`.
  */
 
 // import types
@@ -27,58 +27,62 @@ import type {parsers} from "./parsers.ts";
 // ##############################################################
 
 /**
- * Generic type for nullable.
- * @category 1. Builtin types
- * @typeParam T Initial type to be rendered nullable.
- * @useDeclaredType
- */
-export type Nullable<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers.Nullable<T>>>;
-
-/**
- * Generic type for arrays.
- * @category 1. Builtin types
- * @typeParam T Initial type to parse the array with.
- * @useDeclaredType
- */
-export type ArrayOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers.ArrayOf<T>>>;
-
-/**
- * Generic type for promises.
- * @typeParam T Initial type to be promisified.
- * @category 1. Builtin types
- * @useDeclaredType
- */
-export type PromiseOf<T extends z.ZodTypeAny> = z.infer<ReturnType<typeof parsers.PromiseOf<T>>>;
-
-/**
  * Generic type for functions.
  * @typeParam R Function parameters type tuple.
  * @typeParam T Return value type (can be a promise).
  * @category 1. Builtin types
  * @useDeclaredType
  */
-export type TypedFunction<R extends Array<unknown>, T> = (...args: R)=> T;
+export type TypedFunction<R extends Array<unknown>, T> = (...args: R) => T;
 
 /**
- * Generic type for functions that bind controller objects to domain callback functions.
+ * Generic type for controller callbacks.
  * @category 1. Builtin types
- * @typeParam R The types of controller objects to bind to the domain callback.
- * @typeParam T The function type of the callback the domain will execute.
+ * @typeParam R Types of controller objects to bind to the callback.
+ * @typeParam T Domain function type expression.
  * @useDeclaredType
  * @remarks
- * - This important pattern decouples the controller layer from the domain layer.
- * - It allows controller objects to bind to callback functions executed in the domain.
- * - The controller objects are thus passed as default parameters to the bound callback.
- * - When the controller invokes the domain, the bound callback is passed as an argument.
- * - Once processing is done, the domain executes the bound callback and passes its own arguments to it.
- * - As a result, no controller object needs to be imported in the domain ever :
+ * - The controller queries the domain by invoking domain functions.
+ * - The controller declares callbacks to process requests and responses :
+ *   - A controller callback references controller-specific objects (middlewares).
+ *   - A controller callback also expects domain-provided results.
+ * - The controller then imports and calls the domain function :
+ *   - It binds the relevant controller objects to the callback.
+ *   - It passes the callback as an argument to the domain function.
+ *   - The domain function executes the callback and passes the results to it.
+ * - This pattern decouples the controller layer from the domain layer :
  *   - The controller is tightly coupled to the domain (this is normal).
  *   - The domain is **loosely coupled** to any controller object that may call it.
- * - As a result, each controller can create its own specific callback and pass it to the domain the same way.
+ * - As a result, no controller object needs to be imported in the domain ever.
+ * - Each controller creates its own callbacks and pass it to the domain the same way.
  * - See [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
  * - See also [parameters vs arguments](https://developer.mozilla.org/en-US/docs/Glossary/Parameter#parameters_versus_arguments) (for clarity).
  */
-export type DomainCallback<R extends Array<unknown>, T> = T extends TypedFunction<infer Z, infer X> ? (...args: [...R, ...Z])=> X : never;
+export type ControllerCallback<R extends Array<unknown>, T> = T extends TypedFunction<infer Z, infer X> ? TypedFunction<[...R, ...Z], X> : never;
+
+/**
+ * Generic type for data accessors.
+ * @category 1. Builtin types
+ * @typeParam R Types of data layer objects that bind to the accessor.
+ * @typeParam T Domain function type expression.
+ * @useDeclaredType
+ * @remarks
+ * - The domain queries the data layer by invoking data accessors.
+ * - The data layer exposes its API by exporting accessor functions :
+ *   - An accessor function is bound to data-specific objects (db clients).
+ *   - An accessor function also returns domain-expected results.
+ * - The domain then imports and calls the accessor function :
+ *   - It only needs to pass domain-specific values to the accessor as arguments.
+ *   - The accessor then executes and returns the domain-expected results.
+ * - This pattern decouples the domain layer from the data layer :
+ *   - The data layer is tightly coupled to the domain (this is normal).
+ *   - The domain is **loosely coupled** to any accessor that it may call.
+ * - As a result, no data layer object needs to be imported in the domain ever.
+ * - Each data layer creates its own accessors and exports it the same way.
+ * - See [`Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+ * - See also [parameters vs arguments](https://developer.mozilla.org/en-US/docs/Glossary/Parameter#parameters_versus_arguments) (for clarity).
+ */
+export type DataAccessor<R extends Array<unknown>, T> = T extends TypedFunction<infer Z, infer X> ? Z extends [...R, ...infer Y] ? TypedFunction<Y, X> : never : never;
 
 // ##############################################################
 // #                         ERROR TYPES                        #
@@ -89,7 +93,7 @@ export type DomainCallback<R extends Array<unknown>, T> = T extends TypedFunctio
  * @category 1. Builtin types
  * @interface
  * @property type - Domain error that occured during the transaction.
- * @property payload - Payload that may be associated with the error, unrelated to the original transaction payload.
+ * @property payload - Payload associated with the error, unrelated to the original transaction payload.
  */
 export interface TransactionError {
     type: domainErrors;
@@ -205,7 +209,7 @@ export interface FrontendConfigSignature {
  * @category 2. Domain types
  * @useDeclaredType
  */
-export type FakeMessage = z.infer<typeof parsers.FakeMessage>;
+export type SampleMessage = z.infer<typeof parsers.SampleMessage>;
 
 /**
  * Sample data objects.
@@ -223,7 +227,7 @@ export type SampleData = z.infer<typeof parsers.SampleData>;
  * @category 3. React types
  * @interface
  */
-export interface ResourceFetchingSignature {
+export interface ResourceFetchingProps {
     content: SampleData;
 }
 
@@ -232,7 +236,7 @@ export interface ResourceFetchingSignature {
  * @category 3. React types
  * @interface
  */
-export interface WebTokensSignature {
+export interface WebTokensProps {
     protectedContent: string;
 }
 
@@ -241,6 +245,6 @@ export interface WebTokensSignature {
  * @category 3. React types
  * @interface
  */
-export interface ModuleBundlingSignature {
+export interface ModuleBundlingProps {
     pepe: string;
 }

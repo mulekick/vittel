@@ -25,7 +25,7 @@ Public data fetching component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/resourceFetching.tsx:19](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/frontend/src/app/components/resourceFetching.tsx#L19)
+Defined in: [src/app/components/resourceFetching.tsx:19](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/frontend/src/app/components/resourceFetching.tsx#L19)
 
 Minimal component for server data fetching support.
 
@@ -33,7 +33,7 @@ Minimal component for server data fetching support.
 
 | Parameter | Type |
 | ------ | ------ |
-| `props` | `ResourceFetchingSignature` |
+| `props` | `ResourceFetchingProps` |
 
 #### Returns
 

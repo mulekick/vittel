@@ -29,6 +29,7 @@ const {APP_KEYPAIR_ALG, APP_TOKEN_VALIDITY, APP_TLS_OPTIONS: {key, cert}} = conf
 
 /**
  * Create private / public cryptokeys objects
+ * @remarks
  * - Use node builtins to allow pem instead of pkcs
  */
 const [ prvk, pubk ]: [KeyObject, KeyObject] = [
@@ -37,7 +38,7 @@ const [ prvk, pubk ]: [KeyObject, KeyObject] = [
 ];
 
 /**
- * Async: create jwt string from payload object
+ * Create jwt string from payload object
  */
 export const signToken = (payload: JWTPayload): Promise<string> => new SignJWT(payload)
     // signing key algorithm
@@ -54,7 +55,7 @@ export const signToken = (payload: JWTPayload): Promise<string> => new SignJWT(p
     .sign(prvk);
 
 /**
- * Async: verify jwt signature from string
+ * Verify jwt signature from string
  */
 export const verifyToken = (token: string): Promise<JWTVerifyResult> => jwtVerify(token, pubk, {
     // validate algorithm

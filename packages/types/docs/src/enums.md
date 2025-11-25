@@ -22,7 +22,7 @@ Common shared enums.
 
 ### domainErrors
 
-Defined in: [src/enums.ts:13](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L13)
+Defined in: [src/enums.ts:13](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L13)
 
 Enum used for domain errors definitions.
 
@@ -30,15 +30,15 @@ Enum used for domain errors definitions.
 
 | Enumeration Member | Value | Defined in |
 | ------ | ------ | ------ |
-| <a id="user_authentication_failed"></a> `USER_AUTHENTICATION_FAILED` | `"userAuthenticationFailed"` | [src/enums.ts:14](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L14) |
-| <a id="file_upload_failed"></a> `FILE_UPLOAD_FAILED` | `"fileUploadFailed"` | [src/enums.ts:15](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L15) |
-| <a id="generic_domain_error"></a> `GENERIC_DOMAIN_ERROR` | `"genericDomainError"` | [src/enums.ts:16](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L16) |
+| <a id="user_authentication_failed"></a> `USER_AUTHENTICATION_FAILED` | `"userAuthenticationFailed"` | [src/enums.ts:14](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L14) |
+| <a id="file_upload_failed"></a> `FILE_UPLOAD_FAILED` | `"fileUploadFailed"` | [src/enums.ts:15](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L15) |
+| <a id="generic_domain_error"></a> `GENERIC_DOMAIN_ERROR` | `"genericDomainError"` | [src/enums.ts:16](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L16) |
 
 ***
 
 ### domainEvents
 
-Defined in: [src/enums.ts:23](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L23)
+Defined in: [src/enums.ts:23](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L23)
 
 Enum used for simulated message queue events.
 
@@ -46,7 +46,7 @@ Enum used for simulated message queue events.
 
 | Enumeration Member | Value | Defined in |
 | ------ | ------ | ------ |
-| <a id="evt_process_data"></a> `EVT_PROCESS_DATA` | `"processData"` | [src/enums.ts:24](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L24) |
-| <a id="evt_persist_data"></a> `EVT_PERSIST_DATA` | `"persistData"` | [src/enums.ts:25](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L25) |
-| <a id="evt_data_processed"></a> `EVT_DATA_PROCESSED` | `"dataProcessed"` | [src/enums.ts:26](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L26) |
-| <a id="evt_data_persisted"></a> `EVT_DATA_PERSISTED` | `"dataPersisted"` | [src/enums.ts:27](https://github.com/mulekick/vittel/blob/e648aef454ae6678a0d7fc63d24047e731841937/packages/types/src/enums.ts#L27) |
+| <a id="evt_process_data"></a> `EVT_PROCESS_DATA` | `"processData"` | [src/enums.ts:24](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L24) |
+| <a id="evt_persist_data"></a> `EVT_PERSIST_DATA` | `"persistData"` | [src/enums.ts:25](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L25) |
+| <a id="evt_data_processed"></a> `EVT_DATA_PROCESSED` | `"dataProcessed"` | [src/enums.ts:26](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L26) |
+| <a id="evt_data_persisted"></a> `EVT_DATA_PERSISTED` | `"dataPersisted"` | [src/enums.ts:27](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/types/src/enums.ts#L27) |

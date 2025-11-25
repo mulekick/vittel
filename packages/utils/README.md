@@ -11,6 +11,7 @@ Shared utilities and functions.
 ├── src/                     # npm package source code
 │   ├── common.ts            # shared node.js and browser compatible code
 │   ├── errors.ts            # shared node.js specific error-related code
+│   ├── mocks.ts             # database client and message queue client mocks
 │   ├── stub.test.ts         # stub unit test file
 │   └── utils.ts             # shared node.js specific helper code
 ├── .npmignore               # npm exclusion file
@@ -30,9 +31,9 @@ Shared utilities and functions.
 
 ## Required shell variables for [`package.json`](./package.json) scripts
 
-| variable      | usage                                                                                              |
-|---------------|----------------------------------------------------------------------------------------------------|
-| `ENTRYPOINTS` | List of **_ALL_** typescript files that contain **_implementations_** (as opposed to declarations) |
+| variable      | usage                                                             |
+|---------------|-------------------------------------------------------------------|
+| `ENTRYPOINTS` | List of typescript implementation files, supports shell expansion |
 
 - _The value for each variable must be consistent across all scripts._
 
@@ -41,9 +42,11 @@ Shared utilities and functions.
 - Module `src/utils.ts` is exported as `@vittel/utils`.
 - Module `src/errors.ts` is exported as `@vittel/utils/errors`.
 - Module `src/common.ts` is exported as `@vittel/utils/common`.
+- Module `src/mocks.ts` is exported as `@vittel/utils/mocks`.
 - The local `tar` archive is published to `../vittel-utils-<version>.tgz`.
 
 ## Notes
 
+- the `mocks` modules and exports exist for demonstration purposes and can be removed once real clients are used.
 - `src/stub.test.ts` should not be removed so the `test` task does not fail if no other test files exist.
 - Run `npx lerna run docs:build` to build the [docs](./docs/README.md) for all packages for details about specific modules.

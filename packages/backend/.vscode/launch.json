@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "debug content-server in dev mode",
+            "name": "debug backend in dev mode",
             "skipFiles": [ "<node_internals>/**" ],
             // log output in current terminal instead of debug console
             "console": "integratedTerminal",

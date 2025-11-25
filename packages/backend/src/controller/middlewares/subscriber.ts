@@ -3,39 +3,39 @@
  * @module
  * @remarks
  * - Scope : CONTROLLER / MIDDLEWARES.
- * - Uses a node.js interval to emulate messages arriving on a message queue.
  * - Passing callback functions to the domain enforces strict isolation from the controller.
  * - Use bind to create callbacks and pass the mocked message queue as first argument.
  */
 
 // import modules
-import {logger, correlationId, FakeMessageQueue, setRequestLocalsFakeMessageQueue, wrapMiddlewareFakeMessageQueue} from "@vittel/utils";
+import {logger, correlationId} from "@vittel/utils";
+import {FakeMessageQueueClient} from "@vittel/utils/mocks";
 import {processFakeEvent} from "../../domain/transactions/messages.ts";
 
 // import types
-import type {DomainCallback} from "@vittel/types";
-import type {MessageHandler} from "@vittel/utils";
-import type {dataProcessedCallback, dataPersistedCallback} from "../../domain/transactions/messages.ts";
+import type {ControllerCallback} from "@vittel/types";
+import type {MessageHandler} from "@vittel/utils/mocks";
+import type {onDataProcessed, onDataPersisted} from "../../domain/transactions/messages.ts";
 
 /**
- * Sync: send a message on specific "users" channel
- * The function will bind the the actual message queue at runtime.
+ * Send a message on specific "users" channel
  */
-const cbDataProcessed: DomainCallback<[FakeMessageQueue], dataProcessedCallback> = (mq, message) => {
+const cbDataProcessed: ControllerCallback<[FakeMessageQueueClient], onDataProcessed> = (mq, message) => {
     mq.send(`[processing]`, message);
 };
 
 /**
- * Sync: send a message on specific "storage" channel
- * The function will bind the the actual message queue at runtime.
+ * Send a message on specific "storage" channel
  */
-const cbDataPersisted: DomainCallback<[FakeMessageQueue], dataPersistedCallback> = (mq, message) => {
+const cbDataPersisted: ControllerCallback<[FakeMessageQueueClient], onDataPersisted> = (mq, message) => {
     mq.send(`[storage]`, message);
 };
 
 /**
- * Sync message processing middleware
+ * Message processing middleware
  * @see {@link processFakeEvent | Process incoming messages}
+ * @remarks
+ * - Declare local callback functions and bind to the message queue
  */
 export const mProcessMessage: MessageHandler = async(queue, message) => {
     logger.info({id: correlationId()}, `[message queue] received message ${ JSON.stringify(message) }`);
@@ -44,20 +44,4 @@ export const mProcessMessage: MessageHandler = async(queue, message) => {
     const onPersisted = cbDataPersisted.bind(null, queue);
     // initialize domain transaction
     await processFakeEvent(message, onProcessed, onPersisted);
-};
-
-/**
- * Subscribe to the queue (attach middleware to incoming messages listener)
- */
-const fakeMQ = new FakeMessageQueue().on(FakeMessageQueue.MESSAGE, msg => {
-    // create async middleware function and trigger the call chain
-    const next = wrapMiddlewareFakeMessageQueue(mProcessMessage);
-    void setRequestLocalsFakeMessageQueue(next, fakeMQ, msg);
-});
-
-/**
- * Simulate incoming messages
- */
-export const subscribe = (): void => {
-    setInterval(() => {fakeMQ.emit(FakeMessageQueue.MESSAGE, FakeMessageQueue.createMessage());}, 2.5e3);
 };

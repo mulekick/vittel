@@ -18,6 +18,8 @@ import {mUpload} from "../middlewares/upload.ts";
  * @see {@link mUpload | Route to process file uploads}
  * @see {@link mFallback | Protected resources sit there}
  */
+
+// eslint-disable-next-line new-cap
 export const xProtected: Router = Router()
     .get(`/token`, mToken)
     .use(mProtection)

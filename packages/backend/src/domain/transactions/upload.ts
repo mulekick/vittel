@@ -15,7 +15,7 @@ import {Buffer} from "node:buffer";
 // import modules
 import {z} from "zod";
 import {DomainError, domainErrors} from "@vittel/utils/errors";
-import {getWritableStreamToFile} from "../../data/filesystem.ts";
+import {writableStreamToFile} from "../../data/database.ts";
 import config from "../../config.ts";
 
 // import types
@@ -65,7 +65,7 @@ export class Uploader extends Duplex {
      * - Additional processing: update the total upload size at each read
      * @internal
      */
-    public _write(chunk: Buffer, encoding: BufferEncoding, callback: (error?: Error | null)=> void): void {
+    public _write(chunk: Buffer, encoding: BufferEncoding, callback: (error?: Error | null) => void): void {
         try {
             // enforce max upload size at the domain layer ...
             if (chunk.length > APP_MAX_UPLOAD_SIZE * 1024 || this.totalBytesRead > APP_MAX_UPLOAD_SIZE * 1024)
@@ -84,7 +84,7 @@ export class Uploader extends Duplex {
      * Fires once reads are exhausted on the writable end
      * @internal
      */
-    public _final(callback: (error?: Error | null)=> void): void {
+    public _final(callback: (error?: Error | null) => void): void {
         // signal EOF
         this.push(null);
         callback();
@@ -110,7 +110,7 @@ export const createUploader = (file: string, mime: string): Uploader => {
         autoDestroy: true
     }, file, mime);
     // pipe to data layer
-    u.pipe(getWritableStreamToFile());
+    u.pipe(writableStreamToFile());
     // parse and return
     return z.instanceof(Uploader).parse(u);
 };

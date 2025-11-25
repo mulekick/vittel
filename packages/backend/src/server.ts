@@ -6,6 +6,8 @@
  * - Main server file, entrypoint for the application.
  */
 
+/* eslint-disable n/no-process-env */
+
 // import primitives
 import process from "node:process";
 import console from "node:console";
@@ -17,12 +19,14 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import {setRequestLocalsExpress, httpLogger} from "@vittel/utils";
+import {setRequestLocalsExpress, httpLogger, wrapMiddlewareFakeMessageQueue, setRequestLocalsFakeMessageQueue} from "@vittel/utils";
 import {unhandledRejection, uncaughtException} from "@vittel/utils/errors";
+import {FakeMessageQueueClient} from "@vittel/utils/mocks";
 import config from "./config.ts";
 import {xRoutes} from "./controller/routes/routes.ts";
+import {dbClient} from "./data/database.ts";
+import {mProcessMessage} from "./controller/middlewares/subscriber.ts";
 import {defaultFallback, errorHandling} from "./controller/middlewares/defaults.ts";
-import {subscribe} from "./controller/middlewares/subscriber.ts";
 
 // import types
 import type {Application} from "express";
@@ -31,11 +35,6 @@ import type {Server as httpsServer} from "node:https";
 
 // destructure config values
 const {dirName, VITE_SRV_ENTRYPOINT, APP_HOST, APP_PORT, APP_ENABLE_HTTPS, APP_SERVE_BUNDLE, APP_BUNDLE_DIR, APP_TLS_OPTIONS} = config;
-
-/**
- * Subscribe to a message queue
- */
-subscribe();
 
 /**
  * Create express app
@@ -65,7 +64,7 @@ const xApp: Application = express()
 if (process.env.NODE_ENV === `production`) {
     // route for serving static content
     if (APP_SERVE_BUNDLE)
-        xApp.use(`/`, express.static(`${ dirName }/${ String(APP_BUNDLE_DIR) }`));
+        xApp.use(`/`, express.static(`${ dirName }/${ APP_BUNDLE_DIR }`));
 } else if (process.env.NODE_ENV === `development`) {
     // stop express (ok to force process exit here since we're in dev mode)
     process.on(`SIGINT`, () => {
@@ -98,6 +97,27 @@ process
 const netServer: httpServer | httpsServer = APP_ENABLE_HTTPS ? httpsCreateServer(APP_TLS_OPTIONS, xApp) : httpCreateServer(xApp);
 
 /**
- * Start server
+ * Fires when the message queue client receives a message
  */
-netServer.listen(APP_PORT, APP_HOST, () => {httpLogger.logger.info(`service listening on ${ APP_ENABLE_HTTPS ? `https` : `http` }://${ APP_HOST }:${ String(APP_PORT) }`);});
+const onPublishedMessage = (queue: FakeMessageQueueClient, message: unknown): void => {
+    // create async middleware function and trigger the call chain
+    const next = wrapMiddlewareFakeMessageQueue(mProcessMessage);
+    setRequestLocalsFakeMessageQueue(next, queue, message);
+};
+
+/**
+ * Attach ready callback event
+ */
+dbClient.on(`ready`, (): void => {
+    // create message queue client, bind listener and subscribe
+    const mq = new FakeMessageQueueClient();
+    mq.on(FakeMessageQueueClient.MESSAGE, onPublishedMessage.bind(undefined, mq));
+    mq.subscribe();
+    // start server
+    netServer.listen(APP_PORT, APP_HOST, () => {httpLogger.logger.info(`service listening on ${ APP_ENABLE_HTTPS ? `https` : `http` }://${ APP_HOST }:${ String(APP_PORT) }`);});
+});
+
+/**
+ * Initiate connection to database
+ */
+dbClient.connect();

@@ -10,22 +10,19 @@
 
 // import modules
 import {z} from "zod";
-import {JOSEError} from "jose/errors";
+import {errors} from "jose";
 import {correlationId, logger} from "@vittel/utils";
 import {DomainError, domainErrors} from "@vittel/utils/errors";
 import {signToken, verifyToken} from "../helpers/jwt.ts";
-import {getProtectedData} from "../../data/database.ts";
-
-// import parsers
-import {parsers} from "@vittel/types/parsers";
+import {protectedData} from "../../data/database.ts";
 
 /**
- * Async: call to domain jwt issuance helper, will throw on fail
+ * Call to domain jwt issuance helper, will throw on fail
  */
-export const issueToken = (): Promise<string> => parsers.PromiseOf(z.string()).parse(signToken({permission: `access to protected content granted`}));
+export const issueToken = async(): Promise<string> => z.string().parse(await signToken({permission: `access to protected content granted`}));
 
 /**
- * Async: call to domain jwt validation helper, will throw on fail
+ * Call to domain jwt validation helper, will throw on fail
  * @see {@link signToken | Sign token}
  */
 export const validateToken = async(token: string | undefined): Promise<null> => {
@@ -41,7 +38,7 @@ export const validateToken = async(token: string | undefined): Promise<null> => 
         return z.null().parse(null);
     } catch (err: unknown) {
         // fail w/ domain specific error
-        if (err instanceof JOSEError && [ `ERR_JWT_EXPIRED`, `ERR_JWT_CLAIM_VALIDATION_FAILED` ].includes(err.code))
+        if (err instanceof errors.JOSEError && [ `ERR_JWT_EXPIRED`, `ERR_JWT_CLAIM_VALIDATION_FAILED` ].includes(err.code))
             throw new DomainError(`invalid authentication token`, domainErrors.USER_AUTHENTICATION_FAILED, null);
         // else, rethrow original error
         throw err;
@@ -49,7 +46,7 @@ export const validateToken = async(token: string | undefined): Promise<null> => 
 };
 
 /**
- * Sync: call to data layer (protected)
+ * Call to data layer (protected)
  * @see {@link getProtectedData | Data layer call}
  */
-export const getFallback = (): string => z.string().parse(getProtectedData());
+export const getFallback = (): string => z.string().parse(protectedData());

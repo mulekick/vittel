@@ -11,58 +11,79 @@ Database access features.
 ## Table of contents
 
 * [Remarks](#remarks)
-* [Functions](#functions)
+* [Variables](#variables)
 
 ## Remarks
 
 * Scope : DATA.
 * Implements vendor specific database access features.
-* Returns results to the domain layer for validation and parsing.
+* Imports shared data access features, binds to specific db client.
+* Returns results to the domain for validation and parsing.
+* TODO : import a wrapper class for db client, pass client instance to the contructor :
+  1. Client is instantiated in backend package data layer (npm packages do not include configs)
+  2. Data accessors are implemented as methods of the wrapper class, `DataAccessor` type may become superfluous.
 
-## Functions
+## Variables
 
-### getRandomData()
+### dbClient
 
 ```ts
-function getRandomData(): Promise<string>;
+const dbClient: FakeDatabaseClient;
 ```
 
-Defined in: [src/data/database.ts:16](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L16)
+Defined in: [src/data/database.ts:27](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L27)
 
-Async: emulates database read (public)
+Create database client
 
-#### Returns
+#### Remarks
 
-`Promise`<`string`>
+* Config for the db client is package-specific so it has to be created here.
+* A `ready` callback will be added in the server main file.
 
 ***
 
-### getPublicData()
+### randomData
 
 ```ts
-function getPublicData(): string;
+const randomData: DataAccessor<[FakeDatabaseClient], typeof getRandomData>;
 ```
 
-Defined in: [src/data/database.ts:24](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L24)
+Defined in: [src/data/database.ts:32](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L32)
 
-Sync: emulates database read (public)
-
-#### Returns
-
-`string`
+Bind imports to db client
 
 ***
 
-### getProtectedData()
+### publicData
 
 ```ts
-function getProtectedData(): string;
+const publicData: DataAccessor<[FakeDatabaseClient], typeof getPublicData>;
 ```
 
-Defined in: [src/data/database.ts:29](https://github.com/mulekick/vittel/blob/ca70442e6751444b45d7b40abefb56b3660f57ae/packages/backend/src/data/database.ts#L29)
+Defined in: [src/data/database.ts:37](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L37)
 
-Sync: emulates database read (protected)
+Bind imports to db client
 
-#### Returns
+***
 
-`string`
+### protectedData
+
+```ts
+const protectedData: DataAccessor<[FakeDatabaseClient], typeof getProtectedData>;
+```
+
+Defined in: [src/data/database.ts:42](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L42)
+
+Bind imports to db client
+
+***
+
+### writableStreamToFile
+
+```ts
+const writableStreamToFile: DataAccessor<[FakeDatabaseClient], typeof getWritableStreamToFile>;
+```
+
+Defined in: [src/data/database.ts:47](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L47)
+
+Bind imports to db client

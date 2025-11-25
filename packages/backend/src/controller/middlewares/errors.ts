@@ -14,7 +14,7 @@ import {throwError, emitError} from "../../domain/transactions/errors.ts";
 import type {RequestHandler} from "express";
 
 /**
- * Sync: trigger error in domain
+ * Trigger error in domain
  * @see {@link throwError | Throw error (sync)}
  */
 export const mThrowError: RequestHandler = wrapMiddlewareExpress((req, res) => {
@@ -25,7 +25,7 @@ export const mThrowError: RequestHandler = wrapMiddlewareExpress((req, res) => {
 });
 
 /**
- * Async: trigger error in domain, event emitter emits error, promise rejects
+ * Trigger error in domain, event emitter emits error, promise rejects
  * @see {@link emitError | Emit error (async)}
  */
 export const mEmitError: RequestHandler = wrapMiddlewareExpress(async(req, res) => {

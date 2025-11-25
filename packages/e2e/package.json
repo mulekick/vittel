@@ -18,9 +18,9 @@
         "@vittel/utils": "^2.0.0"
     },
     "devDependencies": {
-        "dotenv": "^16.6.1",
+        "dotenv": "^17.2.3",
         "jest-puppeteer": "^11.0.0",
-        "puppeteer": "^24.3.0"
+        "puppeteer": "^24.31.0"
     },
     "engines": {
         "node": ">=v22.15.0",
