@@ -35,6 +35,7 @@ const {APP_MAX_UPLOAD_SIZE} = config;
  *   2. It exposes a readable stream to the data layer to persist the uploaded file.
  * - Additional processing can be implemented in the stream methods (see below).
  * - Working with streams allows the domain layer to remain framework and database agnostic.
+ * - Node.js stream implementations constraints require using `null` in callbacks.
  */
 export class Uploader extends Duplex {
     // uploaded file name
@@ -69,7 +70,7 @@ export class Uploader extends Duplex {
         try {
             // enforce max upload size at the domain layer ...
             if (chunk.length > APP_MAX_UPLOAD_SIZE * 1024 || this.totalBytesRead > APP_MAX_UPLOAD_SIZE * 1024)
-                throw new DomainError(`max upload size exceeded`, domainErrors.FILE_UPLOAD_FAILED, null);
+                throw new DomainError(`max upload size exceeded`, domainErrors.FILE_UPLOAD_FAILED, undefined);
             // update total
             this.totalBytesRead += chunk.length;
             this.push(chunk);

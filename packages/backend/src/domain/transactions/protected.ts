@@ -25,21 +25,19 @@ export const issueToken = async(): Promise<string> => z.string().parse(await sig
  * Call to domain jwt validation helper, will throw on fail
  * @see {@link signToken | Sign token}
  */
-export const validateToken = async(token: string | undefined): Promise<null> => {
+export const validateToken = async(token: string | undefined): Promise<void> => {
     // fail if cookie is missing
     if (typeof token === `undefined`)
-        throw new DomainError(`authentication cookie not found`, domainErrors.USER_AUTHENTICATION_FAILED, null);
+        throw new DomainError(`authentication cookie not found`, domainErrors.USER_AUTHENTICATION_FAILED, undefined);
     try {
-        // read token claims
+        // read and discard token claims
         const {payload: {permission}} = await verifyToken(token);
         // success
         logger.info({id: correlationId()}, `received valid client token for '${ String(permission) }'`);
-        // discard claims and return null
-        return z.null().parse(null);
     } catch (err: unknown) {
         // fail w/ domain specific error
         if (err instanceof errors.JOSEError && [ `ERR_JWT_EXPIRED`, `ERR_JWT_CLAIM_VALIDATION_FAILED` ].includes(err.code))
-            throw new DomainError(`invalid authentication token`, domainErrors.USER_AUTHENTICATION_FAILED, null);
+            throw new DomainError(`invalid authentication token`, domainErrors.USER_AUTHENTICATION_FAILED, undefined);
         // else, rethrow original error
         throw err;
     }

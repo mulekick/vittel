@@ -40,8 +40,8 @@ const cbDataPersisted: ControllerCallback<[FakeMessageQueueClient], onDataPersis
 export const mProcessMessage: MessageHandler = async(queue, message) => {
     logger.info({id: correlationId()}, `[message queue] received message ${ JSON.stringify(message) }`);
     // create event callbacks and bind to the queue
-    const onProcessed = cbDataProcessed.bind(null, queue);
-    const onPersisted = cbDataPersisted.bind(null, queue);
+    const onProcessed = cbDataProcessed.bind(undefined, queue);
+    const onPersisted = cbDataPersisted.bind(undefined, queue);
     // initialize domain transaction
     await processFakeEvent(message, onProcessed, onPersisted);
 };

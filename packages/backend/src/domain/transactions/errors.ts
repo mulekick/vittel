@@ -44,7 +44,7 @@ export class EventDrivenObject extends EventEmitter {
     private async startProcessing() {
         try {
             await new Promise(r => {setTimeout(r, 1e3);});
-            throw new DomainError(`emitter errored during processing.`, domainErrors.GENERIC_DOMAIN_ERROR, null);
+            throw new DomainError(`emitter errored during processing.`, domainErrors.GENERIC_DOMAIN_ERROR, undefined);
             // resolve instead of erroring
             // this.emit(DomainEventEmitter.DONE, `processing complete.`);
         } catch (error: unknown) {
@@ -68,7 +68,7 @@ export class EventDrivenObject extends EventEmitter {
  * Throw error, route to error handler
  */
 export const throwError = (): string => {
-    throw new DomainError(`something errored in the domain`, domainErrors.GENERIC_DOMAIN_ERROR, null);
+    throw new DomainError(`something errored in the domain`, domainErrors.GENERIC_DOMAIN_ERROR, undefined);
 };
 
 /**

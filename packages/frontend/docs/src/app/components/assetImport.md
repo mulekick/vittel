@@ -25,7 +25,7 @@ Static assets imports component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/assetImport.tsx:25](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/frontend/src/app/components/assetImport.tsx#L25)
+Defined in: [src/app/components/assetImport.tsx:25](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/frontend/src/app/components/assetImport.tsx#L25)
 
 Minimal component for static assets imports support.
 

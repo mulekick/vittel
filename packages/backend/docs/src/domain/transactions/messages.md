@@ -29,7 +29,7 @@ Domain feature that involve message-related processing.
 type onDataProcessed = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:37](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/messages.ts#L37)
+Defined in: [src/domain/transactions/messages.ts:37](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/domain/transactions/messages.ts#L37)
 
 Expose "data processed" function type to the controller
 
@@ -51,7 +51,7 @@ Expose "data processed" function type to the controller
 type onDataPersisted = (message) => void;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:42](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/messages.ts#L42)
+Defined in: [src/domain/transactions/messages.ts:42](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/domain/transactions/messages.ts#L42)
 
 Expose "data persisted" function type to the controller
 
@@ -76,7 +76,7 @@ function processFakeEvent(
 onPersisted): Promise<void>;
 ```
 
-Defined in: [src/domain/transactions/messages.ts:50](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/messages.ts#L50)
+Defined in: [src/domain/transactions/messages.ts:50](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/domain/transactions/messages.ts#L50)
 
 Async: process incoming messages
 
