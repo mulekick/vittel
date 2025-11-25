@@ -25,7 +25,7 @@ Web tokens usage component.
 function default(props): Element;
 ```
 
-Defined in: [src/app/components/webTokens.tsx:24](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/frontend/src/app/components/webTokens.tsx#L24)
+Defined in: [src/app/components/webTokens.tsx:24](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/frontend/src/app/components/webTokens.tsx#L24)
 
 Minimal component for web tokens support.
 

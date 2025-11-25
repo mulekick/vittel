@@ -37,7 +37,7 @@ Node.js based shared utility functions.
 const CORRELATION_ID_KEY: "x-correlation-id";
 ```
 
-Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L49)
+Defined in: [src/utils.ts:49](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L49)
 
 Key used for storing correlation ID in async local storage.
 
@@ -53,7 +53,7 @@ Key used for storing correlation ID in async local storage.
 const asyncLocalStorage: AsyncLocalStorage<Map<string, string>>;
 ```
 
-Defined in: [src/utils.ts:58](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L58)
+Defined in: [src/utils.ts:58](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L58)
 
 Init async local storage.
 
@@ -70,7 +70,7 @@ Init async local storage.
 function setCorrelationId(id): void;
 ```
 
-Defined in: [src/utils.ts:66](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L66)
+Defined in: [src/utils.ts:66](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L66)
 
 Set the correlation id for current async calls chain.
 
@@ -96,7 +96,7 @@ Throws a generic error if async local storage is not initialized.
 function correlationId(): string;
 ```
 
-Defined in: [src/utils.ts:79](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L79)
+Defined in: [src/utils.ts:79](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L79)
 
 Retrieve the correlation id for current async calls chain.
 
@@ -120,7 +120,7 @@ Throws a generic error if async local storage is not initialized or if the id is
 const setRequestLocalsExpress: RequestHandler;
 ```
 
-Defined in: [src/utils.ts:96](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L96)
+Defined in: [src/utils.ts:96](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L96)
 
 Express middleware that exposes async local storage to incoming http requests.
 
@@ -137,7 +137,7 @@ Express middleware that exposes async local storage to incoming http requests.
 function setRequestLocalsFakeMessageQueue(next, ...args): void;
 ```
 
-Defined in: [src/utils.ts:132](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L132)
+Defined in: [src/utils.ts:132](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L132)
 
 Middleware-like hook function that exposes async local storage to the message queue.
 
@@ -168,7 +168,7 @@ Middleware-like hook function that exposes async local storage to the message qu
 function wrapMiddlewareExpress(mid): RequestHandler;
 ```
 
-Defined in: [src/utils.ts:113](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L113)
+Defined in: [src/utils.ts:113](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L113)
 
 Sync wrapper that adds error handling support to express middlewares.
 
@@ -196,7 +196,7 @@ The wrapped middleware.
 function wrapMiddlewareFakeMessageQueue(mid): MessageHandler;
 ```
 
-Defined in: [src/utils.ts:149](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L149)
+Defined in: [src/utils.ts:149](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L149)
 
 Sync wrapper that adds error handling support to message queue middlewares.
 
@@ -227,7 +227,7 @@ The wrapped middleware.
 const logWritables: DestinationStream;
 ```
 
-Defined in: [src/utils.ts:168](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L168)
+Defined in: [src/utils.ts:168](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L168)
 
 Specify outputs to write logs to using pino transports.
 
@@ -246,7 +246,7 @@ Specify outputs to write logs to using pino transports.
 const logger: Logger;
 ```
 
-Defined in: [src/utils.ts:195](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L195)
+Defined in: [src/utils.ts:195](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L195)
 
 Constant that will instantiate the pino logger and pipe it to the outputs.
 
@@ -262,7 +262,7 @@ Constant that will instantiate the pino logger and pipe it to the outputs.
 const httpLogger: HttpLogger;
 ```
 
-Defined in: [src/utils.ts:203](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L203)
+Defined in: [src/utils.ts:203](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L203)
 
 Wrapper around the main logger for use as an express logging middleware.
 
@@ -281,7 +281,7 @@ Wrapper around the main logger for use as an express logging middleware.
 function createDbClient(databaseConfig): FakeDatabaseClient;
 ```
 
-Defined in: [src/utils.ts:223](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L223)
+Defined in: [src/utils.ts:223](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L223)
 
 Create database client instance
 
@@ -303,7 +303,7 @@ Create database client instance
 function getRandomData(dbClient): Promise<string>;
 ```
 
-Defined in: [src/utils.ts:232](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L232)
+Defined in: [src/utils.ts:232](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L232)
 
 Emulate database read (public)
 
@@ -325,7 +325,7 @@ Emulate database read (public)
 function getPublicData(dbClient): string;
 ```
 
-Defined in: [src/utils.ts:238](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L238)
+Defined in: [src/utils.ts:238](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L238)
 
 Emulate database read (public)
 
@@ -347,7 +347,7 @@ Emulate database read (public)
 function getProtectedData(dbClient): string;
 ```
 
-Defined in: [src/utils.ts:244](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L244)
+Defined in: [src/utils.ts:244](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L244)
 
 Emulate database read (protected)
 
@@ -369,7 +369,7 @@ Emulate database read (protected)
 function getWritableStreamToFile(dbClient): WriteStream;
 ```
 
-Defined in: [src/utils.ts:250](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/utils.ts#L250)
+Defined in: [src/utils.ts:250](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/utils.ts#L250)
 
 Create a writable stream
 

@@ -30,7 +30,7 @@ Common shared utility functions.
 function configParseNumber(value, defaultValue): number;
 ```
 
-Defined in: [src/common.ts:18](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/common.ts#L18)
+Defined in: [src/common.ts:18](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/common.ts#L18)
 
 Config only util to handle type conversion from dotenv values.
 
@@ -53,7 +53,7 @@ Config only util to handle type conversion from dotenv values.
 function rnd(lb, ub): number;
 ```
 
-Defined in: [src/common.ts:24](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/common.ts#L24)
+Defined in: [src/common.ts:24](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/common.ts#L24)
 
 Returns a random number between 2 values.
 

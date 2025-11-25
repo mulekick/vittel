@@ -26,7 +26,7 @@ Feature-specific express middleware.
 const mToken: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:26](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/controller/middlewares/protected.ts#L26)
+Defined in: [src/controller/middlewares/protected.ts:26](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/backend/src/controller/middlewares/protected.ts#L26)
 
 Delivers a token everytime, equivalent to the '/login' route
 
@@ -42,7 +42,7 @@ Delivers a token everytime, equivalent to the '/login' route
 const mProtection: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:50](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/controller/middlewares/protected.ts#L50)
+Defined in: [src/controller/middlewares/protected.ts:50](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/backend/src/controller/middlewares/protected.ts#L50)
 
 Protection middleware, verifies JWT validity
 
@@ -58,7 +58,7 @@ Protection middleware, verifies JWT validity
 const mFallback: RequestHandler;
 ```
 
-Defined in: [src/controller/middlewares/protected.ts:61](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/controller/middlewares/protected.ts#L61)
+Defined in: [src/controller/middlewares/protected.ts:61](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/backend/src/controller/middlewares/protected.ts#L61)
 
 Fallback middleware
 

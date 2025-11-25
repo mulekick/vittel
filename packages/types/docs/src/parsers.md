@@ -31,7 +31,7 @@ const SampleData: z.ZodObject<{
 }>;
 ```
 
-Defined in: [src/parsers.ts:21](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/types/src/parsers.ts#L21)
+Defined in: [src/parsers.ts:21](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/types/src/parsers.ts#L21)
 
 Parser for sample data objects.
 
@@ -46,7 +46,7 @@ const SampleMessage: z.ZodObject<{
 }>;
 ```
 
-Defined in: [src/parsers.ts:32](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/types/src/parsers.ts#L32)
+Defined in: [src/parsers.ts:32](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/types/src/parsers.ts#L32)
 
 Parser for mock message objects.
 
@@ -61,7 +61,7 @@ const parsers: {
 };
 ```
 
-Defined in: [src/parsers.ts:43](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/types/src/parsers.ts#L43)
+Defined in: [src/parsers.ts:43](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/types/src/parsers.ts#L43)
 
 Export wrapper for parser objects.
 
@@ -69,5 +69,5 @@ Export wrapper for parser objects.
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="samplemessage-1"></a> `SampleMessage` | *typeof* [`SampleMessage`](#samplemessage) | [src/parsers.ts:44](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/types/src/parsers.ts#L44) |
-| <a id="sampledata-1"></a> `SampleData` | *typeof* [`SampleData`](#sampledata) | [src/parsers.ts:45](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/types/src/parsers.ts#L45) |
+| <a id="samplemessage-1"></a> `SampleMessage` | *typeof* [`SampleMessage`](#samplemessage) | [src/parsers.ts:44](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/types/src/parsers.ts#L44) |
+| <a id="sampledata-1"></a> `SampleData` | *typeof* [`SampleData`](#sampledata) | [src/parsers.ts:45](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/types/src/parsers.ts#L45) |

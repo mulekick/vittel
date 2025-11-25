@@ -25,7 +25,7 @@ Mock implementations of client libraries.
 
 ### FakeMessageQueueClient
 
-Defined in: [src/mocks.ts:41](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L41)
+Defined in: [src/mocks.ts:41](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L41)
 
 Message queue mock
 
@@ -72,7 +72,7 @@ static createMessage(): {
 };
 ```
 
-Defined in: [src/mocks.ts:62](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L62)
+Defined in: [src/mocks.ts:62](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L62)
 
 Creates a fake incoming message.
 
@@ -89,7 +89,7 @@ Creates a fake incoming message.
 subscribe(): void;
 ```
 
-Defined in: [src/mocks.ts:74](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L74)
+Defined in: [src/mocks.ts:74](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L74)
 
 Simulate incoming messages
 
@@ -103,7 +103,7 @@ Simulate incoming messages
 send(channel, message): void;
 ```
 
-Defined in: [src/mocks.ts:84](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L84)
+Defined in: [src/mocks.ts:84](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L84)
 
 Sync: simulates sending a message on the queue.
 
@@ -122,13 +122,13 @@ Sync: simulates sending a message on the queue.
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/mocks.ts:47](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L47) |
+| <a id="message"></a> `MESSAGE` | `readonly` | `"message"` | Emitted when a new message arrives on the message queue. | [src/mocks.ts:47](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L47) |
 
 ***
 
 ### FakeDatabaseClient
 
-Defined in: [src/mocks.ts:97](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L97)
+Defined in: [src/mocks.ts:97](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L97)
 
 Mocks a database client
 
@@ -174,7 +174,7 @@ EventEmitter.constructor
 connect(): void;
 ```
 
-Defined in: [src/mocks.ts:108](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L108)
+Defined in: [src/mocks.ts:108](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L108)
 
 Sync: simulates database connectiob.
 
@@ -188,7 +188,7 @@ Sync: simulates database connectiob.
 randomData(): Promise<string>;
 ```
 
-Defined in: [src/mocks.ts:118](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L118)
+Defined in: [src/mocks.ts:118](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L118)
 
 Async: emulates database read (public)
 
@@ -202,7 +202,7 @@ Async: emulates database read (public)
 publicData(): string;
 ```
 
-Defined in: [src/mocks.ts:129](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L129)
+Defined in: [src/mocks.ts:129](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L129)
 
 Sync: emulates database read (public)
 
@@ -216,7 +216,7 @@ Sync: emulates database read (public)
 protectedData(): string;
 ```
 
-Defined in: [src/mocks.ts:137](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L137)
+Defined in: [src/mocks.ts:137](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L137)
 
 Sync: emulates database read (protected)
 
@@ -230,7 +230,7 @@ Sync: emulates database read (protected)
 writableStreamToFile(): WriteStream;
 ```
 
-Defined in: [src/mocks.ts:145](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L145)
+Defined in: [src/mocks.ts:145](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L145)
 
 Sync: process streamed data (discard to /dev/null)
 
@@ -242,7 +242,7 @@ Sync: process streamed data (discard to /dev/null)
 
 | Event | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="ready"></a> `READY` | `readonly` | `"ready"` | Emitted once the client connects to the database. | [src/mocks.ts:103](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L103) |
+| <a id="ready"></a> `READY` | `readonly` | `"ready"` | Emitted once the client connects to the database. | [src/mocks.ts:103](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L103) |
 
 ## Type Aliases
 
@@ -252,7 +252,7 @@ Sync: process streamed data (discard to /dev/null)
 type MessageHandler = MessageHandler;
 ```
 
-Defined in: [src/mocks.ts:32](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/utils/src/mocks.ts#L32)
+Defined in: [src/mocks.ts:32](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/utils/src/mocks.ts#L32)
 
 Signature for message queue middlewares.
 

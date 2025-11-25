@@ -27,7 +27,7 @@ Feature-specific message queue subscriber.
 const mProcessMessage: MessageHandler;
 ```
 
-Defined in: [src/controller/middlewares/subscriber.ts:40](https://github.com/mulekick/vittel/blob/f90901bbc10e6a0573fc6bdede5e6e7c3e83c9b1/packages/backend/src/controller/middlewares/subscriber.ts#L40)
+Defined in: [src/controller/middlewares/subscriber.ts:40](https://github.com/mulekick/vittel/blob/249072cb474ae5036ea5c46e6158484d6ffccf51/packages/backend/src/controller/middlewares/subscriber.ts#L40)
 
 Message processing middleware
 
