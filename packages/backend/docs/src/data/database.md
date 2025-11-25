@@ -31,7 +31,7 @@ Database access features.
 const dbClient: FakeDatabaseClient;
 ```
 
-Defined in: [src/data/database.ts:27](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L27)
+Defined in: [src/data/database.ts:27](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/data/database.ts#L27)
 
 Create database client
 
@@ -48,7 +48,7 @@ Create database client
 const randomData: DataAccessor<[FakeDatabaseClient], typeof getRandomData>;
 ```
 
-Defined in: [src/data/database.ts:32](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L32)
+Defined in: [src/data/database.ts:32](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/data/database.ts#L32)
 
 Bind imports to db client
 
@@ -60,7 +60,7 @@ Bind imports to db client
 const publicData: DataAccessor<[FakeDatabaseClient], typeof getPublicData>;
 ```
 
-Defined in: [src/data/database.ts:37](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L37)
+Defined in: [src/data/database.ts:37](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/data/database.ts#L37)
 
 Bind imports to db client
 
@@ -72,7 +72,7 @@ Bind imports to db client
 const protectedData: DataAccessor<[FakeDatabaseClient], typeof getProtectedData>;
 ```
 
-Defined in: [src/data/database.ts:42](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L42)
+Defined in: [src/data/database.ts:42](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/data/database.ts#L42)
 
 Bind imports to db client
 
@@ -84,6 +84,6 @@ Bind imports to db client
 const writableStreamToFile: DataAccessor<[FakeDatabaseClient], typeof getWritableStreamToFile>;
 ```
 
-Defined in: [src/data/database.ts:47](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/data/database.ts#L47)
+Defined in: [src/data/database.ts:47](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/data/database.ts#L47)
 
 Bind imports to db client

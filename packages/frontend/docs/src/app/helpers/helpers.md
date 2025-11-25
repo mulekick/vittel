@@ -25,7 +25,7 @@ Feature-agnostic client side helpers.
 function getStringAsync(route, hydrate): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:20](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/frontend/src/app/helpers/helpers.ts#L20)
+Defined in: [src/app/helpers/helpers.ts:20](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/frontend/src/app/helpers/helpers.ts#L20)
 
 Async helper for GET requests to the server API.
 
@@ -48,7 +48,7 @@ Async helper for GET requests to the server API.
 function getObjectAsync(route, hydrate): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:40](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/frontend/src/app/helpers/helpers.ts#L40)
+Defined in: [src/app/helpers/helpers.ts:40](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/frontend/src/app/helpers/helpers.ts#L40)
 
 Async helper for GET requests to the server API.
 
@@ -74,7 +74,7 @@ function postFileAsync(
 body): Promise<void>;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:63](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/frontend/src/app/helpers/helpers.ts#L63)
+Defined in: [src/app/helpers/helpers.ts:63](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/frontend/src/app/helpers/helpers.ts#L63)
 
 Async helper for POST requests to the server API.
 
@@ -98,7 +98,7 @@ Async helper for POST requests to the server API.
 function getPepe(): string;
 ```
 
-Defined in: [src/app/helpers/helpers.ts:86](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/frontend/src/app/helpers/helpers.ts#L86)
+Defined in: [src/app/helpers/helpers.ts:86](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/frontend/src/app/helpers/helpers.ts#L86)
 
 Helper for client-side bundled module.
 

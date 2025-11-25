@@ -28,7 +28,7 @@ Features that involve restricted / protected data.
 function issueToken(): Promise<string>;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:22](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L22)
+Defined in: [src/domain/transactions/protected.ts:22](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/protected.ts#L22)
 
 Call to domain jwt issuance helper, will throw on fail
 
@@ -44,7 +44,7 @@ Call to domain jwt issuance helper, will throw on fail
 function validateToken(token): Promise<null>;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:28](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L28)
+Defined in: [src/domain/transactions/protected.ts:28](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/protected.ts#L28)
 
 Call to domain jwt validation helper, will throw on fail
 
@@ -70,7 +70,7 @@ Call to domain jwt validation helper, will throw on fail
 function getFallback(): string;
 ```
 
-Defined in: [src/domain/transactions/protected.ts:52](https://github.com/mulekick/vittel/blob/78a0d57403bdeea5895e8f76174b171231a61b3c/packages/backend/src/domain/transactions/protected.ts#L52)
+Defined in: [src/domain/transactions/protected.ts:52](https://github.com/mulekick/vittel/blob/9eb95fb689f4afe189275fb7b5a5cb3c905f7d40/packages/backend/src/domain/transactions/protected.ts#L52)
 
 Call to data layer (protected)
 
